@@ -10,3 +10,18 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+//burger menu
+function toggleMenu() {
+    const navUl = document.querySelector('.linkNav');
+    const sectUl = document.querySelector('.linkSection');
+    const burger = document.querySelector('.burger');
+    const btn = document.querySelector('.burger')
+    burger.addEventListener('click', () => {
+        navUl.classList.toggle('open-nav');
+        sectUl.classList.toggle('open-nav');
+        btn.classList.toggle('open');
+    })
+}
+
+toggleMenu();
