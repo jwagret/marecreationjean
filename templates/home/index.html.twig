@@ -9,10 +9,10 @@
         </div>
         <nav class="navbar">
             <ul class="navbar_links">
-                <li class="navbar_link"><a href="#">Accueil</a></li>
-                <li class="navbar_link"><a href="#">Produits</a></li>
-                <li class="navbar_link"><a href="#">Compte</a></li>
-                <li class="navbar_link"><a href="#">Panier</a></li>
+                <li class="navbar_link"><a href="#" class="navbar_link_item">Accueil</a></li>
+                <li class="navbar_link"><a href="#" class="navbar_link_item">Produits</a></li>
+                <li class="navbar_link"><a href="#" class="navbar_link_item">Compte</a></li>
+                <li class="navbar_link"><a href="#" class="navbar_link_item">Panier</a></li>
             </ul>
         </nav>
         <button class="burger">
@@ -20,7 +20,21 @@
         </button>
     </header>
 
-    <main></main>
+    <main>
+        <section id="carrousel">
+            <article id="carrousel_container">
+            </article>
+            <img src="{{ asset('build/images/next.png') }}" alt="precedent" class="bouton" id="btn_gauche">
+            <img src="{{ asset('build/images/next.png') }}" alt="suivant" class="bouton" id="btn_droite">
+        </section>
+        <div id="myDot">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </main>
 
     <footer>
         <h4>Créé par Ma-ré-création-jean</h4>
