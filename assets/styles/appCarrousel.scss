@@ -1,23 +1,26 @@
 //Carrousel
-#carrousel {
-  width: 800px;
-  height: 408px;
-  border: 4px solid #afafaf;
+#carrousel, .my_carrousel {
+  width: 100%;
+  height: 100%;
+  border: 7px solid #afafaf;
   box-shadow: 0 0 14px rgba(0,0,0,0.3);
   position: relative;
   overflow: hidden;
 }
 
-#carrousel_container {
-  width: 800px;
-  height: 400px;
+#carrousel_container, .my_carrousel_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-#myDot {
+.myDot {
+  border: 2px solid crimson;
   text-align: center;
 }
 
-.dot {
+.dot, .myDot_dot {
   height: 15px;
   width: 15px;
   margin: 0 2px;
@@ -27,41 +30,45 @@
   transition: background-color 0.6s ease;
 }
 
-.photo {
-  width: 800px;
-  height: 400px;
-  margin: 0;
-  display: inline-block;
-  background-size: cover;
+.photo, .my_photo  {
+  margin: 2vh 11vw;
+  height: auto;
+  width: 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 50px rgb(0 0 0 / 50%);
+}
+
+.bordureTest {
+  border: 2px solid red;
 }
 
 .bouton {
   position: absolute;
-  width: 70px;
+  width: 3vw;
   cursor: pointer;
-  top: 150px;
+  top: 20vh;
 }
 
-#btn_gauche {
+#btn_gauche, .my_btn_gauche {
   left: 0;
   opacity: 0.4;
   transform: rotate(180deg);
   transition: all 0.3s ease;
 }
 
-#btn_droite {
+#btn_droite, .my_btn_droite {
   right: 0;
   opacity: 0.4;
   transform: rotate(0deg);
   transition: all 0.3s ease;
 }
 
-#btn_gauche:hover {
+#btn_gauche:hover, .my_btn_gauche:hover {
   transform: rotate(180deg) scale(1.1);
   opacity: 1;
 }
 
-#btn_droite:hover {
+#btn_droite:hover, .my_btn_droite:hover  {
   transform: rotate(0deg) scale(1.1);
   opacity: 1;
 }

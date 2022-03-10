@@ -3,7 +3,7 @@
 {% block title %}Ma-ré-création-Jean{% endblock %}
 
 {% block body %}
-    <header>
+    <header id="header_website">
         <div class="header_title">
             <h1>Ma ré-création-jeans</h1>
         </div>
@@ -21,19 +21,50 @@
     </header>
 
     <main>
-        <section id="carrousel">
-            <article id="carrousel_container">
+        {# 1ere section #}
+        <section id="main_section_carrousel">
+            <header id="carrousel">
+                <article id="carrousel_container"></article>
+                <img src="{{ asset('build/images/carrouselManuel/next.png') }}" alt="precedent" class="bouton" id="btn_gauche">
+                <img src="{{ asset('build/images/carrouselManuel/next.png') }}" alt="suivant" class="bouton" id="btn_droite">
+            </header>
+            <article class="myDot">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </article>
-            <img src="{{ asset('build/images/next.png') }}" alt="precedent" class="bouton" id="btn_gauche">
-            <img src="{{ asset('build/images/next.png') }}" alt="suivant" class="bouton" id="btn_droite">
         </section>
-        <div id="myDot">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
+
+        {# 2eme section #}
+        <section id="main_section_nouvelAjout">
+            <header class="my_carrousel colonne1">
+                <article class="my_carrousel_container"></article>
+                <img src="{{ asset('build/images/carrouselManuel/next.png') }}" alt="precedent" class="bouton my_btn my_btn_gauche">
+                <img src="{{ asset('build/images/carrouselManuel/next.png') }}" alt="suivant" class="bouton my_btn my_btn_droite">
+            </header>
+            <article class="myDot">
+                <span class="myDot_dot"></span>
+                <span class="myDot_dot"></span>
+                <span class="myDot_dot"></span>
+                <span class="myDot_dot"></span>
+                <span class="myDot_dot"></span>
+            </article>
+            <article id="section_ajout_galleries">
+                <h1>galleries d'images</h1>
+            </article>
+        </section>
+
+        {# 3 eme section #}
+        <section id="main_section_creatrice">
+            <header id="section_creatrice">
+                <h1>presentation de la creatrice</h1>
+            </header>
+            <article id="section_creatrice_apropos">
+                <h1>histoire de la creatrice</h1>
+            </article>
+        </section>
     </main>
 
     <footer>

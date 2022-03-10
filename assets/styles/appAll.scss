@@ -1,0 +1,151 @@
+// FIRST MOBILE
+:root {
+  --colorBlack: rgb(0,0,0);
+  --colorTest: rgb(75, 222, 222);
+  --colorTitle: rgb(215, 219, 221);
+  --transition_0: translateX(0%);
+  --heightNavbar: 100vh;
+  --padding1vh: 1vh;
+  --heightMainSection: 60vh;
+}
+
+@media all {
+  * {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    list-style-type: none;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+ //HEADER
+  #header_website {
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    padding: var(--padding1vh);
+    background-color: var(--colorBlack);
+  }
+
+  .header_title {
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+  }
+
+  .header_title h1 {
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--colorTitle);
+  }
+
+  .navbar_link {
+    padding: 1em;
+  }
+
+  .navbar_link:hover {
+    background-color: red;
+  }
+
+  .navbar_link_item {
+    color: var(--colorTitle);
+  }
+
+  .navbar_link_item:hover {
+    background-color: var(--colorTest);
+  }
+
+
+//CORPS
+  main {
+    border: 12px solid black;
+    margin-top: 1vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3,1fr);
+    grid-gap: 5vh;
+  }
+
+
+
+  //1ere section
+  #main_section_carrousel {
+    border: 5px solid green;
+    height: var(--heightMainSection);
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+
+
+  //2eme section
+  #main_section_nouvelAjout {
+    border: 5px solid blue;
+    height: var(--heightMainSection);
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+  }
+
+  .colonne1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+
+  #section_ajout_galleries {
+    border: 5px solid darkcyan;
+    height: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  //3eme section
+  #main_section_creatrice {
+    border: 5px solid green;
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+  }
+
+  #myDot {
+    text-align: center;
+    margin-top: 2vh;
+  }
+
+  .imgHeader {
+
+  }
+
+
+  img {
+    border: 3px solid red;
+  }
+
+
+
+  footer {
+    position: relative;
+    bottom: 0;
+  }
+
+}

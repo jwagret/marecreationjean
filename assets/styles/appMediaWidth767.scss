@@ -1,0 +1,124 @@
+// FIRST MOBILE
+:root {
+  --colorBlack: rgb(0,0,0);
+  --colorTest: rgb(75, 222, 222);
+  --colorTitle: rgb(215, 219, 221);
+  --transition_0: translateX(0%);
+  --heightNavbar: 100vh;
+  --padding1vh: 1vh;
+}
+
+//Inférieur ou égale à 767px
+@media screen and (max-width: 767px) {
+  .header_title {
+    width: 100%;
+  }
+
+  .navbar {
+    position: fixed;
+    //top: 1.9em;
+    top: 0;
+    left: 100%;
+    height: var(--heightNavbar);
+    width: 100%;
+    transition: left 2s ease-in-out;
+    background-color: inherit; //var(--colorBlack);
+    z-index: 100;
+  }
+
+  .navbar_links {
+    visibility: collapse;
+  }
+
+  .navbar_link {
+    transform: var(--transition_0) ;
+    transition: all 2s ease-in-out;
+  }
+
+  //Bouton hamburger
+  .burger {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  .bar {
+    display: block;
+    width: 40px;
+    height: 4px;
+    background-color: var(--colorTitle);
+    border-radius: 3px;
+    transition: all 2s ease-in-out;
+    z-index: 100;
+  }
+
+  .bar::before, .bar::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    background-color: var(--colorTitle);
+    border-radius: 3px;
+    transition: all 2s ease-in-out;
+    z-index: 100;
+  }
+  .bar::before {
+    transform: translateY(-12px);
+    z-index: 100;
+  }
+
+  .bar::after {
+    transform: translateY(12px);
+    z-index: 100;
+  }
+
+
+  //GESTION DU BOUTON HAMBURGER AVEC LE JS
+  .open-nav {
+    overflow:hidden;
+    height:  var(--heightNavbar);
+    width: 100%;
+    background-color: inherit;
+    left: 0;
+    transition: left 2s ease-in-out;
+    z-index: 100;
+  }
+
+  .open-nav .navbar_links {
+    display: flex;
+    flex-direction: column;
+    transition: all 1s ease-in-out;
+  }
+
+  .open-nav .navbar_link  {
+    visibility: visible;
+    transform: var(--transition_0) ;
+    transition: all 2s ease-in-out;
+  }
+
+  .menu .bar {
+    width: 0;
+    background: transparent;
+    z-index: 100;
+  }
+
+  .menu .bar::before {
+    transform: rotate(45deg);
+    z-index: 100;
+  }
+
+  .menu .bar::after {
+    transform: rotate(-45deg);
+    z-index: 100;
+  }
+}
