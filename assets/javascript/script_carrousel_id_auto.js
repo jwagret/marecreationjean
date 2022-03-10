@@ -2,7 +2,7 @@
 const container = document.getElementById("carrousel_container");
 let btn = document.getElementsByClassName("bouton");
 let nombre = 5; //5 images
-let tailleWidth = 100; //100% = taille container
+let tailleWidth = 20; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let activerIdAuto = false;
 
@@ -46,16 +46,12 @@ if (activerIdAuto) {
     container.style.width = (tailleWidth*nombre)+unite;
     //Creer les images
     for (let i = 1; i <= nombre; i++) {
-        let  lien = document.createElement("a");
-        // let image = document.createElement("img");
-        // image.src = "build/images/carrouselManuel/im"+i+".jpg";
-        //image.alt = "image_im"+i;
-        lien.href = "#";
-        lien.className = "photo";
-        lien.style.backgroundImage = "url('build/images/carrouselManuel/im"+i+".jpg')";
-        lien.className += " couleur"+i;
-        lien.appendChild(image);
-        container.appendChild(lien);
+        let div = document.createElement("div");
+        div.className = "photo";
+        div.style.backgroundImage = "url('build/images/carrouselAutomatique/im_2"+i+".jpg')";
+        div.style.border = "2px solid red";
+        //div.className += " couleur"+i;
+        container.appendChild(div);
     }
     automatique();
 }

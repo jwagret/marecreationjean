@@ -31,11 +31,18 @@
 }
 
 .photo, .my_photo  {
-  margin: 2vh 11vw;
   height: auto;
   width: 100%;
   background-repeat: no-repeat;
   box-shadow: 0 0 50px rgb(0 0 0 / 50%);
+}
+
+.photo {
+  margin: 2vh 1vw;
+}
+
+.my_photo {
+  margin: 2vh 11vw;
 }
 
 .bordureTest {
