@@ -1,11 +1,11 @@
 const container = document.getElementsByClassName("my_carrousel_container");
-const bouton = document.getElementsByClassName("my_btn");
+const bouton = document.getElementsByClassName("bouton_manuel");
 let nombre_images = 5; //5 images
 let position = 0; //position
 let tailleWidth = 100; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let deplacerImage = tailleWidth/nombre_images;
-let activer_carrousel = false;
+let activer_carrousel = true;
 
 //Afficher masquer les fleches
 let controlerBoutons = () => {
@@ -47,7 +47,7 @@ let avancer = () => {
 
 
 if (activer_carrousel) {
-    const dots = document.getElementsByClassName("myDot");
+    const dots = document.getElementsByClassName("manuelDot_dot");
     for (let i = 0; i < dots.length; i++) {
         dots[i].style.visibility = 'hidden';
     }

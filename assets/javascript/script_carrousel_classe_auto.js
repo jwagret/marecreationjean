@@ -1,6 +1,6 @@
 //Carrousel automatique
 const container = document.getElementsByClassName("my_carrousel_container");
-let btnClasse = document.getElementsByClassName("my_btn");
+let btnClasse = document.getElementsByClassName("bouton_manuel");
 let totalImages = 5; //5 images
 let tailleWidth = 20; //100% = taille container
 let unite = "%" //unite (px,%,em...)
@@ -14,7 +14,7 @@ let automatique = () => {
     }
     //Tableaux
     let slides_classe = document.getElementsByClassName("my_photo");
-    let dots_classe = document.getElementsByClassName("myDot_dot");
+    let dots_classe = document.getElementsByClassName("manuelDot_dot");
 
     console.log(slides_classe);
 
@@ -41,8 +41,8 @@ let automatique = () => {
     setTimeout(automatique, 2000); //2 secondes
 }
 
-//ACTIVER LE CARROUSEL
-if (activer_carrousel_auto) {
+
+let creerImage = () => {
     let courant = null;
     //Taille container d'image * nbr
     for (let i = 0; i < container.length; i++) {
@@ -53,10 +53,14 @@ if (activer_carrousel_auto) {
     for (let i = 1; i <= totalImages; i++) {
         let div = document.createElement("div");
         div.className = "my_photo";
-       // div.style.backgroundColor = ".couleur"+i;
+        // div.style.backgroundColor = ".couleur"+i;
         div.style.backgroundImage = "url('build/images/carrouselManuel/im"+i+".png')";
         //div.className += " couleur"+i;
         courant.appendChild(div);
     }
+}
+//ACTIVER LE CARROUSEL
+if (activer_carrousel_auto) {
+   creerImage();
    automatique();
 }
