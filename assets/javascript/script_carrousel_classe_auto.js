@@ -54,7 +54,7 @@ if (activer_carrousel_auto) {
         let div = document.createElement("div");
         div.className = "my_photo";
        // div.style.backgroundColor = ".couleur"+i;
-        div.style.backgroundImage = "url('build/images/carrouselManuel/im"+i+".jpg')";
+        div.style.backgroundImage = "url('build/images/carrouselManuel/im"+i+".png')";
         //div.className += " couleur"+i;
         courant.appendChild(div);
     }

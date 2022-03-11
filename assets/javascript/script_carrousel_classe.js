@@ -5,7 +5,7 @@ let position = 0; //position
 let tailleWidth = 100; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let deplacerImage = tailleWidth/nombre_images;
-let activer_carrousel = true;
+let activer_carrousel = false;
 
 //Afficher masquer les fleches
 let controlerBoutons = () => {
@@ -47,6 +47,11 @@ let avancer = () => {
 
 
 if (activer_carrousel) {
+    const dots = document.getElementsByClassName("myDot");
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].style.visibility = 'hidden';
+    }
+
     let courant = null;
     //Taille container d'image * nbr
     for (let i = 0; i < container.length; i++) {
@@ -59,7 +64,7 @@ if (activer_carrousel) {
         let div = document.createElement("div");
         div.className = "my_photo";
         //div.style.backgroundColor = ".couleur"+i;
-        div.style.backgroundImage = "url('build/images/carrouselManuel/im"+i+".jpg')";
+        div.style.backgroundImage = "url('build/images/carrouselAutomatique/im_2"+i+".png')";
         //div.className += " couleur"+i;
         courant.appendChild(div);
     }

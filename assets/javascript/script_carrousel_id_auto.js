@@ -6,7 +6,6 @@ let tailleWidth = 20; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let activerIdAuto = false;
 
-
 let slideIndex = 0;
 
 //ACTIVER LE CARROUSEL
@@ -48,7 +47,7 @@ if (activerIdAuto) {
     for (let i = 1; i <= nombre; i++) {
         let div = document.createElement("div");
         div.className = "photo";
-        div.style.backgroundImage = "url('build/images/carrouselAutomatique/im_2"+i+".jpg')";
+        div.style.backgroundImage = "url('build/images/carrouselAutomatique/im_2"+i+".png')";
         div.style.border = "2px solid red";
         //div.className += " couleur"+i;
         container.appendChild(div);

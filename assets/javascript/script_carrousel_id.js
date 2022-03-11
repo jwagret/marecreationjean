@@ -6,7 +6,7 @@ let position = 0; //position
 let tailleWidth = 100; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let deplacerImage = tailleWidth/nbr;
-let activer = true;
+let activer = false;
 
 //Afficher masquer les fleches
 let afficherMasquer = () => {
@@ -24,6 +24,10 @@ let afficherMasquer = () => {
 
 //ACTIVER LE CARROUSEL
 if (activer) {
+    const dots = document.getElementsByClassName("manuelDot");
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].style.visibility = 'hidden';
+    }
 
     let reculer = () => {
         if (position > (-nbr + 1)) {
@@ -51,13 +55,12 @@ if (activer) {
     for (let i = 1; i <= nbr; i++) {
         let _div = document.createElement("div");
         _div.className = "photo";
-        _div.style.backgroundImage = "url('build/images/carrouselAutomatique/im_2"+i+".jpg')";
+        _div.style.backgroundImage = "url('build/images/carrouselAutomatique/im_2"+i+".png')";
         _div.style.backgroundColor = " couleur"+i;
-        _div.style.backgroundSize ="cover;"
-        _div.style.border = "2px solid green";
         //div.className += " couleur"+i;
         container.appendChild(_div);
     }
+
    afficherMasquer();
     boutonGauche.addEventListener('click', reculer);
     boutonDroite.addEventListener('click', avancer);

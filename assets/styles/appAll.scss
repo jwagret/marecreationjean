@@ -76,7 +76,6 @@
 
   //1ere section
   #main_section_carrousel {
-    border: 5px solid green;
     height: var(--heightMainSection);
     grid-column-start: 1;
     grid-column-end: 2;
@@ -127,10 +126,6 @@
 
   }
 
-  #myDot {
-    text-align: center;
-    margin-top: 2vh;
-  }
 
   footer {
     position: relative;
