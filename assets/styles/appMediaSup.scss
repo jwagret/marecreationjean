@@ -1,0 +1,32 @@
+// FIRST MOBILE
+:root {
+  --colorBlack: rgb(0,0,0);
+  --colorTest: rgb(75, 222, 222);
+  --colorTitle: rgb(215, 219, 221);
+  --transition_0: translateX(0%);
+  --heightNavbar: 100vh;
+  --padding1vh: 1vh;
+}
+
+
+//Supérieur à 1039px et inferieur à 1580px
+@media screen and (min-width: 1039px) and (max-width: 1580px){
+  .header_title {
+    width: 30%;
+  }
+
+  .navbar {
+    width: 70%;
+  }
+}
+
+//Superieur à 1581px
+@media screen and (min-width: 1581px){
+  .header_title {
+    width: 20%;
+  }
+
+  .navbar {
+    width: 80%;
+  }
+}

@@ -1,0 +1,102 @@
+//Carrousel
+.my_carrousel {
+  width: 50%;
+  height: 50%;
+  border: 1px solid #afafaf;
+  box-shadow: 0 0 14px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.my_carrousel_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.titre_carrousel {
+  margin: 2vh 2vw;
+  text-transform: uppercase;
+}
+
+.manuelDot{
+  border: 1px solid red;
+  text-align: center;
+  width: 50%;
+}
+
+.manuelDot_dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.my_photo  {
+  height: auto;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  box-shadow: 0 0 50px rgb(0 0 0 / 50%);
+}
+
+.my_photo {
+  margin: 2vh 11vw;
+}
+
+.bouton_manuel {
+  position: absolute;
+  width: 4vw;
+  cursor: pointer;
+  top: 13vh;
+}
+
+.btnGauche {
+  left: 1vw;
+  opacity: 0.4;
+  transform: rotate(180deg);
+  transition: all 0.3s ease;
+}
+
+.btnDroite {
+  right: 1vw;
+  opacity: 0.4;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+.btnGauche:hover {
+  transform: rotate(180deg) scale(1.1);
+  opacity: 1;
+}
+
+.btnDroite:hover  {
+  transform: rotate(0deg) scale(1.1);
+  opacity: 1;
+}
+
+.active {
+  border: 1px solid black;
+}
+
+.couleur1 {
+  background-color: lightblue;
+}
+.couleur2 {
+  background-color: red;
+}
+.couleur3 {
+  background-color: green;
+}
+.couleur4 {
+  background-color: blueviolet;
+}
+.couleur5 {
+  background-color: darkolivegreen;
+}
+

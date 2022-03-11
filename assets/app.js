@@ -9,4 +9,14 @@
 import './styles/app.scss';
 
 // start the Stimulus application
+import './javascript/script.js';
 import './bootstrap';
+
+
+
+
+
+
+
+
+
