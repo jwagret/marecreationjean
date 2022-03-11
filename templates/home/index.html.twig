@@ -22,67 +22,52 @@
 
     <main>
         {# 1ere section #}
-        <section id="main_section_carrousel">
-            <header id="carrousel">
-                <article id="carrousel_container">
-                </article>
-                <img src="{{ asset('build/images/carrouselManuel/next.png') }}" alt="precedent" class="bouton" id="btn_gauche">
-                <img src="{{ asset('build/images/carrouselManuel/next.png') }}" alt="suivant" class="bouton" id="btn_droite">
-            </header>
-            <article class="manuelDot">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </article>
+        <section id="main_section_1">
+                {{ include('includes/carrouselAuto.html.twig') }}
         </section>
 
         {# 2eme section #}
-        <section id="main_section_nouvelAjout">
-            <header class="my_carrousel colonne1">
-                <article class="my_carrousel_container"></article>
-                <img src="{{ asset('build/images/carrouselManuel/next.png') }}" alt="precedent" class="bouton my_btn my_btn_gauche">
-                <img src="{{ asset('build/images/carrouselManuel/next.png') }}" alt="suivant" class="bouton my_btn my_btn_droite">
-            </header>
-            <article class="myDot">
-                <span class="myDot_dot"></span>
-                <span class="myDot_dot"></span>
-                <span class="myDot_dot"></span>
-                <span class="myDot_dot"></span>
-                <span class="myDot_dot"></span>
-            </article>
-            <article id="section_ajout_galleries">
+        <section id="main_section_2">
+                {{ include('includes/carrouselManuel.html.twig') }}
+            <article id="section_galleries">
                 <h1>galleries d'images</h1>
             </article>
         </section>
 
         {# 3 eme section #}
-        <section id="main_section_creatrice">
-            <header id="section_creatrice">
-                <h1>presentation de la creatrice</h1>
+        <section id="main_section_3">
+            <header id="section_creatrice_haut">
+                <div class="imgCreatrice">
+                    <img class="img-monImage" src="{{ asset('build/images/creatrice/im_22.png') }}" alt="">
+                </div>
             </header>
-            <article id="section_creatrice_apropos">
+            <article id="section_creatrice_apropos_haut">
                 <h1>histoire de la creatrice</h1>
-                <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Atque doloribus est eveniet, fugiat labore laboriosam minus odit quam rerum? Adipisci animi
-                        consectetur dicta dolorem expedita illo tempore unde voluptatem. Facere!
-                    </span>
-                    <span>Ab at cupiditate deserunt dicta distinctio doloribus facere iure, laboriosam minus natus nisi
-                        officia perspiciatis quas quibusdam quidem, quod reprehenderit sit suscipit velit vero?
-                        Consectetur consequuntur numquam quo sunt vero.
-                    </span>
-                    <span>Deleniti eos impedit laborum, maiores quasi quos repellendus repudiandae soluta tenetur
-                        voluptatem! Ab beatae blanditiis corporis dolorum eligendi non perspiciatis quo repellat soluta
-                        voluptas! Dolorum maiores natus provident quod veniam!
-                    </span>
-                    <span>Cumque ipsa modi molestiae, praesentium quia quisquam ullam veritatis. Architecto consequuntur
-                        eum facilis, illum, maxime mollitia perspiciatis quisquam recusandae sunt veniam voluptas
-                        voluptatem voluptates voluptatum? Dolorem dolores incidunt sint voluptates.
-                    </span>
-                    <span>Accusamus delectus doloribus ea est eum ex excepturi exercitationem hic ipsam ipsum itaque
-                        magnam minus, necessitatibus, nihil perspiciatis quisquam quo sed voluptas voluptate
-                        voluptatibus! Aliquid beatae deserunt maiores mollitia voluptates.</span></p>
+                <section class="histoire">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                </section>
+            </article>
+
+            <header id="section_creatrice_bas">
+                <div class="imgCreatrice">
+                    <img class="img-monImage" src="{{ asset('build/images/creatrice/im_22.png') }}" alt="">
+                </div>
+            </header>
+            <article id="section_creatrice_apropos_bas">
+                <h1>histoire de la creatrice</h1>
+                <section class="histoire">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                </section>
             </article>
         </section>
     </main>

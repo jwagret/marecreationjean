@@ -2,7 +2,7 @@
 #carrousel, .my_carrousel {
   width: 100%;
   height: 100%;
-  border: 7px solid #afafaf;
+  border: 1px solid #afafaf;
   box-shadow: 0 0 14px rgba(0,0,0,0.3);
   position: relative;
   overflow: hidden;
@@ -52,20 +52,20 @@
 
 .bouton {
   position: absolute;
-  width: 3vw;
+  width: 4vw;
   cursor: pointer;
-  top: 20vh;
+  top: 45vh;
 }
 
 #btn_gauche, .my_btn_gauche {
-  left: 0;
+  left: 1vw;
   opacity: 0.4;
   transform: rotate(180deg);
   transition: all 0.3s ease;
 }
 
 #btn_droite, .my_btn_droite {
-  right: 0;
+  right: 1vw;
   opacity: 0.4;
   transform: rotate(0deg);
   transition: all 0.3s ease;

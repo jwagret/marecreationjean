@@ -30,6 +30,7 @@ if (activer) {
     }
 
     let reculer = () => {
+        console.log("coucou");
         if (position > (-nbr + 1)) {
             position--;
         }
@@ -54,6 +55,7 @@ if (activer) {
     //Creer les images
     for (let i = 1; i <= nbr; i++) {
         let _div = document.createElement("div");
+        let image = document.createElement("img");
         _div.className = "photo";
         _div.style.backgroundImage = "url('build/images/carrouselAutomatique/im_2"+i+".png')";
         _div.style.backgroundColor = " couleur"+i;
