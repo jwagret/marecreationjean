@@ -5,7 +5,7 @@
 {% block body %}
     <header id="header_website">
         <div class="header_title">
-            <h1>Ma ré-création-jeans</h1>
+            <h1><a href="{{ path('app_home') }}">Ma ré-création-jeans</a> </h1>
         </div>
         <nav class="navbar">
             <ul class="navbar_links">
@@ -28,50 +28,53 @@
 
         {# 2eme section #}
         <section id="main_section_2">
+            <article id="section_2_1">
+                <h1 class="titre_carrousel">les dernieres creations</h1>
                 {{ include('includes/carrouselManuel.html.twig') }}
-            <article id="section_galleries">
-                <h1>galleries d'images</h1>
+            </article>
+            <article id="section_2_2">
+                <h1 class="titre_carrousel">les personnalisations clients</h1>
+                {{ include('includes/carrouselCreationsClient.html.twig') }}
             </article>
         </section>
 
         {# 3 eme section #}
         <section id="main_section_3">
-            <header id="section_creatrice_haut">
-                <div class="imgCreatrice">
+            <section id="section_3_1">
+                <header class="imgCreatrice">
                     <img class="img-monImage" src="{{ asset('build/images/creatrice/im_22.png') }}" alt="">
-                </div>
-            </header>
-            <article id="section_creatrice_apropos_haut">
-                <h1>histoire de la creatrice</h1>
-                <section class="histoire">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                </section>
-            </article>
+                </header>
+                <article id="section_creatrice_apropos_haut">
+                    <h1>histoire de la creatrice</h1>
+                    <section class="histoire">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    </section>
+                </article>
+            </section>
 
-            <header id="section_creatrice_bas">
-                <div class="imgCreatrice">
+            <section id="section_3_2">
+                <header class="imgCreatrice">
                     <img class="img-monImage" src="{{ asset('build/images/creatrice/im_22.png') }}" alt="">
-                </div>
-            </header>
-            <article id="section_creatrice_apropos_bas">
-                <h1>histoire de la creatrice</h1>
-                <section class="histoire">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                </section>
-            </article>
+                </header>
+                <article id="section_creatrice_apropos_bas">
+                    <h1>histoire de la creatrice</h1>
+                    <section class="histoire">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+                    </section>
+                </article>
+            </section>
         </section>
     </main>
-
     <footer>
         <h4>Créé par Ma-ré-création-jean</h4>
         <ul>

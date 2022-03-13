@@ -1,5 +1,5 @@
-const container = document.getElementsByClassName("carrousel_container_manuel");
-const bouton = document.getElementsByClassName("bouton_manuel");
+const container = document.getElementsByClassName("carrousel_container_client");
+const bouton = document.getElementsByClassName("bouton_client");
 let nombre_images = 5; //5 images
 let position = 0; //position
 let tailleWidth = 100; //100% = taille container
@@ -47,7 +47,7 @@ let avancer = () => {
 
 
 if (activer_carrousel) {
-    const dots = document.getElementsByClassName("manuelDot_dot");
+    const dots = document.getElementsByClassName("clientDot_dot");
     for (let i = 0; i < dots.length; i++) {
         dots[i].style.visibility = 'hidden';
     }
@@ -62,7 +62,7 @@ if (activer_carrousel) {
     //Creer les images
     for (let i = 1; i <= nombre_images; i++) {
         let div = document.createElement("div");
-        div.className = "my_photo";
+        div.className = "photo_client";
         //div.style.backgroundColor = ".couleur"+i;
         div.style.backgroundImage = "url('build/images/carrouselAutomatique/im_2"+i+".png')";
         //div.className += " couleur"+i;

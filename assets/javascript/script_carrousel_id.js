@@ -1,4 +1,4 @@
-const container = document.getElementById("carrousel_container");
+const container = document.getElementById("carrousel_container_auto");
 const boutonGauche = document.getElementById("btn_gauche");
 const boutonDroite = document.getElementById("btn_droite");
 let nbr = 5; //5 images
@@ -6,7 +6,7 @@ let position = 0; //position
 let tailleWidth = 100; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let deplacerImage = tailleWidth/nbr;
-let activer = false;
+let activer = true;
 
 //Afficher masquer les fleches
 let afficherMasquer = () => {
@@ -24,7 +24,7 @@ let afficherMasquer = () => {
 
 //ACTIVER LE CARROUSEL
 if (activer) {
-    const dots = document.getElementsByClassName("manuelDot");
+    const dots = document.getElementsByClassName("autoDot");
     for (let i = 0; i < dots.length; i++) {
         dots[i].style.visibility = 'hidden';
     }
