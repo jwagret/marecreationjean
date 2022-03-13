@@ -26,6 +26,13 @@
     z-index: 100;
   }
 
+  #navbar_2 {
+    margin-top: 2vh;
+    position: fixed;
+    //top: 1.9em;
+    top: 10vh;
+  }
+
   .navbar_links {
     visibility: collapse;
   }

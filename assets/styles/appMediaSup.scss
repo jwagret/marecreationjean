@@ -12,21 +12,30 @@
 //Supérieur à 1039px et inferieur à 1580px
 @media screen and (min-width: 1039px) and (max-width: 1580px){
   .header_title {
-    width: 30%;
+    width: 25%;
   }
 
   .navbar {
-    width: 70%;
+    width: 45%;
   }
+
+  #navbar2 {
+    width: 30%;
+  }
+
 }
 
 //Superieur à 1581px
 @media screen and (min-width: 1581px){
   .header_title {
-    width: 20%;
+    width: 25%;
   }
 
   .navbar {
-    width: 80%;
+    width: 45%;
+  }
+
+  #navbar2 {
+    width: 30%;
   }
 }
