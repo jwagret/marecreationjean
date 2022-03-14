@@ -7,14 +7,16 @@
         <div class="header_title">
             <h1><a href="{{ path('app_home') }}">Ma ré-création-jeans</a> </h1>
         </div>
-        <nav class="navbar">
+        <nav id="navbar" class="navbar">
             <ul class="navbar_links">
                 <li class="navbar_link"><a href="#" class="navbar_link_item">Accueil</a></li>
                 <li class="navbar_link"><a href="#" class="navbar_link_item">Produits</a></li>
+                <li class="navbar_link"><a href="#" class="navbar_link_item">Contact</a></li>
             </ul>
         </nav>
         <div id="navbar_2" class="navbar">
             <ul class="navbar_links">
+                <li class="navbar_link"><a href="#" class="navbar_link_item">Se connecter</a></li>
                 <li class="navbar_link"><a href="#" class="navbar_link_item">Compte</a></li>
                 <li class="navbar_link"><a href="#" class="navbar_link_item">Panier</a></li>
             </ul>
@@ -25,6 +27,7 @@
     </header>
 
     <main>
+
         {# 1ere section #}
         <section id="main_section_1">
                 {{ include('includes/carrouselAuto.html.twig') }}

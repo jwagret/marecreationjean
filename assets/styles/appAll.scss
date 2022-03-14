@@ -21,7 +21,7 @@
   body {
     display: flex;
     flex-direction: column;
-    background-color: linen;
+    background-color: white;
   }
 
  //HEADER
@@ -45,6 +45,7 @@
 
   .header_title {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     background-color: inherit;
   }
@@ -67,6 +68,16 @@
 
   .navbar_link_item:hover {
     background-color: var(--colorTest);
+  }
+
+  #navbar {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  #navbar_2 {
+    display: flex;
+    justify-content: flex-end;
   }
 
 
