@@ -14,6 +14,12 @@
     width: 100%;
   }
 
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
   .navbar {
     position: fixed;
     //top: 1.9em;
@@ -24,17 +30,14 @@
     transition: left 2s ease-in-out;
     background-color: inherit; //var(--colorBlack);
     z-index: 100;
-  }
-
-  #navbar_2 {
-    margin-top: 2vh;
-    position: fixed;
-    top: 10vh;
-    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .navbar_links {
     visibility: collapse;
+    width: 100%;
+    padding-left: 0;
+    margin-bottom: 0;
   }
 
   .navbar_link {
@@ -48,6 +51,10 @@
 
   #section_3_2 {
     flex-direction: column;
+  }
+
+  #loginForm {
+    width: 100%;
   }
 
   //Bouton hamburger
@@ -98,6 +105,8 @@
   }
 
 
+
+
   //GESTION DU BOUTON HAMBURGER AVEC LE JS
   .open-nav {
     overflow:hidden;
@@ -107,12 +116,15 @@
     left: 0;
     transition: left 2s ease-in-out;
     z-index: 100;
+    align-items: flex-start;
   }
 
   .open-nav .navbar_links {
     display: flex;
     flex-direction: column;
     transition: all 1s ease-in-out;
+    padding-left: 0;
+    margin-bottom: 0;
   }
 
   .open-nav .navbar_link  {

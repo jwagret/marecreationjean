@@ -1,94 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ma-ré-création-Jean{% endblock %}
+{% block title %}Ma-ré-création-Jeans{% endblock %}
 
-{% block body %}
-    <header id="header_website">
-        <div class="header_title">
-            <h1><a href="{{ path('application_home') }}">Ma ré-création-jeans</a> </h1>
-        </div>
-        <nav id="navbar" class="navbar">
-            <ul class="navbar_links">
-                <li class="navbar_link"><a href="#" class="navbar_link_item">Accueil</a></li>
-                <li class="navbar_link"><a href="#" class="navbar_link_item">Produits</a></li>
-                <li class="navbar_link"><a href="#" class="navbar_link_item">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="navbar_2" class="navbar">
-            <ul class="navbar_links">
-                <li class="navbar_link"><a href="#" class="navbar_link_item">Se connecter</a></li>
-                <li class="navbar_link"><a href="#" class="navbar_link_item">Compte</a></li>
-                <li class="navbar_link"><a href="#" class="navbar_link_item">Panier</a></li>
-            </ul>
-        </div>
-        <button class="burger">
-            <span class="bar"></span>
-        </button>
-    </header>
-
-    <main>
-
-        {# 1ere section #}
-        <section id="main_section_1">
-                {{ include('includes/carrouselAuto.html.twig') }}
-        </section>
-
-        {# 2eme section #}
-        <section id="main_section_2">
-            <article id="section_2_1">
-                <h1 class="titre_carrousel">les dernieres creations</h1>
-                {{ include('includes/carrouselManuel.html.twig') }}
-            </article>
-            <article id="section_2_2">
-                <h1 class="titre_carrousel">les personnalisations clients</h1>
-                {{ include('includes/carrouselCreationsClient.html.twig') }}
-            </article>
-        </section>
-
-        {# 3 eme section #}
-        <section id="main_section_3">
-            <section id="section_3_1">
-                <header class="imgCreatrice">
-                    <img class="img-monImage" src="{{ asset('build/images/creatrice/im_22.png') }}" alt="">
-                </header>
-                <article id="section_creatrice_apropos_haut">
-                    <h1>histoire de la creatrice</h1>
-                    <section class="histoire">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    </section>
-                </article>
-            </section>
-
-            <section id="section_3_2">
-                <header class="imgCreatrice">
-                    <img class="img-monImage" src="{{ asset('build/images/creatrice/im_22.png') }}" alt="">
-                </header>
-                <article id="section_creatrice_apropos_bas">
-                    <h1>histoire de la creatrice</h1>
-                    <section class="histoire">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
-                    </section>
-                </article>
-            </section>
-        </section>
-    </main>
-    <footer>
-        <h4>Créé par Ma-ré-création-jean</h4>
-        <ul>
-            <li><a href="#">cgv</a></li>
-            <li><a href="#">contact</a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-        </ul>
-    </footer>
+{% block main_section_1 %}
+    {{ include('includes/carrouselAuto.html.twig') }}
 {% endblock %}
+
+{% block main_section_2_1 %}
+   <h1 class="titre_carrousel">les dernieres creations</h1>
+   {{ include('includes/carrouselManuel.html.twig') }}
+{% endblock %}
+
+{% block main_section_2_2 %}
+    <h1 class="titre_carrousel">les personnalisations clients</h1>
+    {{ include('includes/carrouselCreationsClient.html.twig') }}
+{% endblock %}
+
+{% block main_section_3_1 %}
+    <header class="imgCreatrice">
+        <img class="img-monImage" src="{{ asset('build/images/creatrice/im_22.png') }}" alt="">
+    </header>
+    <article id="section_creatrice_apropos_haut">
+        <h1>histoire de la creatrice</h1>
+        <section class="histoire">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+        </section>
+    </article>
+{% endblock %}
+
+{% block main_section_3_2 %}
+  <header class="imgCreatrice">
+      <img class="img-monImage" src="{{ asset('build/images/creatrice/im_22.png') }}" alt="">
+  </header>
+  <article id="section_creatrice_apropos_bas">
+      <h1>histoire de la creatrice</h1>
+      <section class="histoire">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, officiis.</p>
+      </section>
+  </article>
+{% endblock %}
+

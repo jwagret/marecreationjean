@@ -54,6 +54,10 @@
     font-size: 1.5em;
   }
 
+  .header_title a {
+    padding: 1vh;
+  }
+
   .navbar_link {
     padding: 1em;
   }
@@ -64,6 +68,7 @@
 
   .navbar_link_item {
     color: var(--colorTitle);
+    padding: 1vh;
   }
 
   .navbar_link_item:hover {
@@ -72,12 +77,7 @@
 
   #navbar {
     display: flex;
-    justify-content: flex-start;
-  }
-
-  #navbar_2 {
-    display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 
 
@@ -184,18 +184,46 @@
     padding: 1vh 1vw;
     position: relative;
     bottom: 0;
-    height: 40vh;
+    height: 50vh;
     color: white;
     background-color: var(--colorBlack);
     display: flex;
     flex-direction: column;
   }
 
-  footer h4,  .header_title h1, #section_3_1 article h1, #section_3_2 article h1 {
+  footer h4,  .header_title h1, #section_3_1 article h1, #section_3_2 article h1, h1 {
     margin-top: 1vh;
     margin-bottom: 1vh;
     align-self: center;
     text-transform: uppercase;
   }
+
+  .cadreForm {
+    border: 2px solid lightskyblue;
+    border-radius: 5vh;
+    padding: 1vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: linen;
+  }
+
+  .btnForm {
+    width: 100%;
+    border-radius: 2vh;
+    border-color: lightskyblue;
+  }
+
+  .btnForm:hover{
+    background-color: lightskyblue;
+    color: blue;
+  }
+
+  .containerForm{
+    width: 50%;
+  }
+
+
 
 }

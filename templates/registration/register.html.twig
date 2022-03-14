@@ -1,17 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'home/index.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %} {{ parent() }} | Register {% endblock %}
 
-{% block body %}
-    <h1>Register</h1>
+{% block main_section_1 %}
+{% endblock %}
 
-    {{ form_start(registrationForm) }}
+{% block main_section_2_1 %}
+{% endblock %}
+
+{% block main_section_2_2 %}
+
+    <div class="cadreForm">
+        <h1 class="h3 mb-3 font-weight-normal">creer un compte</h1>
+
+        {{ form_start(registrationForm, {'attr': {'class': 'containerForm'}})}}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        <button type="submit" class="btn btn-lg btn-primary mt-3 btnForm ">Valider</button>
+        {{ form_end(registrationForm) }}
+    </div>
+
+{% endblock %}
+
+{% block main_section_3_1 %}
+{% endblock %}
+
+{% block main_section_3_2 %}
 {% endblock %}
