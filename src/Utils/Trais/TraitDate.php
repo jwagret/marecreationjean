@@ -20,6 +20,14 @@ trait TraitDate
         return $this->dateCreation;
     }
 
+    /**
+     * @param mixed $dateCreation
+     */
+    public function setDateCreation($dateCreation): void
+    {
+        $this->dateCreation = $dateCreation;
+    }
+
 
     /**
      * @return mixed

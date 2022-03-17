@@ -34,6 +34,10 @@ class Adresses
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $adresse_type;
 
+    #[ORM\ManyToOne(targetEntity: Clients::class, inversedBy: 'adresses')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $clients;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,6 +111,18 @@ class Adresses
     public function setAdresseType(?string $adresse_type): self
     {
         $this->adresse_type = $adresse_type;
+
+        return $this;
+    }
+
+    public function getClients(): ?Clients
+    {
+        return $this->clients;
+    }
+
+    public function setClients(?Clients $clients): self
+    {
+        $this->clients = $clients;
 
         return $this;
     }

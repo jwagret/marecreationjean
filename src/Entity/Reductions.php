@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ReductionsRepository;
 use App\Utils\Trais\TraitDate;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReductionsRepository::class)]
@@ -27,6 +29,17 @@ class Reductions
 
     #[ORM\Column(type: 'float')]
     private $reduction_montant;
+
+    #[ORM\Column(type: 'date')]
+    private $anneeReductions;
+
+    #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'reductions')]
+    private $produits;
+
+    public function __construct()
+    {
+        $this->produits = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -77,6 +90,42 @@ class Reductions
     public function setReductionMontant(float $reduction_montant): self
     {
         $this->reduction_montant = $reduction_montant;
+
+        return $this;
+    }
+
+    public function getAnneeReductions(): ?\DateTimeInterface
+    {
+        return $this->anneeReductions;
+    }
+
+    public function setAnneeReductions(\DateTimeInterface $anneeReductions): self
+    {
+        $this->anneeReductions = $anneeReductions;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produits>
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(Produits $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produits $produit): self
+    {
+        $this->produits->removeElement($produit);
 
         return $this;
     }

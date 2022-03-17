@@ -29,6 +29,12 @@ class Stocks
     #[ORM\Column(type: 'boolean')]
     private $is_stock_rupture;
 
+    #[ORM\ManyToOne(targetEntity: Tissus::class, inversedBy: 'stocks')]
+    private $tissu;
+
+    #[ORM\ManyToOne(targetEntity: Produits::class, inversedBy: 'stocks')]
+    private $produit;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -78,6 +84,30 @@ class Stocks
     public function setIsStockRupture(bool $is_stock_rupture): self
     {
         $this->is_stock_rupture = $is_stock_rupture;
+
+        return $this;
+    }
+
+    public function getTissu(): ?Tissus
+    {
+        return $this->tissu;
+    }
+
+    public function setTissu(?Tissus $tissu): self
+    {
+        $this->tissu = $tissu;
+
+        return $this;
+    }
+
+    public function getProduit(): ?Produits
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?Produits $produit): self
+    {
+        $this->produit = $produit;
 
         return $this;
     }

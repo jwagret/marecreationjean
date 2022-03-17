@@ -1,3 +1,5 @@
+import 'bootstrap/dist/js/bootstrap.js'
+import '@fortawesome/fontawesome-free/js/fontawesome.js';
 import './script_menuhamburger.js';
 import './script_carrousel_classe.js';
 import './script_carrousel_id.js';

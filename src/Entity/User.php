@@ -30,6 +30,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
+    #[ORM\Column(type: 'string', length: 50)]
+    private $pseudo;
+
+    #[ORM\OneToOne(targetEntity: Clients::class, cascade: ['persist', 'remove'])]
+    private $client;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isClient = true;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -62,11 +71,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+//        $roles = $this->roles;
+//        // guarantee every user at least has ROLE_USER
+//        $roles[] = 'ROLE_USER';
+//        return array_unique($roles);
+        return $this->roles;
     }
 
     public function setRoles(array $roles): self
@@ -98,5 +107,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getClient(): ?Clients
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Clients $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getIsClient(): ?bool
+    {
+        return $this->isClient;
+    }
+
+    public function setIsClient(bool $isClient): self
+    {
+        $this->isClient = $isClient;
+
+        return $this;
     }
 }

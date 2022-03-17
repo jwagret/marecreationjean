@@ -1,6 +1,5 @@
 // FIRST MOBILE
 :root {
-  --colorBlack: rgb(28 75 141);
   --colorTest: rgb(75, 222, 222);
   --colorTitle: rgb(215, 219, 221);
   --transition_0: translateX(0%);
@@ -10,6 +9,15 @@
 
 //Inférieur ou égale à 767px
 @media screen and (max-width: 767px) {
+
+  body {
+    display: flex;
+    flex-direction: column;
+    background-image: var(--backgroundImage);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .header_title {
     width: 100%;
   }
@@ -27,7 +35,7 @@
     left: 100%;
     height: var(--heightNavbar);
     width: 100%;
-    transition: left 2s ease-in-out;
+    transition: left 0.5s ease-in-out;
     background-color: inherit; //var(--colorBlack);
     z-index: 100;
     align-items: flex-start;
@@ -42,7 +50,7 @@
 
   .navbar_link {
     transform: var(--transition_0) ;
-    transition: all 2s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
   #section_3_1 {
@@ -78,7 +86,7 @@
     height: 4px;
     background-color: var(--colorTitle);
     border-radius: 3px;
-    transition: all 2s ease-in-out;
+    transition: all 0.5s ease-in-out;
     z-index: 100;
   }
 
@@ -91,7 +99,7 @@
     left: 0;
     background-color: var(--colorTitle);
     border-radius: 3px;
-    transition: all 2s ease-in-out;
+    transition: all 0.5s ease-in-out;
     z-index: 100;
   }
   .bar::before {
@@ -114,7 +122,7 @@
     width: 100%;
     background-color: inherit;
     left: 0;
-    transition: left 2s ease-in-out;
+    transition: left 0.5s ease-in-out;
     z-index: 100;
     align-items: flex-start;
   }
@@ -130,7 +138,7 @@
   .open-nav .navbar_link  {
     visibility: visible;
     transform: var(--transition_0) ;
-    transition: all 2s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
   .menu .bar {

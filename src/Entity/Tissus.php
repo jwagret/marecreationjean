@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\TissusRepository;
 use App\Utils\Trais\TraitDate;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TissusRepository::class)]
@@ -25,6 +27,18 @@ class Tissus
 
     #[ORM\Column(type: 'float')]
     private $tissu_tarif;
+
+    #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'tissuses')]
+    private $produits;
+
+    #[ORM\OneToMany(mappedBy: 'tissu', targetEntity: Stocks::class)]
+    private $stocks;
+
+    public function __construct()
+    {
+        $this->produits = new ArrayCollection();
+        $this->stocks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -63,6 +77,60 @@ class Tissus
     public function setTissuTarif(float $tissu_tarif): self
     {
         $this->tissu_tarif = $tissu_tarif;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produits>
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(Produits $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produits $produit): self
+    {
+        $this->produits->removeElement($produit);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Stocks>
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stocks $stock): self
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks[] = $stock;
+            $stock->setTissu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stocks $stock): self
+    {
+        if ($this->stocks->removeElement($stock)) {
+            // set the owning side to null (unless already changed)
+            if ($stock->getTissu() === $this) {
+                $stock->setTissu(null);
+            }
+        }
 
         return $this;
     }
