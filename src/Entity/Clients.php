@@ -27,7 +27,7 @@ class Clients
     #[ORM\Column(type: 'string', length: 50)]
     private $pseudo;
 
-    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: Adresses::class)]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Adresses::class)]
     private $adresses;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Factures::class)]
@@ -35,6 +35,10 @@ class Clients
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Commandes::class)]
     private $commandes;
+
+    #[ORM\OneToOne(targetEntity: User::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $utilisateur;
 
     public function __construct()
     {
@@ -96,7 +100,7 @@ class Clients
     {
         if (!$this->adresses->contains($adress)) {
             $this->adresses[] = $adress;
-            $adress->setClients($this);
+            $adress->setClient($this);
         }
 
         return $this;
@@ -106,8 +110,8 @@ class Clients
     {
         if ($this->adresses->removeElement($adress)) {
             // set the owning side to null (unless already changed)
-            if ($adress->getClients() === $this) {
-                $adress->setClients(null);
+            if ($adress->getClient() === $this) {
+                $adress->setClient(null);
             }
         }
 
@@ -170,6 +174,23 @@ class Clients
                 $commande->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getPseudo();
+    }
+
+    public function getUtilisateur(): ?User
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(User $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }

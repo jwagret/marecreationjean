@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Adresses;
+use App\Entity\Clients;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -44,6 +45,13 @@ class AdressesRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+
+
+
+
+
+
+
 
     // /**
     //  * @return Adresses[] Returns an array of Adresses objects

@@ -2,10 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Adresses;
 use App\Entity\Clients;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -44,6 +46,22 @@ class ClientsRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+
+
+    //Afficher les adresses du client connecté
+    public function mesAdresses() {
+        $query = $this->createQueryBuilder('client');
+        $query->select('cad.adresse_type', 'cad.adresse_numero', 'cad.adresse_rue', 'cad.adresse_codepostale', 'cad.adresse_ville', 'cad.adresse_pays')
+              ->innerJoin('client.adresses', 'cad', 'client.id = cad.client_id');
+
+        return $query->getQuery()->getResult();
+    }
+
+
+
+
+
+
 
     // /**
     //  * @return Clients[] Returns an array of Clients objects

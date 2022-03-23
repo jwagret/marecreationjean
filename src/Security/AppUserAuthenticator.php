@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +50,12 @@ class AppUserAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('app_espace_client'));
+        //Gestion de la direction lors de la connection
+       if ($token->getUser()->getRoles() === ['ROLE_ADMIN']) {
+          return new RedirectResponse($this->urlGenerator->generate('app_admin_dashboard'));
+       } else {
+          return new RedirectResponse($this->urlGenerator->generate('app_espace_client'));
+       }
 
     }
 

@@ -1,0 +1,46 @@
+{% extends 'baseVierge.html.twig' %}
+
+{% block title %} {{ parent() }} | Password{% endblock %}
+
+{% block main_section_1 %}
+
+    <div class="cadreForm mt-5">
+        <p><span>*</span> champs obligatoire</p>
+        <h1 class="h3 mb-3 font-weight-normal">modifier mot de passe</h1>
+
+        {{ form_start(formModifPassword, {'attr': {'class': 'containerForm'}}) }}
+        <div class="form">
+            <div class="row">
+                {{ form_row(formModifPassword.oldPasse) }}
+                {{ form_row(formModifPassword.password) }}
+            </div>
+        </div>
+        <div class="form_btn_align">
+            {{ form_row(formModifPassword.btn_valider) }}
+            {{ form_row(formModifPassword.btn_annuler) }}
+        </div>
+
+        {{ form_end(formModifPassword) }}
+    </div>
+
+{% endblock %}
+
+{% block main_section_2_1 %}
+
+{% endblock %}
+
+{% block main_section_2_2 %}
+
+{% endblock %}
+
+{% block main_section_3_1 %}
+
+{% endblock %}
+
+{% block main_section_3_2 %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

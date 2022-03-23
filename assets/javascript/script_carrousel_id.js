@@ -6,7 +6,7 @@ let position = 0; //position
 let tailleWidth = 100; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let deplacerImage = tailleWidth/nbr;
-let activer = true;
+let activer = false;
 
 //Afficher masquer les fleches
 let afficherMasquer = () => {

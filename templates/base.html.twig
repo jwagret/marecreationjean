@@ -16,38 +16,41 @@
         {% endblock %}
 
     </head>
-    <body>
+    <body >
 
     <header id="header_website">
-            {% block header %}
+
             <div class="header_title">
                 <h1>
                     <a href="{{ path('application_home') }}">Ma ré-création-jeans</a>
                 </h1>
             </div>
-            <nav id="navbar" class="navbar">
-                <ul class="navbar_links">
-                    {% if (is_granted('ROLE_ADMIN')) %}
-                        <li class="navbar_link"><a href="{{ path('app_admin_dashboard') }}" class="navbar_link_item">Administration</a></li>
-                    {% endif %}
-                    <li class="navbar_link"><a href="#" class="navbar_link_item">Accueil</a></li>
-                    <li class="navbar_link"><a href="#" class="navbar_link_item">Produits</a></li>
-                    <li class="navbar_link"><a href="#" class="navbar_link_item">Contact</a></li>
-                </ul>
-                <ul class="navbar_links">
-                    {% if (app.user) %}
-                        <li class="navbar_link"><a href="{{ path('app_logout') }}" class="navbar_link_item">Se deconnecter</a></li>
-                        <li class="navbar_link"><a href="{{ path('app_espace_client') }}" class="navbar_link_item">Mon espace</a></li>
-                        <li class="navbar_link"><a href="#" class="navbar_link_item">Panier</a></li>
-                    {% else %}
-                        <li class="navbar_link"><a href="{{ path('app_login') }}" class="navbar_link_item">Se connecter</a></li>
-                        <li class="navbar_link"><a href="{{ path('app_register') }}" class="navbar_link_item">Créer un compte</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-            <button class="burger">
-                <span class="bar"></span>
-            </button>
+            {% block header %}
+                <nav id="navbar" class="navbar">
+                    <ul class="navbar_links">
+                        {% if (is_granted('ROLE_ADMIN')) %}
+                            <li class="navbar_link"><a href="{{ path('app_admin_dashboard') }}" class="navbar_link_item">Administration</a></li>
+                        {% endif %}
+                        <li class="navbar_link"><a href="#" class="navbar_link_item">Accueil</a></li>
+                        <li class="navbar_link"><a href="#" class="navbar_link_item">Produits</a></li>
+                        <li class="navbar_link"><a href="#" class="navbar_link_item">Contact</a></li>
+                    </ul>
+                    <ul class="navbar_links">
+                        {% if (app.user) %}
+                                <li class="navbar_link"><a href="{{ path('app_logout') }}" class="navbar_link_item">Se deconnecter</a></li>
+                            {% if (is_granted('ROLE_USER')) %}
+                                <li class="navbar_link"><a href="{{ path('app_espace_client') }}" class="navbar_link_item">Mon espace</a></li>
+                            {% endif %}
+                                <li class="navbar_link"><a href="#" class="navbar_link_item">Panier</a></li>
+                        {% else %}
+                            <li class="navbar_link"><a href="{{ path('app_login') }}" class="navbar_link_item">Se connecter</a></li>
+                            <li class="navbar_link"><a href="{{ path('app_register') }}" class="navbar_link_item">Créer un compte</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <button class="burger">
+                    <span class="bar"></span>
+                </button>
             {% endblock %}
         </header>
 
@@ -89,7 +92,9 @@
 
         </main>
 
+    {% block footer %}
         <footer>
+
             <h4>Creation Ma-re-creation-jeans</h4>
             <ul>
                 <li><a href="#">cgv</a></li>
@@ -98,6 +103,7 @@
                 <li><a href="#"></a></li>
             </ul>
         </footer>
+    {% endblock %}
 
     </body>
 </html>

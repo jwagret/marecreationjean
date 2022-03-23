@@ -5,7 +5,7 @@ let position = 0; //position
 let tailleWidth = 100; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let deplacerImage = tailleWidth/nombre_images;
-let activer_carrousel = true;
+let activer_carrousel = false;
 
 //Afficher masquer les fleches
 let controlerBoutons = () => {
@@ -73,6 +73,10 @@ if (activer_carrousel) {
     bouton[0].addEventListener('click', reculer);
     bouton[1].addEventListener('click', avancer);
 } else {
+    const dots = document.getElementsByClassName("manuelDot_dot");
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].style.visibility = 'hidden';
+    }
     bouton[0].style.visibility = "hidden";
     bouton[1].style.visibility = "hidden";
 }

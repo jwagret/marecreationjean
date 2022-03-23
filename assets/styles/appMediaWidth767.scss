@@ -10,13 +10,14 @@
 //Inférieur ou égale à 767px
 @media screen and (max-width: 767px) {
 
-  body {
-    display: flex;
-    flex-direction: column;
-    background-image: var(--backgroundImage);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  //body {
+  //  display: flex;
+  //  flex-direction: column;
+  //  background-image: var(--backgroundImage);
+  //  background-size: 100vw auto;
+  //  background-repeat: repeat-y;
+  //  background-position-x: center;
+  //}
 
   .header_title {
     width: 100%;

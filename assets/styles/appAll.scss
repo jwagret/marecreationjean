@@ -22,16 +22,23 @@
     display: flex;
     flex-direction: column;
     background-image: var(--backgroundImage);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100vw auto;
+    background-repeat: repeat-y;
+    background-position-x: center;
   }
+
+  div {
+    width: 100%;
+    margin-right: 1vw;
+  }
+
 
 
  //HEADER
   #header_website {
     position: fixed;
-    right: 3vw;
-    left: 2.9vw;
+    right: 0;
+    left: 0;
     top: 0;
     z-index: 100;
     height: 6vh;
@@ -186,8 +193,8 @@
 
   footer {
     margin-top: 1vh;
-    margin-left: 2.9vw;
-    margin-right: 3.1vw;
+    margin-left: 2.4vw;
+    margin-right: 2.4vw;
     padding: 1vh 1vw;
     position: relative;
     bottom: 0;
@@ -216,19 +223,34 @@
     background-color: linen;
   }
 
-  .btnForm {
-    width: 100%;
+  .btnForm, .btn_Form {
     border-radius: 2vh;
     border-color: lightskyblue;
   }
 
-  .btnForm:hover{
+  .btnForm {
+    width: 100%;
+  }
+
+  .btnForm:hover, .btn_Form:hover{
     background-color: lightskyblue;
     color: blue;
   }
 
+  .btn_Form {
+    width: 100%;
+  }
+
+  .form_btn_align {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+
+
   .containerForm{
-    width: 50%;
+    width: 80%;
   }
 
   label:after, span {
