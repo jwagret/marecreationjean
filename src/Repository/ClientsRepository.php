@@ -48,17 +48,14 @@ class ClientsRepository extends ServiceEntityRepository
     }
 
 
-    //Afficher les adresses du client connecté
-    public function mesAdresses() {
-        $query = $this->createQueryBuilder('client');
-        $query->select('cad.adresse_type', 'cad.adresse_numero', 'cad.adresse_rue', 'cad.adresse_codepostale', 'cad.adresse_ville', 'cad.adresse_pays')
-              ->innerJoin('client.adresses', 'cad', 'client.id = cad.client_id');
-
-        return $query->getQuery()->getResult();
+    //Afficher le compte client de l'utilisateur connecte
+    public function utilisateurId($id) {
+        $query = $this->createQueryBuilder('client')
+                      ->innerJoin('client.utilisateur', 'cu', 'client.utilisateur_id = cu.id')
+                      ->where('cu.id = :indice')
+                      ->setParameter('indice', $id);
+        return $query->getQuery()->getSingleResult();
     }
-
-
-
 
 
 

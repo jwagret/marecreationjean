@@ -46,6 +46,16 @@ class AdressesRepository extends ServiceEntityRepository
         }
     }
 
+    //Récupérer toutes les adresses du client connecté
+    public function mesAdresses(Clients $clients) {
+        $query = $this->createQueryBuilder('adresses')
+                      ->innerJoin('adresses.client', 'client')
+                      ->where('client.id = :idClient')
+                      ->setParameter('idClient', $clients->getId());
+        return $query->getQuery()->getResult();
+    }
+
+
 
 
 
