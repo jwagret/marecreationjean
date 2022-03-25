@@ -1,4 +1,4 @@
-const container = document.getElementById("carrousel_container");
+const container = document.getElementById("carrousel_container_auto");
 const boutonGauche = document.getElementById("btn_gauche");
 const boutonDroite = document.getElementById("btn_droite");
 let nbr = 5; //5 images
@@ -24,7 +24,7 @@ let afficherMasquer = () => {
 
 //ACTIVER LE CARROUSEL
 if (activer) {
-    const dots = document.getElementsByClassName("manuelDot");
+    const dots = document.getElementsByClassName("autoDot");
     for (let i = 0; i < dots.length; i++) {
         dots[i].style.visibility = 'hidden';
     }

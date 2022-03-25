@@ -1,11 +1,11 @@
 // FIRST MOBILE
 :root {
-  --colorBlack: rgb(0,0,0);
   --colorTest: rgb(75, 222, 222);
-  --colorTitle: rgb(215, 219, 221);
+  --colorTitle: rgb(0, 0, 0);
   --transition_0: translateX(0%);
   --heightNavbar: 100vh;
   --padding1vh: 1vh;
+  --backgroundImage: url('~/public/build/images/fond.png');
 }
 
 @media all {
@@ -21,8 +21,18 @@
   body {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-image: var(--backgroundImage);
+    background-size: 100vw auto;
+    background-repeat: repeat-y;
+    background-position-x: center;
   }
+
+  div {
+    width: 100%;
+    margin-right: 1vw;
+  }
+
+
 
  //HEADER
   #header_website {
@@ -35,20 +45,27 @@
     display: flex;
     flex-direction: row;
     padding: var(--padding1vh);
-    background-color: var(--colorBlack);
+    background-color: rgb(229 91 164);
+  }
+
+  #header_website a {
+    text-decoration: none;
+    color: white;
   }
 
   .header_title {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    background-color: inherit;
   }
 
   .header_title h1 {
     font-size: 1.5em;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--colorTitle);
+    font-weight: bold;
+  }
+
+  .header_title a {
+    padding: 1vh;
   }
 
   .navbar_link {
@@ -60,11 +77,16 @@
   }
 
   .navbar_link_item {
-    color: var(--colorTitle);
+    padding: 1vh;
   }
 
   .navbar_link_item:hover {
     background-color: var(--colorTest);
+  }
+
+  #navbar {
+    display: flex;
+    justify-content: space-between;
   }
 
 
@@ -72,148 +94,171 @@
   main {
     margin-top: 10vh;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: 100%;
+    grid-template-rows: 0.50fr 0.80fr 1fr;
+    gap: 2vh;
+    justify-content: center;
+    align-self: center;
+    width: 94%;
   }
 
 
   //1ere section
   #main_section_1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
+    justify-self: center;
+    width: 100%;
+    align-items: center;
+    height: 100%;
     display: flex;
     flex-direction: column;
-
   }
 
   //2eme section
   #main_section_2 {
-    border: 1px solid red;
-    grid-column-start: 1;
-    grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 3;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
 
-
-  #section_galleries {
-    border: 1px solid green;
+  #section_2_1, #section_2_2  {
+    padding: 1vh 1vw;
+    align-items: center;
     width: 100%;
     height: 100%;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
   }
 
 
   //3eme section
   #main_section_3 {
-    grid-column-start: 1;
-    grid-column-end: 2;
+    width: 100%;
     grid-row-start: 3;
     grid-row-end: 4;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-
-  #section_creatrice_haut, #section_creatrice_bas {
-    justify-self: center;
     display: flex;
+    flex-direction: column;
+  }
+
+  #section_3_1, #section_3_2  {
+    padding: 1vh 1vw;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-self: center;
+  }
+
+
+  #section_3_1 {
+    flex-direction: row;
+  }
+
+  #section_3_2 {
+    flex-direction: row-reverse;
+  }
+
+
+  #section_3_1 header, #section_3_2 header, #section_3_1 article, #section_3_2 article {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
-  #section_creatrice_haut {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+  #section_3_1 article h1, #section_3_2 article h1 {
+    text-transform: uppercase;
   }
 
-  #section_creatrice_bas {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-  }
 
   .imgCreatrice {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     align-self: center;
   }
 
   .img-monImage {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     box-shadow: 1px 1px 0px 20px rgb(0 0 0 / 33%);
   }
 
 
-  #section_creatrice_apropos_haut, #section_creatrice_apropos_bas {
-    padding: 1vh 1vw;
-    width: 80%;
-    height: 100%;
-    justify-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  #section_creatrice_apropos_haut {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  #section_creatrice_apropos_bas {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
-  }
-
-
-  #section_creatrice_apropos_haut h1, #section_creatrice_apropos_bas h1 {
-    align-self: center;
-    text-transform: uppercase;
-    margin-top: 1vh;
-    margin-bottom: 4vh;
-  }
-
-  .histoire {
-    align-self: center;
-    width: 80%;
-    height: 89%;
-  }
-
-
-  hr {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-  }
 
   footer {
+    margin-top: 1vh;
+    margin-left: 2.4vw;
+    margin-right: 2.4vw;
     padding: 1vh 1vw;
     position: relative;
     bottom: 0;
-    height: 40vh;
+    height: 50vh;
     color: white;
-    background-color: var(--colorBlack);
+    background-color: rgb(92 175 221);
     display: flex;
     flex-direction: column;
   }
 
-  footer h4 {
+  footer h4,  .header_title h1, #section_3_1 article h1, #section_3_2 article h1, h1 {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     align-self: center;
     text-transform: uppercase;
   }
 
+  .cadreForm {
+    border: 2px solid lightskyblue;
+    border-radius: 5vh;
+    padding: 1vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: linen;
+  }
+
+  .btnForm, .btn_Form {
+    border-radius: 2vh;
+    border-color: lightskyblue;
+  }
+
+  .btnForm {
+    width: 100%;
+  }
+
+  .btnForm:hover, .btn_Form:hover{
+    background-color: lightskyblue;
+    color: blue;
+  }
+
+  .btn_Form {
+    width: 100%;
+  }
+
+  .form_btn_align {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+
+
+  .containerForm{
+    width: 80%;
+  }
+
+  label:after, span {
+    content:" * ";
+    color:red;
+  }
+
+  hr{
+    width: 50%;
+  }
 }

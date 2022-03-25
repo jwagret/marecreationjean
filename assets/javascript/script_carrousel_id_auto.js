@@ -1,10 +1,10 @@
 //Carrousel automatique
-const container = document.getElementById("carrousel_container");
+const container = document.getElementById("carrousel_container_auto");
 let btn = document.getElementsByClassName("bouton");
 let nombre = 5; //5 images
 let tailleWidth = 20; //100% = taille container
 let unite = "%" //unite (px,%,em...)
-let activerIdAuto = true;
+let activerIdAuto = false;
 
 let slideIndex = 0;
 

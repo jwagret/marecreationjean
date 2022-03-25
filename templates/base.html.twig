@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Ma-ré-création-Jeans{% endblock %}</title>
         <link rel="icon" href="https://symfony.com/favicon.ico">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
@@ -14,8 +14,96 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body >
+
+    <header id="header_website">
+
+            <div class="header_title">
+                <h1>
+                    <a href="{{ path('application_home') }}">Ma ré-création-jeans</a>
+                </h1>
+            </div>
+            {% block header %}
+                <nav id="navbar" class="navbar">
+                    <ul class="navbar_links">
+                        {% if (is_granted('ROLE_ADMIN')) %}
+                            <li class="navbar_link"><a href="{{ path('app_admin_dashboard') }}" class="navbar_link_item">Administration</a></li>
+                        {% endif %}
+                        <li class="navbar_link"><a href="#" class="navbar_link_item">Accueil</a></li>
+                        <li class="navbar_link"><a href="#" class="navbar_link_item">Produits</a></li>
+                        <li class="navbar_link"><a href="#" class="navbar_link_item">Contact</a></li>
+                    </ul>
+                    <ul class="navbar_links">
+                        {% if (app.user) %}
+                                <li class="navbar_link"><a href="{{ path('app_logout') }}" class="navbar_link_item">Se deconnecter</a></li>
+                            {% if (is_granted('ROLE_USER')) %}
+                                <li class="navbar_link"><a href="{{ path('app_espace_client') }}" class="navbar_link_item">Mon espace</a></li>
+                            {% endif %}
+                                <li class="navbar_link"><a href="#" class="navbar_link_item">Panier</a></li>
+                        {% else %}
+                            <li class="navbar_link"><a href="{{ path('app_login') }}" class="navbar_link_item">Se connecter</a></li>
+                            <li class="navbar_link"><a href="{{ path('app_register') }}" class="navbar_link_item">Créer un compte</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <button class="burger">
+                    <span class="bar"></span>
+                </button>
+            {% endblock %}
+        </header>
+
+        <main>
+            {#   1ere section #}
+            <section id="main_section_1">
+                <p>Nous sommes le : {{ 'now' | date("d/m/Y - H:i", "Europe/Paris") }}</p>
+                {% block main_section_1 %}
+                {% endblock %}
+            </section>
+
+            {#  2eme section #}
+            <section id="main_section_2">
+                {% block main_section_2 %}
+                    <article id="section_2_1">
+                        {% block main_section_2_1 %}
+                        {% endblock %}
+                    </article>
+                    <article id="section_2_2">
+                        {% block main_section_2_2 %}
+                        {% endblock %}
+                    </article>
+                {% endblock %}
+            </section>
+
+            {#  3eme section #}
+            <section id="main_section_3">
+                {% block main_section_3 %}
+                    <section id="section_3_1">
+                        {% block main_section_3_1 %}
+                        {% endblock %}
+                    </section>
+                    <section id="section_3_2">
+                        {% block main_section_3_2 %}
+                        {% endblock %}
+                    </section>
+                {% endblock %}
+            </section>
+
+        </main>
+
+    {% block footer %}
+        <footer>
+
+            <h4>Creation Ma-re-creation-jeans</h4>
+            <ul>
+                <li><a href="#">cgv</a></li>
+                <li><a href="#">contact</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </footer>
+    {% endblock %}
+
     </body>
 </html>

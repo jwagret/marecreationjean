@@ -1,9 +1,15 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
 @import "appAll.scss";
-@import "appCarrousel.scss";
+@import "appCarrouselAuto";
 @import "appCarrouselManuel.scss";
+@import "appCarrouselClient.scss";
 @import "appMediaWidth767.scss";
 @import "appMediaWidth1039.scss";
 @import "appMediaSup.scss";
+@import "appAdmin.scss";
+@import "appEspaceClient.scss";
+
 
 
 

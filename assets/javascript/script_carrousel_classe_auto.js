@@ -1,5 +1,5 @@
 //Carrousel automatique
-const container = document.getElementsByClassName("my_carrousel_container");
+const container = document.getElementsByClassName("carrousel_container_manuel");
 let btnClasse = document.getElementsByClassName("bouton_manuel");
 let totalImages = 5; //5 images
 let tailleWidth = 20; //100% = taille container

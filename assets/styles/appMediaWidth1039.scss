@@ -1,6 +1,5 @@
 // FIRST MOBILE
 :root {
-  --colorBlack: rgb(0,0,0);
   --colorTest: rgb(75, 222, 222);
   --colorTitle: rgb(215, 219, 221);
   --transition_0: translateX(0%);
@@ -11,8 +10,8 @@
 //Supérieur ou égale à 768px et inferieur a 1280px
 @media screen and (min-width: 768px) and (max-width: 1038px), screen and (min-width: 1039px) {
   .header_title {
-    width: 55%;
     padding-left: 1%;
+    width: 30%;
   }
 
   .header_title h1 {
@@ -20,10 +19,13 @@
   }
 
   .navbar {
-    width: 45%;
     position: initial;
     transform: translateX(0%);
     transition: none;
+  }
+
+  #navbar {
+    width: 40%;
   }
 
   .navbar_links {

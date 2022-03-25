@@ -1,9 +1,12 @@
 //burger menu
 const burger = document.querySelector('.burger');
-const navbar = document.querySelector('.navbar');
+const navbar = document.getElementsByClassName('navbar');
 
 let toggleMenu = () => {
-    navbar.classList.toggle('open-nav');
+
+    for (let i = 0; i < navbar.length; i++) {
+        navbar[i].classList.toggle('open-nav');
+    }
     burger.classList.toggle('menu');
 }
 
