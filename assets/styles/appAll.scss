@@ -247,8 +247,6 @@
     justify-content: center;
   }
 
-
-
   .containerForm{
     width: 80%;
   }
@@ -260,5 +258,27 @@
 
   hr{
     width: 50%;
+  }
+
+
+  /*FLASH*/
+  .msg_flash {
+    width: 50%;
+    height: 20%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+  }
+
+  .msg_flash-no-success {
+    border: red 3px solid;
+    background-color: linen;
+  }
+
+  .msg_flash-success {
+    border: lawngreen 3px solid;
+    background-color: linen;
   }
 }

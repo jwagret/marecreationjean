@@ -1,0 +1,70 @@
+{% extends 'baseVierge.html.twig' %}
+
+{% block title %}Ma-ré-création-Jeans | Adresses{% endblock %}
+
+{% block main_section_1 %}
+
+    <div class="cadreForm mt-5">
+        <p><span>*</span> champs obligatoire</p>
+        <h1 class="h3 mb-3 font-weight-normal">{% if nomFormulaire == 'ajouter' %}creer une adresse {% else %} modifier une adresse {% endif %}</h1>
+
+        {{ form_start(form_adresse, {'attr': {'class': 'containerForm'}}) }}
+        <div class="form">
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form_adresse.adresse_numero) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form_adresse.adresse_rue) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form_adresse.adresse_codepostale) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form_adresse.adresse_ville) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form_adresse.adresse_pays) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form_adresse.adresse_type) }}
+                </div>
+            </div>
+            <div class="form_btn_align">
+                {% if desactiver == false %}
+                    <button class="btn btn-lg btn-primary mt-3 btn_Form w-100 ms-3" type="submit" value="Valider" name="btn_valider">Valider</button>
+                    <button class="btn btn-lg btn-primary mt-3 btn_Form w-100 ms-3" type="submit" value="Annuler" name="btn_annuler">Annuler</button>
+                {% endif %}
+            </div>
+        </div>
+        {{ form_end(form_adresse) }}
+
+    </div>
+
+{% endblock %}
+
+{% block main_section_2_1 %}
+
+{% endblock %}
+
+{% block main_section_2_2 %}
+
+{% endblock %}
+
+{% block main_section_3_1 %}
+
+{% endblock %}
+
+{% block main_section_3_2 %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+

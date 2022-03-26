@@ -55,9 +55,18 @@
         </header>
 
         <main>
+
             {#   1ere section #}
             <section id="main_section_1">
                 <p>Nous sommes le : {{ 'now' | date("d/m/Y - H:i", "Europe/Paris") }}</p>
+                {# lire et afficher tous les messages flash #}
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="msg_flash msg_flash-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                 {% block main_section_1 %}
                 {% endblock %}
             </section>

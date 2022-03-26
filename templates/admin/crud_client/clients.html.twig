@@ -1,0 +1,33 @@
+{% extends 'admin/admin/admin.html.twig' %}
+
+{% block admin_section_main_2 %}
+    <div class="table-responsive w-75 mt-5">
+        <table class="table">
+            <caption>Liste des clients</caption>
+            <thead>
+            <tr>
+{#                <th scope="col">id</th>#}
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for client in liste_clients  %}
+                <tr>
+{#                    <th scope="row">{{ client.id }}</th>#}
+                    <td>{{ client.clientNom }}</td>
+                    <td>{{ client.clientPrenom }}</td>
+                    <td>{{ client.pseudo }}</td>
+                    <td>
+                        <a href="">Voir</a>
+                        <a href="">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
