@@ -64,6 +64,7 @@
                     {% for message in messages %}
                         <div class="msg_flash msg_flash-{{ label }}">
                             {{ message }}
+                            <a href="{{ path('app_espace_client') }}"> Raffraichir la page</a>
                         </div>
                     {% endfor %}
                 {% endfor %}

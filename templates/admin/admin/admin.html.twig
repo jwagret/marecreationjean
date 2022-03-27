@@ -12,13 +12,17 @@
             <nav  class="mt-5">
                 <ul>
                     <li><i class="fa-solid fa-house"></i> <a href="{{ path('app_admin_dashboard') }}"> Home</a></li>
-                    <li><i class="fa-solid fa-user"></i> <a href="{{ path('app_admin_crud_client') }}"> Clients</a></li>
+                    <li><i class="fa-solid fa-user"></i> <a href="{{ path('app_admin_crud_client_liste') }}"> Clients</a></li>
+                    <li><i class="fa-solid fa-shop"></i><a href="{{ path('app_admin_crud_produits_liste') }}"> Produits</a></li>
                 </ul>
             </nav>
         </section>
 
         <section id="admin_section_main_2">
             {% block admin_section_main_2 %}
+            {% endblock %}
+
+            {% block admin_section_main_2_2 %}
             {% endblock %}
         </section>
 

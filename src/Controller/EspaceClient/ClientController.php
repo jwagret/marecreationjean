@@ -26,13 +26,6 @@ class ClientController extends AbstractController
     }
 
 
-    #[Route('/details', name: 'details')]
-    public function index(): Response
-    {
-        return $this->render('espace_client/client/index.html.twig');
-    }
-
-
     //Variable identique à ceux du twig
     #[Route('/modifier', name: 'modifier')]
     public function modifierInformation(Request $request): Response

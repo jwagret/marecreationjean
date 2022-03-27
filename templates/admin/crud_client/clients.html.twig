@@ -21,8 +21,8 @@
                     <td>{{ client.clientPrenom }}</td>
                     <td>{{ client.pseudo }}</td>
                     <td>
-                        <a href="">Voir</a>
-                        <a href="">Supprimer</a>
+                        <a href="{{ path('app_admin_crud_client_details', {'id' : client.id}) }}">Voir</a>
+                        <a href="#">Supprimer</a>
                     </td>
                 </tr>
             {% endfor %}
