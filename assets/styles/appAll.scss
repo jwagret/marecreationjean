@@ -19,12 +19,13 @@
   }
 
   body {
-    display: flex;
-    flex-direction: column;
     background-image: var(--backgroundImage);
     background-size: 100vw auto;
     background-repeat: repeat-y;
     background-position-x: center;
+    background-color: linen;
+    display: flex;
+    flex-direction: column;
   }
 
   div {

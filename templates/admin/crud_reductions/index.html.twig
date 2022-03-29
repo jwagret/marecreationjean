@@ -1,37 +1,32 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
  {% block admin_section_main_2 %}
-     <div class="crud_lien"><a href="{{ path('app_admin_crud_produits_ajout_produit') }}">Ajouter un produit</a></div>
+     <div class="crud_lien"><a href="">Ajouter une réduction</a></div>
      <div class="table-responsive w-75 mt-2">
          <table class="table">
-             <caption>Produits</caption>
+             <caption>Les réductions</caption>
              <thead>
              <tr>
                  <th scope="col">id</th>
-                 <th scope="col">Image</th>
                  <th scope="col">Référence</th>
                  <th scope="col">Désignation</th>
-                 <th scope="col">Prix</th>
-                 <th scope="col">Stock</th>
-                 <th scope="col">Carrousel</th>
+                 <th scope="col">Pourcentage</th>
+                 <th scope="col">Montant réduction</th>
+                 <th scope="col">Année de la réduction</th>
                  <th scope="col">Créé le</th>
                  <th scope="col">Modifier le</th>
                  <th scope="col">Actions</th>
              </tr>
              </thead>
              <tbody>
-             {% if liste_produits == [] %}
+             {% if liste_reductions == [] %}
                  <tr>
-                     <td colspan="9" class="fw-bold text-danger">AUCUN PRODUITS</td>
+                     <td colspan="9" class="fw-bold text-danger">AUCUNE REDUCTIONS</td>
                  </tr>
              {% endif %}
-             {% for produit in liste_produits %}
+             {% for reduction in liste_reductions %}
                  <tr>
                      <th scope="row"></th>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
                      <td></td>
                      <td></td>
                      <td></td>

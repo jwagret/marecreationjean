@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/espace/client', name: 'app_espace_adresses_')]
+#[Route('/espace/client/adresse', name: 'app_espace_adresses_')]
 class AdressesController extends AbstractController
 {
     private $doctrine;
@@ -33,7 +33,7 @@ class AdressesController extends AbstractController
         return $this->render('espace_client/adresses/index.html.twig');
     }
 
-    #[Route('/ajout/{id<\d+>}', name: 'ajout', methods: ['GET', 'POST', 'PUT'])]
+    #[Route('/ajout/{id<\d+>}', name: 'ajout')]
     public function addAdresses(Request $request, int $id) : Response {
 
         $date = Outils::creerDate('d/m/y');
@@ -87,7 +87,7 @@ class AdressesController extends AbstractController
     }
 
     //Modifier une adresse
-    #[Route('/modifier/{id<\d+>}', name: 'modifier', methods: ['GET','PUT', 'POST'])]
+    #[Route('/modifier/{id<\d+>}', name: 'modifier')]
     public function modifierAdresse(Request $request, int $id):Response {
         $date = Outils::creerDate('d/m/y');
         $user =Outils::verifierUser($this->getUser(), $this->redirectToRoute('app_logout'));

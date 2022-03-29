@@ -30,7 +30,7 @@ class ClientController extends AbstractController
     #[Route('/modifier', name: 'modifier')]
     public function modifierInformation(Request $request): Response
     {
-        $date = Outils::creerDate('d/m/y');
+        $date = Outils::creerDate('d/m/Y');
         $user =Outils::verifierUser($this->getUser(), $this->redirectToRoute('app_logout'));
 
         //Récupérer l'utilisateur connecté
@@ -81,7 +81,7 @@ class ClientController extends AbstractController
     #[Route('/modifier/password', name: 'password')]
     public function changerPassword(Request $request, UserPasswordHasherInterface $userPasswordHasher) : Response {
 
-        $date = Outils::creerDate('d/m/y');
+        $date = Outils::creerDate('d/m/Y');
         $user =Outils::verifierUser($this->getUser(), $this->redirectToRoute('app_logout'));
 
         //Récupérer l'utilisateur connecté avec le compte client

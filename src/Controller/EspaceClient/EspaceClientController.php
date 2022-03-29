@@ -22,7 +22,7 @@ class EspaceClientController extends AbstractController
     #[Route('', name: 'client')]
     public function index(): Response
     {
-        $date = Outils::creerDate('d/m/y');
+//        $date = Outils::creerDate('d/m/y');
         $user =Outils::verifierUser($this->getUser(), $this->redirectToRoute('app_login'));
 
         $clientCourant = $this->clientRepository->findOneBy(['utilisateur' => $user]);

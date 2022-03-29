@@ -4,6 +4,8 @@ namespace App\Form\Produits;
 
 use App\Entity\Categories;
 use App\Entity\Produits;
+use App\Entity\Reductions;
+use App\Entity\Tissus;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -47,14 +49,33 @@ class ProduitType extends AbstractType
                 ],
             ])
             ->add('categorie', EntityType::class, [
+                'mapped' => true,
                 'class' => Categories::class,
                 'attr' => [
-                    'class' => 'form-control mb-3',
+                    'class' => 'form-select mb-3',
                 ],
-
+                'choice_label' => function($categorie) {
+                    return $categorie->getCategorieNom();
+                }
             ])
-//            ->add('reductions')
-//            ->add('tissuses')
+            ->add('reductions', EntityType::class, [
+                'mapped' => false,
+                'class' => Reductions::class,
+                 'attr' => [
+                    'class' => 'form-select mb-3',
+                 ],
+                'choice_label' => function($reduction) {
+                    return $reduction->getReductionDesignation();
+                }
+            ])
+            ->add('tissuses', EntityType::class, [
+                'mapped' => false,
+                'class' => Tissus::class,
+                'attr' => [
+                    'class' => 'form-select mb-3',
+                ],
+                'choices' => []
+            ])
         ;
     }
 

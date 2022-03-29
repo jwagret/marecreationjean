@@ -6,6 +6,17 @@
 
 {% block main_section_1 %}
 
+    {% block message %}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="msg_flash msg_flash-{{ label }}">
+                        {{ message }}
+                        <a href="{{ path('app_admin_dashboard') }}"> Raffraichir la page</a>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+    {% endblock %}
+
     <main id="admin_main">
 
         <section id="admin_section_main_1">
@@ -14,12 +25,42 @@
                     <li><i class="fa-solid fa-house"></i> <a href="{{ path('app_admin_dashboard') }}"> Home</a></li>
                     <li><i class="fa-solid fa-user"></i> <a href="{{ path('app_admin_crud_client_liste') }}"> Clients</a></li>
                     <li><i class="fa-solid fa-shop"></i><a href="{{ path('app_admin_crud_produits_liste') }}"> Produits</a></li>
+                    <li><i class="fa-solid fa-tags"></i>
+                        <a class="dropdown-toggle" href="#"  id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Catégories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{ path('app_admin_crud_categories_liste') }}">Catégories</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_admin_crud_sous_categories_liste') }}">sous-categories</a></li>
+                        </ul>
+                    </li>
+                    <li><i class="fa-solid fa-shop"></i><a href="{{ path('app_admin_crud_transporteur_liste') }}"> Transporteur</a></li>
+                    <li><i class="fa-solid fa-shop"></i><a href="{{ path('app_admin_crud_tissus_liste') }}"> Tissus</a></li>
+                    <li><i class="fa-solid fa-shop"></i><a href="{{ path('app_admin_crud_reductions_liste') }}"> Réductions</a></li>
+
                 </ul>
             </nav>
         </section>
 
         <section id="admin_section_main_2">
             {% block admin_section_main_2 %}
+                <div class=" infoHome mt-5">
+                    <div class="mt-5">
+                        <p>Nombre de produits en vente :</p>
+                        <p>Nombre de produits en stock :</p>
+                        <p>Nombre de produits vendus :</p>
+                    </div>
+
+                    <div class="mt-5">
+                        <p>Nombre de ventes du mois :</p>
+                        <p>Nombre de clients :</p>
+
+                    </div>
+                </div>
+
+                <hr>
+
+
             {% endblock %}
 
             {% block admin_section_main_2_2 %}
@@ -49,3 +90,6 @@
 {% block footer %}
 
 {% endblock %}
+
+
+
