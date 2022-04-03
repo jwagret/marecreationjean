@@ -3,9 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\SousCategories;
+use App\Form\SousCategorie\SousCategorieType;
 use App\Repository\SousCategoriesRepository;
+use App\Utils\Outils\Outils;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -31,4 +34,54 @@ class CrudSousCategoriesController extends AbstractController
             'liste_sousCategories' => $sousCategories
         ]);
     }
+
+    //Détails d'une sous-catégorie
+    #[Route('/details/{id<\d+>}', name: 'details_sous_categorie')]
+    public function detailsSousCategorie(Request $request, int $id): Response {
+        $sousCategorie = $this->sousCategoriesRepository->findOneBy(['id'=> $id]);
+        return $this->render('admin/crud_sous_categories/details.html.twig', [
+            'sousCategorie' => $sousCategorie
+        ]);
+    }
+
+    //Ajouter une sous-catégorie
+    #[Route('/ajouter', name: 'ajouter_sousCategorie')]
+    public function ajouterSousCategorie(Request $request): Response {
+        $date = Outils::creerDate('d/m/Y');
+        $sousCategorie = new SousCategories();
+
+        $formSousCategorie = $this->createForm(SousCategorieType::class, $sousCategorie);
+        $formSousCategorie->handleRequest($request);
+
+        $btnValider = $request->get('btn_valider');
+        $btnAnnuler = $request->get('btn_annuler');
+
+        if ($btnAnnuler) {
+            return $this->redirectToRoute('app_admin_dashboard');
+        }
+
+        if ($formSousCategorie->isSubmitted() && $formSousCategorie->isValid()) {
+
+            if ($btnValider) {
+                $sousCategorie->setDateCreation($date);
+                $sousCategorie->setSousCategorieNom($formSousCategorie->get('sousCategorie_nom')->getData());
+                $sousCategorie->setCategorie($formSousCategorie->get('categorie')->getData());
+                $categorie = $sousCategorie->getCategorie();
+                $categorie->addSousCategory($sousCategorie);
+
+                $this->doctrine->persist($sousCategorie);
+                $this->doctrine->flush();
+
+                $this->addFlash('success', 'La sous-catégorie est bien enregistrée');
+                return $this->redirectToRoute('app_admin_dashboard');
+            }
+        }
+
+        return $this->render('admin/crud_sous_categories/ajoutSousCategorie.html.twig', [
+            'formSousCategorie' => $formSousCategorie->createView(),
+            'nomFormulaire' => 'ajouter'
+        ]);
+    }
+
+
 }

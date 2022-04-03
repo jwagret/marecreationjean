@@ -1,14 +1,15 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
  {% block admin_section_main_2 %}
-     <div class="crud_lien"><a href="">Ajouter une sous-catégorie</a></div>
+     <div class="crud_lien"><a href="{{ path('app_admin_crud_sous_categories_ajouter_sousCategorie') }}">Ajouter une sous-catégorie</a></div>
      <div class="table-responsive w-75 mt-2">
          <table class="table">
-             <caption>Sous-Catégories</caption>
+             <caption>Les Sous-Catégories</caption>
              <thead>
              <tr>
                  <th scope="col">id</th>
                  <th scope="col">Nom</th>
+                 <th scope="col">Catégorie</th>
                  <th scope="col">Créé le</th>
                  <th scope="col">Modifier le</th>
                  <th scope="col">Actions</th>
@@ -22,13 +23,13 @@
              {% endif %}
              {% for sousCategorie in liste_sousCategories %}
                  <tr>
-                     <th scope="row"></th>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
+                     <th scope="row">{{ sousCategorie.id }}</th>
+                     <td>{{ sousCategorie.sousCategorieNom }}</td>
+                     <td>{{ sousCategorie.categorie.categorieNom }}</td>
+                     <td>{{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
+                     <td>{{ sousCategorie.dateModification | date("d/m/Y") }}</td>
                      <td>
-                         <a href="#">voir</a>
+                         <a href="{{ path('app_admin_crud_sous_categories_details_sous_categorie', {'id' : sousCategorie.id}) }}">voir</a>
                          <a href="#">modifier</a>
                          <a href="#">supprimer</a>
                      </td>

@@ -4,7 +4,7 @@
 
      <div class="table-responsive w-75 mt-5">
          <table class="table">
-             <caption>Catégorie : {{ categorie.categorieNom }} </caption>
+             <caption>Sous-catégorie : {{ sousCategorie.sousCategorieNom }} </caption>
              <thead>
              <tr>
                  <th scope="col">id</th>
@@ -15,10 +15,10 @@
              </thead>
              <tbody>
              <tr>
-                 <th scope="row">{{ categorie.id}}</th>
-                 <td>{{ categorie.categorieNom }}</td>
-                 <td> {{ categorie.dateCreation | date("d/m/Y") }}</td>
-                 <td> {{ categorie.dateModification | date("d/m/Y") }}</td>
+                 <th scope="row">{{ sousCategorie.id}}</th>
+                 <td>{{ sousCategorie.sousCategorieNom }}</td>
+                 <td> {{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
+                 <td> {{ sousCategorie.dateModification | date("d/m/Y") }}</td>
              </tr>
              </tbody>
          </table>
@@ -30,7 +30,7 @@
 
      <div class="table-responsive w-75 mt-5">
          <table class="table">
-             <caption>Les sous-catégorie </caption>
+             <caption>Les catégories rattachées </caption>
              <thead>
              <tr>
                  <th scope="col">id</th>
@@ -38,17 +38,15 @@
              </tr>
              </thead>
              <tbody>
-             {% if categorie.sousCategories.empty %}
+             {% if  sousCategorie.categorie.categorieNom == '' %}
                  <tr>
-                     <td colspan="2" class="fw-bold text-danger">AUCUNE SOUS-CATEGORIES</td>
+                     <td colspan="2" class="fw-bold text-danger">AUCUNE CATEGORIES RATTACHEES</td>
                  </tr>
              {% endif %}
-             {% for sousCategorie in categorie.sousCategories %}
                  <tr>
-                     <th scope="row">{{ sousCategorie.id }}</th>
-                     <td>{{ sousCategorie.SousCategorieNom }}</td>
+                     <th scope="row">{{ sousCategorie.categorie.id }}</th>
+                     <td>{{ sousCategorie.categorie.categorieNom }}</td>
                  </tr>
-             {% endfor %}
              </tbody>
          </table>
      </div>

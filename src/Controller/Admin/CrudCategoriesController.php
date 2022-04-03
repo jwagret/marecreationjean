@@ -56,15 +56,24 @@ class CrudCategoriesController extends AbstractController
         $formCategorie = $this->createForm(CategoriesType::class,$categorie);
         $formCategorie->handleRequest($request);
 
-        if ($formCategorie->isSubmitted() && $formCategorie->isValid()) {
-            $categorie->setCategorieNom($formCategorie->get('categorie_nom')->getData());
-            $categorie->setDateCreation($date);
+        $btnValider = $request->get('btn_valider');
+        $btnAnnuler = $request->get('btn_annuler');
 
-            $this->doctrine->persist($categorie);
-            $this->doctrine->flush();
-
-            $this->addFlash('success', 'La catégorie est bien enregistrée');
+        if ($btnAnnuler) {
             return $this->redirectToRoute('app_admin_dashboard');
+        }
+
+        if ($formCategorie->isSubmitted() && $formCategorie->isValid()) {
+            if ($btnValider) {
+                $categorie->setCategorieNom($formCategorie->get('categorie_nom')->getData());
+                $categorie->setDateCreation($date);
+
+                $this->doctrine->persist($categorie);
+                $this->doctrine->flush();
+
+                $this->addFlash('success', 'La catégorie est bien enregistrée');
+                return $this->redirectToRoute('app_admin_dashboard');
+            }
         }
 
         return $this->render('admin/crud_categories/ajoutCategorie.html.twig', [
@@ -82,14 +91,23 @@ class CrudCategoriesController extends AbstractController
         $formCategorie = $this->createForm(CategoriesType::class,$categorie);
         $formCategorie->handleRequest($request);
 
-        if ($formCategorie->isSubmitted() && $formCategorie->isValid()) {
-            $categorie->setCategorieNom($formCategorie->get('categorie_nom')->getData());
-            $categorie->setDateModification($date);
+        $btnValider = $request->get('btn_valider');
+        $btnAnnuler = $request->get('btn_annuler');
 
-            $this->doctrine->flush();
-
-            $this->addFlash('success', 'La catégorie est bien modifiée');
+        if ($btnAnnuler) {
             return $this->redirectToRoute('app_admin_dashboard');
+        }
+
+        if ($formCategorie->isSubmitted() && $formCategorie->isValid()) {
+            if ($btnValider) {
+                $categorie->setCategorieNom($formCategorie->get('categorie_nom')->getData());
+                $categorie->setDateModification($date);
+
+                $this->doctrine->flush();
+
+                $this->addFlash('success', 'La catégorie est bien modifiée');
+                return $this->redirectToRoute('app_admin_dashboard');
+            }
         }
 
         return $this->render('admin/crud_categories/ajoutCategorie.html.twig', [

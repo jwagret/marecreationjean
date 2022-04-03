@@ -278,4 +278,11 @@ class Produits
 
         return $this;
     }
+
+
+    //toString
+    public function __toString(): string
+    {
+       return $this->getProduitNom();
+    }
 }

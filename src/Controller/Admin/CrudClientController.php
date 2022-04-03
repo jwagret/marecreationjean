@@ -28,7 +28,6 @@ class CrudClientController extends AbstractController
     public function index(): Response
     {
         $clients = $this->doctrine->findAll();
-
         return $this->render('admin/crud_client/clients.html.twig', [
             'liste_clients' => $clients
         ]);
@@ -38,7 +37,6 @@ class CrudClientController extends AbstractController
     #[Route('/details/{id<\d+>}', name: 'details')]
     public function detailsClient(int $id): Response
     {
-
         $client = $this->doctrine->findOneBy(['id' => $id]);
         $mesAdresses = $this->adressesRepository->mesAdresses($client);
 

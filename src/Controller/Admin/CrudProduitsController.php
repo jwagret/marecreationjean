@@ -48,6 +48,9 @@ class CrudProduitsController extends AbstractController
         $formProduit = $this->createForm(ProduitType::class,$produit);
         $formProduit->handleRequest($request);
 
+        $btnValider = $request->get('btn_valider');
+        $btnAnnuler = $request->get('btn_annuler');
+
         //todo creer le formulaire et la sauvegarde
 
         return $this->render('admin/crud_produits/ajoutProduit.html.twig', [

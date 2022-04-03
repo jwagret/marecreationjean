@@ -6,6 +6,8 @@ use App\Entity\Produits;
 use App\Entity\Reductions;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -41,14 +43,13 @@ class ReductionType extends AbstractType
                     'class' => 'form-control mb-3',
                 ],
             ])
-            ->add('anneeReductions', TextType::class, [
+            ->add('anneeReductions', DateType::class, [
                 'required' => true,
+                'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'form-control mb-3',
+                    'class' => 'form-control mb-3 js-datepicker',
+                    'data-format' => 'dd-mm-yyyy',
                 ],
-            ])
-            ->add('produits', EntityType::class, [
-                'class' => Produits::class
             ])
         ;
     }
@@ -57,6 +58,9 @@ class ReductionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Reductions::class,
+            'attr' => [
+                'novalidate' => 'novalidate' //Désactiver la validation côté client (html5)
+            ]
         ]);
     }
 }
