@@ -8,7 +8,6 @@
 }
 
 #admin_main {
-  border: 2px solid red;
   margin-top: 1vh;
   width: 94%;
   height: 100vh;
@@ -56,7 +55,23 @@ ul li {
 }
 
 .infoHome {
+  width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#infoHome_art1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#infoHome_art2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 

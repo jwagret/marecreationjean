@@ -43,12 +43,13 @@ class ReductionType extends AbstractType
                     'class' => 'form-control mb-3',
                 ],
             ])
-            ->add('anneeReductions', DateType::class, [
+            ->add('anneeReductions', TextType::class, [
                 'required' => true,
-                'widget' => 'single_text',
+//                'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'form-control mb-3 js-datepicker',
-                    'data-format' => 'dd-mm-yyyy',
+                    'class' => 'form-control mb-3 js-datepicker'
+//                    'class' => 'form-control mb-3 js-datepicker',
+//                    'data-format' => 'dd-mm-yyyy',
                 ],
             ])
         ;

@@ -148,7 +148,7 @@ class AdressesController extends AbstractController
     }
 
     //Supprimer une adresse de la liste des adresses et du client correspondant
-    #[Route('/supprimer/{id<\d+>}', name: 'supprimer', methods: ['GET', 'POST','DELETE'])]
+    #[Route('/supprimer/{id<\d+>}', name: 'supprimer')]
     public function supprimerAdresse(int $id) :Response {
         $user =Outils::verifierUser($this->getUser(), $this->redirectToRoute('app_logout'));
 

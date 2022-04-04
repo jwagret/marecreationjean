@@ -11,7 +11,8 @@
                 {% for message in messages %}
                     <div class="msg_flash msg_flash-{{ label }}">
                         {{ message }}
-                        <a href="{{ path('app_admin_dashboard') }}"> Raffraichir la page</a>
+                        <br>
+                        {% block messageLien %}<a href="{{ path('app_admin_dashboard') }}"> Raffraichir la page</a> {% endblock %}
                     </div>
                 {% endfor %}
             {% endfor %}
@@ -44,22 +45,21 @@
 
         <section id="admin_section_main_2">
             {% block admin_section_main_2 %}
-                <div class=" infoHome mt-5">
-                    <div class="mt-5">
+                <section class=" infoHome mt-5">
+                    <article id="infoHome_art1" class="mt-5">
                         <p>Nombre de produits en vente :</p>
                         <p>Nombre de produits en stock :</p>
                         <p>Nombre de produits vendus :</p>
-                    </div>
+                    </article>
 
-                    <div class="mt-5">
+                    <article id="infoHome_art2" class="mt-5">
                         <p>Nombre de ventes du mois :</p>
                         <p>Nombre de clients :</p>
+                    </article>
 
-                    </div>
-                </div>
+                </section>
 
                 <hr>
-
 
             {% endblock %}
 

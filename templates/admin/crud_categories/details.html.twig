@@ -15,10 +15,14 @@
              </thead>
              <tbody>
              <tr>
-                 <th scope="row">{{ categorie.id}}</th>
-                 <td>{{ categorie.categorieNom }}</td>
-                 <td> {{ categorie.dateCreation | date("d/m/Y") }}</td>
-                 <td> {{ categorie.dateModification | date("d/m/Y") }}</td>
+                     <th scope="row">{{ categorie.id}}</th>
+                     <td>{{ categorie.categorieNom }}</td>
+                     <td> {{ categorie.dateCreation | date("d/m/Y") }}</td>
+                 {% if categorie.dateModification != null %}
+                    <td> {{ categorie.dateModification | date("d/m/Y") }}</td>
+                 {% else %}
+                     <td></td>
+                 {% endif %}
              </tr>
              </tbody>
          </table>

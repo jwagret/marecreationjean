@@ -15,10 +15,14 @@
              </thead>
              <tbody>
              <tr>
-                 <th scope="row">{{ sousCategorie.id}}</th>
-                 <td>{{ sousCategorie.sousCategorieNom }}</td>
-                 <td> {{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
-                 <td> {{ sousCategorie.dateModification | date("d/m/Y") }}</td>
+                     <th scope="row">{{ sousCategorie.id}}</th>
+                     <td>{{ sousCategorie.sousCategorieNom }}</td>
+                     <td> {{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
+                 {% if sousCategorie.dateModification != null %}
+                     <td> {{ sousCategorie.dateModification | date("d/m/Y") }}</td>
+                 {% else %}
+                     <td></td>
+                 {% endif %}
              </tr>
              </tbody>
          </table>

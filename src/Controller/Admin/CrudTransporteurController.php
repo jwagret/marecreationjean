@@ -26,7 +26,6 @@ class CrudTransporteurController extends AbstractController
     public function index(): Response
     {
         $transporteurs = $this->transporteursRepository->findAll();
-
         return $this->render('admin/crud_transporteur/index.html.twig', [
             'liste_transporteurs' => $transporteurs
         ]);

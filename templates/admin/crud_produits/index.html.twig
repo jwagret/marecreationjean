@@ -1,7 +1,9 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
+ {% block messageLien %}<a href="{{ path('app_admin_crud_produits_liste') }}"> Raffraichir la page</a> {% endblock %}
+
  {% block admin_section_main_2 %}
-     <div class="crud_lien"><a href="{{ path('app_admin_crud_produits_ajout_produit') }}">Ajouter un produit</a></div>
+     <div class="crud_lien"><a href="{{ path('app_admin_crud_produits_ajout_produit') }}"><i class="fa-solid fa-plus-square fa-3x"></i></a></div>
      <div class="table-responsive w-75 mt-2">
          <table class="table">
              <caption>Produits</caption>
@@ -27,19 +29,23 @@
              {% endif %}
              {% for produit in liste_produits %}
                  <tr>
-                     <th scope="row"></th>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
+                         <th scope="row"></th>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                     {% if produit.dateModification != null %}
+                        <td></td>
+                     {% else %}
+                         <td></td>
+                     {% endif %}
                      <td>
-                         <a href="#">voir</a>
-                         <a href="#">modifier</a>
-                         <a href="#">supprimer</a>
+                         <a href="#"><i class="fa-solid fa-eye"></i></a>
+                         <a href="#"><i class="fa-solid fa-arrow-rotate-back"></i></a>
+                         <a href="#"><i class="fa-solid fa-trash"></i></a>
                      </td>
                  </tr>
              {% endfor %}

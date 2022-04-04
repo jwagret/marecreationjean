@@ -12,17 +12,21 @@
        <th scope="col">Prénom</th>
        <th scope="col">Pseudo</th>
        <th scope="col">Créé le</th>
-       <th scope="col">Modifier le</th>
+       <th scope="col">Modifié le</th>
     </tr>
     </thead>
     <tbody>
      <tr>
-        <th scope="row">{{ adminClientCourant.id}}</th>
-        <td>{{ adminClientCourant.clientNom }}</td>
-        <td>{{ adminClientCourant.clientPrenom }}</td>
-        <td>{{ adminClientCourant.pseudo }}</td>
-        <td> {{ adminClientCourant.dateCreation | date("d/m/Y") }}</td>
-        <td> {{ adminClientCourant.dateModification | date("d/m/Y") }}</td>
+            <th scope="row">{{ adminClientCourant.id}}</th>
+            <td>{{ adminClientCourant.clientNom }}</td>
+            <td>{{ adminClientCourant.clientPrenom }}</td>
+            <td>{{ adminClientCourant.pseudo }}</td>
+            <td> {{ adminClientCourant.dateCreation | date("d/m/Y") }}</td>
+         {% if adminClientCourant.dateModification != null %}
+            <td> {{ adminClientCourant.dateModification | date("d/m/Y") }}</td>
+         {% else %}
+             <td></td>
+         {% endif %}
      </tr>
     </tbody>
    </table>
@@ -42,19 +46,25 @@
                  <th scope="col">Code postale</th>
                  <th scope="col">Ville</th>
                  <th scope="col">Pays</th>
+                 <th scope="col">Créé le </th>
+                 <th scope="col">Modifiée le</th>
              </tr>
              </thead>
              <tbody>
              {% for adresse in adminClientCourantAdresses %}
                  <tr>
-                     <th scope="row">{{ adresse.id }}</th>
-                     <td>{{ adresse.adresseNumero }}</td>
-                     <td>{{ adresse.adresseRue }}</td>
-                     <td>{{ adresse.adresseCodepostale }}</td>
-                     <td> {{ adresse.adresseVille }}</td>
-                     <td> {{ adresse.adressePays }}</td>
-                     <td> {{ adresse.dateCreation | date("d/m/Y") }}</td>
-                     <td> {{ adresse.dateModification | date("d/m/Y") }}</td>
+                         <th scope="row">{{ adresse.id }}</th>
+                         <td>{{ adresse.adresseNumero }}</td>
+                         <td>{{ adresse.adresseRue }}</td>
+                         <td>{{ adresse.adresseCodepostale }}</td>
+                         <td> {{ adresse.adresseVille }}</td>
+                         <td> {{ adresse.adressePays }}</td>
+                         <td> {{ adresse.dateCreation | date("d/m/Y") }}</td>
+                     {% if adresse.dateModification != null %}
+                        <td> {{ adresse.dateModification | date("d/m/Y") }}</td>
+                     {% else %}
+                         <td></td>
+                     {% endif %}
                  </tr>
              {% endfor %}
              </tbody>

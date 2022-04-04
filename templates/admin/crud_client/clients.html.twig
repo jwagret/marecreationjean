@@ -1,5 +1,7 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
+ {% block messageLien %}<a href="{{ path('app_admin_crud_client_liste') }}"> Raffraichir la page</a> {% endblock %}
+
 {% block admin_section_main_2 %}
     <div class="table-responsive w-75 mt-5">
         <table class="table">
@@ -21,8 +23,8 @@
                     <td>{{ client.clientPrenom }}</td>
                     <td>{{ client.pseudo }}</td>
                     <td>
-                        <a href="{{ path('app_admin_crud_client_details', {'id' : client.id}) }}">Voir</a>
-                        <a href="#">Supprimer</a>
+                        <a href="{{ path('app_admin_crud_client_details', {'id' : client.id}) }}"><i class="fa-solid fa-eye"></i></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             {% endfor %}

@@ -1,7 +1,9 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
+ {% block messageLien %}<a href="{{ path('app_admin_crud_sous_categories_liste') }}"> Raffraichir la page</a> {% endblock %}
+
  {% block admin_section_main_2 %}
-     <div class="crud_lien"><a href="{{ path('app_admin_crud_sous_categories_ajouter_sousCategorie') }}">Ajouter une sous-catégorie</a></div>
+     <div class="crud_lien"><a href="{{ path('app_admin_crud_sous_categories_ajouter_sousCategorie') }}"><i class="fa-solid fa-plus-square fa-3x"></i></a></div>
      <div class="table-responsive w-75 mt-2">
          <table class="table">
              <caption>Les Sous-Catégories</caption>
@@ -23,16 +25,20 @@
              {% endif %}
              {% for sousCategorie in liste_sousCategories %}
                  <tr>
-                     <th scope="row">{{ sousCategorie.id }}</th>
-                     <td>{{ sousCategorie.sousCategorieNom }}</td>
-                     <td>{{ sousCategorie.categorie.categorieNom }}</td>
-                     <td>{{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
-                     <td>{{ sousCategorie.dateModification | date("d/m/Y") }}</td>
-                     <td>
-                         <a href="{{ path('app_admin_crud_sous_categories_details_sous_categorie', {'id' : sousCategorie.id}) }}">voir</a>
-                         <a href="#">modifier</a>
-                         <a href="#">supprimer</a>
-                     </td>
+                         <th scope="row">{{ sousCategorie.id }}</th>
+                         <td>{{ sousCategorie.sousCategorieNom }}</td>
+                         <td>{{ sousCategorie.categorie.categorieNom }}</td>
+                         <td>{{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
+                     {% if sousCategorie.dateModification != null %}
+                         <td>{{ sousCategorie.dateModification | date("d/m/Y") }}</td>
+                     {% else %}
+                         <td></td>
+                     {% endif%}
+                         <td>
+                             <a href="{{ path('app_admin_crud_sous_categories_details_sous_categorie', {'id' : sousCategorie.id}) }}"><i class="fa-solid fa-eye"></i></a>
+                             <a href="#"><i class="fa-solid fa-arrow-rotate-back"></i></a>
+                             <a href="#"><i class="fa-solid fa-trash"></i></a>
+                         </td>
                  </tr>
              {% endfor %}
              </tbody>
