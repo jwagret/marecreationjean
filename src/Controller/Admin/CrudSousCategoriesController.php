@@ -25,6 +25,7 @@ class CrudSousCategoriesController extends AbstractController
     }
 
 
+    //Afficher toutes les sous-catégories
     #[Route('', name: 'liste')]
     public function index(): Response
     {
@@ -37,8 +38,9 @@ class CrudSousCategoriesController extends AbstractController
 
     //Détails d'une sous-catégorie
     #[Route('/details/{id<\d+>}', name: 'details_sous_categorie')]
-    public function detailsSousCategorie(Request $request, int $id): Response {
-        $sousCategorie = $this->sousCategoriesRepository->findOneBy(['id'=> $id]);
+    public function detailsSousCategorie(Request $request, int $id): Response
+    {
+        $sousCategorie = $this->sousCategoriesRepository->findOneBy(['id' => $id]);
         return $this->render('admin/crud_sous_categories/details.html.twig', [
             'sousCategorie' => $sousCategorie
         ]);
@@ -46,7 +48,8 @@ class CrudSousCategoriesController extends AbstractController
 
     //Ajouter une sous-catégorie
     #[Route('/ajouter', name: 'ajouter_sousCategorie')]
-    public function ajouterSousCategorie(Request $request): Response {
+    public function ajouterSousCategorie(Request $request): Response
+    {
         $date = Outils::creerDate('d/m/Y');
         $sousCategorie = new SousCategories();
 
@@ -57,6 +60,7 @@ class CrudSousCategoriesController extends AbstractController
         $btnAnnuler = $request->get('btn_annuler');
 
         if ($btnAnnuler) {
+            $this->addFlash('no-success', 'Action annulée');
             return $this->redirectToRoute('app_admin_dashboard');
         }
 
@@ -83,5 +87,5 @@ class CrudSousCategoriesController extends AbstractController
         ]);
     }
 
-
+    //Supprimer une sous-catégorie
 }

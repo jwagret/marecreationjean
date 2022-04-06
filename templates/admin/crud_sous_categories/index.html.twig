@@ -1,53 +1,64 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
- {% block messageLien %}<a href="{{ path('app_admin_crud_sous_categories_liste') }}"> Raffraichir la page</a> {% endblock %}
+{% block messageLien %}
+	<a href="{{ path('app_admin_crud_sous_categories_liste') }}">
+		Raffraichir la page</a>
+{% endblock %}
 
- {% block admin_section_main_2 %}
-     <div class="crud_lien"><a href="{{ path('app_admin_crud_sous_categories_ajouter_sousCategorie') }}"><i class="fa-solid fa-plus-square fa-3x"></i></a></div>
-     <div class="table-responsive w-75 mt-2">
-         <table class="table">
-             <caption>Les Sous-Catégories</caption>
-             <thead>
-             <tr>
-                 <th scope="col">id</th>
-                 <th scope="col">Nom</th>
-                 <th scope="col">Catégorie</th>
-                 <th scope="col">Créé le</th>
-                 <th scope="col">Modifier le</th>
-                 <th scope="col">Actions</th>
-             </tr>
-             </thead>
-             <tbody>
-             {% if liste_sousCategories == [] %}
-                 <tr>
-                     <td colspan="9" class="fw-bold text-danger">AUCUNE SOUS-CATEGORIES</td>
-                 </tr>
-             {% endif %}
-             {% for sousCategorie in liste_sousCategories %}
-                 <tr>
-                         <th scope="row">{{ sousCategorie.id }}</th>
-                         <td>{{ sousCategorie.sousCategorieNom }}</td>
-                         <td>{{ sousCategorie.categorie.categorieNom }}</td>
-                         <td>{{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
-                     {% if sousCategorie.dateModification != null %}
-                         <td>{{ sousCategorie.dateModification | date("d/m/Y") }}</td>
-                     {% else %}
-                         <td></td>
-                     {% endif%}
-                         <td>
-                             <a href="{{ path('app_admin_crud_sous_categories_details_sous_categorie', {'id' : sousCategorie.id}) }}"><i class="fa-solid fa-eye"></i></a>
-                             <a href="#"><i class="fa-solid fa-arrow-rotate-back"></i></a>
-                             <a href="#"><i class="fa-solid fa-trash"></i></a>
-                         </td>
-                 </tr>
-             {% endfor %}
-             </tbody>
-         </table>
-     </div>
+{% block admin_section_main_2 %}
+	<div class="crud_lien">
+		<a href="{{ path('app_admin_crud_sous_categories_ajouter_sousCategorie') }}">
+			<i class="fa-solid fa-plus-square fa-3x"></i>
+		</a>
+	</div>
+	<div class="table-responsive w-75 mt-2">
+		<table class="table">
+			<caption>Les Sous-Catégories</caption>
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Catégorie</th>
+					<th scope="col">Créé le</th>
+					<th scope="col">Modifier le</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if liste_sousCategories == [] %}
+					<tr>
+						<td colspan="9" class="fw-bold text-danger">AUCUNE SOUS-CATEGORIES</td>
+					</tr>
+				{% endif %}
+				{% for sousCategorie in liste_sousCategories %}
+					<tr>
+						<th scope="row">{{ sousCategorie.id }}</th>
+						<td>{{ sousCategorie.sousCategorieNom }}</td>
+						<td>{{ sousCategorie.categorie.categorieNom }}</td>
+						<td>{{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
+						{% if sousCategorie.dateModification != null %}
+							<td>{{ sousCategorie.dateModification | date("d/m/Y") }}</td>
+						{% else %}
+							<td></td>
+							{% endif%}
+							<td>
+								<a href="{{ path('app_admin_crud_sous_categories_details_sous_categorie', {'id' : sousCategorie.id}) }}">
+									<i class="fa-solid fa-eye"></i>
+								</a>
+								<a href="#">
+									<i class="fa-solid fa-arrow-rotate-back"></i>
+								</a>
+								<a href="#">
+									<i class="fa-solid fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</tbody>
+		</table>
+	</div>
 
- {% endblock %}
+{% endblock %}
 
- {% block admin_section_main_2_2 %}
-
- {% endblock %}
-
+{% block admin_section_main_2_2 %}{% endblock %}

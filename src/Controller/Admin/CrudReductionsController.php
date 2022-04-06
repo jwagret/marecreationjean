@@ -37,7 +37,8 @@ class CrudReductionsController extends AbstractController
 
     //détails d'une réduction
     #[Route('/details/{id<\d+>}', name: 'details')]
-    public function detailsReduction(int $id): Response {
+    public function detailsReduction(int $id): Response
+    {
         $reduction = $this->reductionsRepository->findOneBy(['id' => $id]);
         return $this->render('admin/crud_reductions/details.html.twig', [
             'reduction' => $reduction
@@ -46,7 +47,8 @@ class CrudReductionsController extends AbstractController
 
     //Ajouter une reduction
     #[Route('/ajouter', name: 'ajouter')]
-    public function ajouterReduction(Request $request): Response {
+    public function ajouterReduction(Request $request): Response
+    {
         $date = Outils::creerDate('d/m/Y');
         $reduction = new Reductions();
 
@@ -79,15 +81,15 @@ class CrudReductionsController extends AbstractController
         }
 
         return $this->render('admin/crud_reductions/ajoutReduction.html.twig', [
-                'formReduction' => $formReduction->createView(),
-                'nomFormulaire' => 'ajouter'
+            'formReduction' => $formReduction->createView(),
+            'nomFormulaire' => 'ajouter'
         ]);
-
     }
 
     //Modifier une reduction
     #[Route('/modifier/{id<\d+>}', name: 'modifier')]
-    public function modifierReduction(int $id, Request $request): Response {
+    public function modifierReduction(int $id, Request $request): Response
+    {
         $date = Outils::creerDate('d/m/Y');
         $reduction = $this->reductionsRepository->findOneBy(['id' => $id]);
 
@@ -126,7 +128,8 @@ class CrudReductionsController extends AbstractController
 
     //Supprimer une reduction
     #[Route('/supprimer/{id<\d+>}', name: 'supprimer')]
-    public function supprimer(int $id) :Response {
+    public function supprimer(int $id): Response
+    {
         $reduction = $this->reductionsRepository->findOneBy(['id' => $id]);
 
         if (!$reduction) {
@@ -134,6 +137,7 @@ class CrudReductionsController extends AbstractController
             return $this->redirectToRoute('app_admin_crud_reductions_liste');
         }
 
+        $this->doctrine->remove($reduction);
         $this->addFlash('success', 'La réduction est bien supprimée');
         return $this->redirectToRoute('app_admin_crud_reductions_liste');
     }

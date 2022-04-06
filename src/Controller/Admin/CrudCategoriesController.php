@@ -26,6 +26,7 @@ class CrudCategoriesController extends AbstractController
     }
 
 
+    //Afficher toutes les catégories
     #[Route('', name: 'liste')]
     public function index(): Response
     {
@@ -38,7 +39,8 @@ class CrudCategoriesController extends AbstractController
 
     //Détails de la catégorie
     #[Route('/details/{id<\d+>}', name: 'details')]
-    public function detailsCategorie(int $id): Response {
+    public function detailsCategorie(int $id): Response
+    {
         $categorie = $this->categoriesRepository->findOneBy(['id' => $id]);
         return $this->render('admin/crud_categories/details.html.twig', [
             'categorie' => $categorie
@@ -48,12 +50,13 @@ class CrudCategoriesController extends AbstractController
 
     //Ajouter une catégorie
     #[Route('/ajouter', name: 'ajouter_categories')]
-    public function ajouterCategorie(Request $request): Response {
+    public function ajouterCategorie(Request $request): Response
+    {
 
         $date = Outils::creerDate('d/m/Y');
         $categorie = new Categories();
 
-        $formCategorie = $this->createForm(CategoriesType::class,$categorie);
+        $formCategorie = $this->createForm(CategoriesType::class, $categorie);
         $formCategorie->handleRequest($request);
 
         $btnValider = $request->get('btn_valider');
@@ -84,11 +87,12 @@ class CrudCategoriesController extends AbstractController
 
     //Modifier une catégorie
     #[Route('/modifier/{id<\d+>}', name: 'modifier_categorie')]
-    public function modifierCategorie(Request $request, int $id) :Response {
+    public function modifierCategorie(Request $request, int $id): Response
+    {
         $date = Outils::creerDate('d/m/Y');
         $categorie = $this->categoriesRepository->findOneBy(['id' => $id]);
 
-        $formCategorie = $this->createForm(CategoriesType::class,$categorie);
+        $formCategorie = $this->createForm(CategoriesType::class, $categorie);
         $formCategorie->handleRequest($request);
 
         $btnValider = $request->get('btn_valider');

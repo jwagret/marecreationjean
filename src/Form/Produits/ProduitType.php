@@ -54,17 +54,17 @@ class ProduitType extends AbstractType
                 'attr' => [
                     'class' => 'form-select mb-3',
                 ],
-                'choice_label' => function($categorie) {
+                'choice_label' => function ($categorie) {
                     return $categorie->getCategorieNom();
                 }
             ])
             ->add('reductions', EntityType::class, [
                 'mapped' => false,
                 'class' => Reductions::class,
-                 'attr' => [
+                'attr' => [
                     'class' => 'form-select mb-3',
-                 ],
-                'choice_label' => function($reduction) {
+                ],
+                'choice_label' => function ($reduction) {
                     return $reduction->getReductionDesignation();
                 }
             ])
@@ -74,9 +74,10 @@ class ProduitType extends AbstractType
                 'attr' => [
                     'class' => 'form-select mb-3',
                 ],
-                'choices' => []
-            ])
-        ;
+                'choice_label' => function ($tissus) {
+                    return $tissus->getTissuNom();
+                }
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

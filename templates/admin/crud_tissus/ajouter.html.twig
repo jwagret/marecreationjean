@@ -1,0 +1,40 @@
+{% extends 'admin/admin/admin.html.twig' %}
+
+{% block admin_section_main_2 %}
+	{{ include('includes/retourDashboard.html.twig') }}
+	<div class="cadreForm mt-5">
+		<p>
+			<span>*</span>
+			champs obligatoire</p>
+		<h1 class="h3 mb-3 font-weight-normal">
+			{% if nomFormulaire == 'ajouter' %}
+				ajouter un tissus
+			{% else %}
+				modifier un tissus
+			{% endif %}
+		</h1>
+
+		{{ form_start(formTissus, {'attr': {'class': 'containerForm'}}) }}
+		<div class="form">
+			<div class="row">
+				<div class="col">
+					{{ form_row(formTissus.tissu_nom) }}
+					{{ form_row(formTissus.tissus_designation) }}
+					{{ form_row(formTissus.tissu_tarif)}}
+				</div>
+			</div>
+			<div
+				class="form_btn_align">
+				{#                 {% if desactiver == false %}#}
+				<button class="btn btn-lg btn-primary mt-3 btn_Form w-100 ms-3" type="submit" value="Valider" name="btn_valider">Valider</button>
+				<button class="btn btn-lg btn-primary mt-3 btn_Form w-100 ms-3" type="submit" value="Annuler" name="btn_annuler">Annuler</button>
+				{#                 {% endif %}#}
+			</div>
+		</div>
+		{{ form_end(formTissus) }}
+
+	</div>
+
+{% endblock %}
+
+{% block admin_section_main_2_2 %}{% endblock %}
