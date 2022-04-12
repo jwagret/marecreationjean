@@ -24,38 +24,66 @@ class CrudProduitsController extends AbstractController
         $this->produitsRepository = $produitsRepository;
     }
 
+    //Afficher tous les produits
     #[Route('', name: 'liste')]
     public function index(): Response
     {
         $produits = $this->produitsRepository->findAll();
-
         return $this->render('admin/crud_produits/index.html.twig', [
             'liste_produits' => $produits
         ]);
     }
 
+    //Détailler un produit
 
+
+    //Ajouter un produit
     #[Route('/ajout', name: 'ajout_produit')]
-    public function creerProduit(Request $request) : Response {
+    public function creerProduit(Request $request): Response
+    {
 
         $date = Outils::creerDate('d/m/y');
 
         //Créer un nouveau produit
         $produit = new Produits();
         $produit->setDateCreation($date);
+        $produit->setIsProduitVendu(false);
 
         //Créer le formulaire
-        $formProduit = $this->createForm(ProduitType::class,$produit);
+        $formProduit = $this->createForm(ProduitType::class, $produit);
         $formProduit->handleRequest($request);
 
         $btnValider = $request->get('btn_valider');
         $btnAnnuler = $request->get('btn_annuler');
 
-        //todo creer le formulaire et la sauvegarde
+        if ($btnAnnuler) {
+            $this->addFlash('no-success', 'Action annulée');
+            return $this->redirectToRoute('app_admin_dashboard');
+        }
+
+        if ($formProduit->isSubmitted() && $formProduit->isValid()) {
+            if ($btnValider) {
+                $produit->setProduitReference($formProduit->get('produit_reference')->getData());
+                $produit->setProduitNom($formProduit->get('produit_nom')->getData());
+                $produit->setProduitDesignation($formProduit->get('produit_designation')->getData());
+                $produit->setProduitPrix($formProduit->get('produit_prix')->getData());
+                $produit->addReduction($formProduit->get('reductions')->getData());
+                $produit->setCategorie($formProduit->get('categorie')->getData());
+                $produit->addTissus($formProduit->get('tissuses')->getData());
+
+                $this->doctrine->persist($produit);
+                $this->doctrine->flush();
+
+                $this->addFlash('success', 'Le produit est bien enregistré');
+                return $this->redirectToRoute('app_admin_crud_produits_liste');
+            }
+        }
 
         return $this->render('admin/crud_produits/ajoutProduit.html.twig', [
             'formProduit' => $formProduit->createView(),
             'nomFormulaire' => 'ajouter'
         ]);
     }
+
+    //Supprimer un produit
 }

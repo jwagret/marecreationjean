@@ -88,4 +88,19 @@ class CrudSousCategoriesController extends AbstractController
     }
 
     //Supprimer une sous-catégorie
+    #[Route('/supprimer/{id<\d+>}', name: 'supprimer')]
+    public function supprimer(int $id): Response
+    {
+        $sousCategorie = $this->sousCategoriesRepository->findOneBy(['id' => $id]);
+
+        if (!$sousCategorie) {
+            $this->addFlash('no-success', "la sous-catégorie n'existe pas !!");
+            return $this->redirectToRoute('app_admin_crud_sous_categories_liste');
+        }
+
+        $this->doctrine->remove($sousCategorie);
+        $this->doctrine->flush();
+        $this->addFlash('success', 'La sous-catégorie est bien supprimée');
+        return $this->redirectToRoute('app_admin_crud_sous_categories_liste');
+    }
 }

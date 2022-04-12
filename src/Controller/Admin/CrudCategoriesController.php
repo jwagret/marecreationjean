@@ -121,10 +121,19 @@ class CrudCategoriesController extends AbstractController
     }
 
     //todo faire la suppression d'une categorie
+    #[Route('/supprimer/{id<\d+>}', name: 'supprimer')]
+    public function supprimerCategorie(int $id): Response
+    {
+        $categorie = $this->categoriesRepository->findOneBy(['id' => $id]);
 
+        if (!$categorie) {
+            $this->addFlash('no-success', "la catégorie n'existe pas !!");
+            return $this->redirectToRoute('app_admin_crud_categories_liste');
+        }
 
-
-
-
-
+        $this->doctrine->remove($categorie);
+        $this->doctrine->flush();
+        $this->addFlash('success', 'La catégorie est bien supprimée');
+        return $this->redirectToRoute('app_admin_crud_categories_liste');
+    }
 }

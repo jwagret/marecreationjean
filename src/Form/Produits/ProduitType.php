@@ -43,11 +43,6 @@ class ProduitType extends AbstractType
                     'class' => 'form-control w-50 mb-3',
                 ],
             ])
-            ->add('is_produit_vendu', CheckboxType::class, [
-                'attr' => [
-                    'class' => 'form-check mb-3',
-                ],
-            ])
             ->add('categorie', EntityType::class, [
                 'mapped' => true,
                 'class' => Categories::class,
@@ -84,6 +79,9 @@ class ProduitType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Produits::class,
+            'attr' => [
+                'novalidate' => 'novalidate' //Désactiver la validation côté client (html5)
+            ]
         ]);
     }
 }

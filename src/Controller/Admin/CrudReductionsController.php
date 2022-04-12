@@ -138,6 +138,7 @@ class CrudReductionsController extends AbstractController
         }
 
         $this->doctrine->remove($reduction);
+        $this->doctrine->flush();
         $this->addFlash('success', 'La réduction est bien supprimée');
         return $this->redirectToRoute('app_admin_crud_reductions_liste');
     }

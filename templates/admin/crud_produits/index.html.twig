@@ -1,61 +1,74 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
- {% block messageLien %}<a href="{{ path('app_admin_crud_produits_liste') }}"> Raffraichir la page</a> {% endblock %}
+{% block messageLien %}
+	<a href="{{ path('app_admin_crud_produits_liste') }}">
+		Raffraichir la page</a>
+{% endblock %}
 
- {% block admin_section_main_2 %}
-     <div class="crud_lien"><a href="{{ path('app_admin_crud_produits_ajout_produit') }}"><i class="fa-solid fa-plus-square fa-3x"></i></a></div>
-     <div class="table-responsive w-75 mt-2">
-         <table class="table">
-             <caption>Produits</caption>
-             <thead>
-             <tr>
-                 <th scope="col">id</th>
-                 <th scope="col">Image</th>
-                 <th scope="col">Référence</th>
-                 <th scope="col">Désignation</th>
-                 <th scope="col">Prix</th>
-                 <th scope="col">Stock</th>
-                 <th scope="col">Carrousel</th>
-                 <th scope="col">Créé le</th>
-                 <th scope="col">Modifier le</th>
-                 <th scope="col">Actions</th>
-             </tr>
-             </thead>
-             <tbody>
-             {% if liste_produits == [] %}
-                 <tr>
-                     <td colspan="9" class="fw-bold text-danger">AUCUN PRODUITS</td>
-                 </tr>
-             {% endif %}
-             {% for produit in liste_produits %}
-                 <tr>
-                         <th scope="row"></th>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                     {% if produit.dateModification != null %}
-                        <td></td>
-                     {% else %}
-                         <td></td>
-                     {% endif %}
-                     <td>
-                         <a href="#"><i class="fa-solid fa-eye"></i></a>
-                         <a href="#"><i class="fa-solid fa-arrow-rotate-back"></i></a>
-                         <a href="#"><i class="fa-solid fa-trash"></i></a>
-                     </td>
-                 </tr>
-             {% endfor %}
-             </tbody>
-         </table>
-     </div>
+{% block admin_section_main_2 %}
+	<div class="crud_lien">
+		<a href="{{ path('app_admin_crud_produits_ajout_produit') }}">
+			<i class="fa-solid fa-plus-square fa-3x"></i>
+		</a>
+	</div>
+	<div class="table-responsive w-75 mt-2">
+		<table class="table">
+			<caption>Produits</caption>
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Image</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Référence</th>
+					<th scope="col">Désignation</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Carrousel</th>
+					<th scope="col">Créé le</th>
+					<th scope="col">Modifier le</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if liste_produits == [] %}
+					<tr>
+						<td colspan="9" class="fw-bold text-danger">AUCUN PRODUITS</td>
+					</tr>
+				{% endif %}
+				{% for produit in liste_produits %}
+					<tr>
+						<th scope="row">
+							{{produit.id}}</th>
+						<td>mettre image</td>
+						<td>{{produit.ProduitNom}}</td>
+						<td>{{produit.ProduitReference}}</td>
+						<td>{{produit.ProduitDesignation}}</td>
+						<td>{{produit.ProduitPrix}}</td>
+						<td></td>
+						<td></td>
+						<td>{{produit.dateCreation | date("d/m/Y") }}</td>
+						{% if produit.dateModification != null %}
+							<td>{{produit.dateModification | date("d/m/Y") }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+						<td>
+							<a href="#">
+								<i class="fa-solid fa-eye"></i>
+							</a>
+							<a href="#">
+								<i class="fa-solid fa-arrow-rotate-back"></i>
+							</a>
+							<a href="#">
+								<i class="fa-solid fa-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 
- {% endblock %}
+{% endblock %}
 
- {% block admin_section_main_2_2 %}
-
- {% endblock %}
-
+{% block admin_section_main_2_2 %}{% endblock %}

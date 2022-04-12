@@ -1,39 +1,43 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
- {% block admin_section_main_2 %}
-     {{ include('includes/retourDashboard.html.twig') }}
-     <div class="cadreForm mt-5">
-         <p><span>*</span> champs obligatoire</p>
-         <h1 class="h3 mb-3 font-weight-normal">{% if nomFormulaire == 'ajouter' %}ajouter un produit {% else %} modifier une adresse {% endif %}</h1>
+{% block admin_section_main_2 %}
+	{{ include('includes/retourDashboard.html.twig') }}
+	<div class="cadreForm mt-5">
+		<p>
+			<span>*</span>
+			champs obligatoire</p>
+		<h1 class="h3 mb-3 font-weight-normal">
+			{% if nomFormulaire == 'ajouter' %}ajouter un produit
+			{% else %}
+				modifier une adresse
+			{% endif %}
+		</h1>
 
-         {{ form_start(formProduit, {'attr': {'class': 'containerForm'}}) }}
-         <div class="form">
-             <div class="row">
-                 <div class="col">
-                     {{ form_row(formProduit.produit_reference) }}
-                     {{ form_row(formProduit.produit_nom) }}
-                     {{ form_row(formProduit.produit_designation) }}
-                     {{ form_row(formProduit.produit_prix)  }}
-                     {{ form_row(formProduit.reductions) }}
-                     {{ form_row(formProduit.categorie) }}
-                     {{ form_row(formProduit.tissuses) }}
-                     {{ form_row(formProduit.is_produit_vendu) }}
-                 </div>
-             </div>
-             <div class="form_btn_align">
-{#                 {% if desactiver == false %}#}
-                     <button class="btn btn-lg btn-primary mt-3 btn_Form w-100 ms-3" type="submit" value="Valider" name="btn_valider">Valider</button>
-                     <button class="btn btn-lg btn-primary mt-3 btn_Form w-100 ms-3" type="submit" value="Annuler" name="btn_annuler">Annuler</button>
-{#                 {% endif %}#}
-             </div>
-         </div>
-         {{ form_end(formProduit) }}
+		{{ form_start(formProduit, {'attr': {'class': 'containerForm'}}) }}
+		<div class="form">
+			<div class="row">
+				<div class="col">
+					{{ form_row(formProduit.produit_reference) }}
+					{{ form_row(formProduit.produit_nom) }}
+					{{ form_row(formProduit.produit_designation) }}
+					{{ form_row(formProduit.produit_prix)  }}
+					{{ form_row(formProduit.reductions) }}
+					{{ form_row(formProduit.categorie) }}
+					{{ form_row(formProduit.tissuses) }}
+				</div>
+			</div>
+			<div
+				class="form_btn_align">
+				{#                 {% if desactiver == false %}#}
+				<button class="btn btn-lg btn-primary mt-3 btn_Form w-100 ms-3" type="submit" value="Valider" name="btn_valider">Valider</button>
+				<button class="btn btn-lg btn-primary mt-3 btn_Form w-100 ms-3" type="submit" value="Annuler" name="btn_annuler">Annuler</button>
+				{#                 {% endif %}#}
+			</div>
+		</div>
+		{{ form_end(formProduit) }}
 
-     </div>
+	</div>
 
- {% endblock %}
+{% endblock %}
 
- {% block admin_section_main_2_2 %}
-
- {% endblock %}
-
+{% block admin_section_main_2_2 %}{% endblock %}

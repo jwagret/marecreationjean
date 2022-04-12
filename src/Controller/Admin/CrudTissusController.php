@@ -135,7 +135,8 @@ class CrudTissusController extends AbstractController
         }
 
         $this->doctrine->remove($tissus);
-        $this->addFlash('success', 'La réduction est bien supprimée');
+        $this->doctrine->flush();
+        $this->addFlash('success', 'Le tissus est bien supprimée');
         return $this->redirectToRoute('app_admin_crud_tissus_liste');
     }
 }
