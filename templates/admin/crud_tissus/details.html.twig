@@ -44,7 +44,9 @@
 			<thead>
 				<tr>
 					<th scope="col">id</th>
+					<th scope="col">Référence</th>
 					<th scope="col">Nom</th>
+					<th scope="col">Prix</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -56,7 +58,14 @@
 				{% for produit in tissus.produits%}
 					<tr>
 						<th scope="row">{{produit.id}}</th>
+						<td>
+							<a href="#">{{ produit.ProduitReference}}</a>
+						</td>
 						<td>{{ produit.ProduitNom}}</td>
+						<td>
+							{{ produit.ProduitPrix | number_format(2, ',', '.')}}
+							€
+						</td>
 					</tr>
 				{% endfor %}
 			</tbody>

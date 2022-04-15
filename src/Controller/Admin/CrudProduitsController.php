@@ -35,7 +35,14 @@ class CrudProduitsController extends AbstractController
     }
 
     //Détailler un produit
-
+    #[Route('/details/{id<\d+>}', name: 'details')]
+    public function detailProduit(int $id): Response
+    {
+        $produit = $this->produitsRepository->findOneBy(['id' => $id]);
+        return $this->render('admin/crud_produits/details.html.twig', [
+            'produit' => $produit
+        ]);
+    }
 
     //Ajouter un produit
     #[Route('/ajout', name: 'ajout_produit')]
@@ -85,5 +92,69 @@ class CrudProduitsController extends AbstractController
         ]);
     }
 
+    //Modifier un produit
+    #[Route('/modifier/{id<\d+>}', name: 'modifier_produit')]
+    public function modifierProduit(Request $request, int $id): Response
+    {
+        $date = Outils::creerDate('d/m/y');
+        $produit = $this->produitsRepository->findOneBy(['id' => $id]);
+
+        if (!$produit) {
+            $this->addFlash('no-success', "le produit n'existe pas !!");
+            return $this->redirectToRoute('app_admin_crud_reductions_liste');
+        }
+
+        $produit->setDateModification($date);
+
+        //Créer le formulaire
+        $formProduit = $this->createForm(ProduitType::class, $produit);
+        $formProduit->handleRequest($request);
+
+        $btnValider = $request->get('btn_valider');
+        $btnAnnuler = $request->get('btn_annuler');
+
+        if ($btnAnnuler) {
+            $this->addFlash('no-success', 'Action annulée');
+            return $this->redirectToRoute('app_admin_dashboard');
+        }
+
+        if ($formProduit->isSubmitted() && $formProduit->isValid()) {
+            if ($btnValider) {
+                $produit->setProduitReference($formProduit->get('produit_reference')->getData());
+                $produit->setProduitNom($formProduit->get('produit_nom')->getData());
+                $produit->setProduitDesignation($formProduit->get('produit_designation')->getData());
+                $produit->setProduitPrix($formProduit->get('produit_prix')->getData());
+                $produit->addReduction($formProduit->get('reductions')->getData());
+                $produit->setCategorie($formProduit->get('categorie')->getData());
+                $produit->addTissus($formProduit->get('tissuses')->getData());
+
+                $this->doctrine->flush();
+                $this->addFlash('success', 'Le produit est bien enregistré');
+
+                return $this->redirectToRoute('app_admin_crud_produits_liste');
+            }
+        }
+
+        return $this->render('admin/crud_produits/ajoutProduit.html.twig', [
+            'formProduit' => $formProduit->createView(),
+            'nomFormulaire' => 'modifier'
+        ]);
+    }
+
     //Supprimer un produit
+    #[Route('/supprimer/{id<\d+>}', name: 'supprimer_produit')]
+    public function supprimer(int $id): Response
+    {
+        $produit = $this->produitsRepository->findOneBy(['id' => $id]);
+
+        if (!$produit) {
+            $this->addFlash('no-success', "le produit n'existe pas !!");
+            return $this->redirectToRoute('app_admin_crud_reductions_liste');
+        }
+
+        $this->doctrine->remove($produit);
+        $this->doctrine->flush();
+        $this->addFlash('success', 'Le produit est bien supprimée');
+        return $this->redirectToRoute('app_admin_crud_produits_liste');
+    }
 }

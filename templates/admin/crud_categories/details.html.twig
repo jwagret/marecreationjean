@@ -68,6 +68,7 @@
 			<thead>
 				<tr>
 					<th scope="col">id</th>
+					<th scope="col">Référence</th>
 					<th scope="col">Nom</th>
 				</tr>
 			</thead>
@@ -80,6 +81,7 @@
 				{% for produit in categorie.produits %}
 					<tr>
 						<th scope="row">{{ produit.id }}</th>
+						<td>{{ produit.ProduitReference }}</td>
 						<td>{{ produit.ProduitNom }}</td>
 					</tr>
 				{% endfor %}
