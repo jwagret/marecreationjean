@@ -51,9 +51,7 @@ class ProduitType extends AbstractType
                 'attr' => [
                     'class' => 'form-select mb-3',
                 ],
-                'choice_label' => function ($categorie) {
-                    return $categorie->getCategorieNom();
-                }
+                'choice_label' => 'categorie_nom'
             ])
             ->add('reductions', EntityType::class, [
                 'mapped' => false,
@@ -61,9 +59,7 @@ class ProduitType extends AbstractType
                 'attr' => [
                     'class' => 'form-select mb-3',
                 ],
-                'choice_label' => function ($reduction) {
-                    return $reduction->getReductionDesignation();
-                }
+                'choice_label' => 'reduction_designation'
             ])
             ->add('tissuses', EntityType::class, [
                 'mapped' => false,
@@ -71,10 +67,15 @@ class ProduitType extends AbstractType
                 'attr' => [
                     'class' => 'form-select mb-3',
                 ],
-                'choice_label' => function ($tissus) {
-                    return $tissus->getTissuNom();
-                }
-            ]);
+                'choice_label' => 'tissu_nom'
+            ])
+//            ->add('images', EntityType::class, [
+//                'mapped' => false,
+//                'class' => Images::class,
+//                'choice_label' => 'image_nom'
+//            ])
+
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

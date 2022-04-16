@@ -25,9 +25,7 @@ class SousCategorieType extends AbstractType
                 'label' => "Choisir la catégorie correspondante ",
                 'mapped'=> true,
                 'class' => Categories::class,
-                'choice_label' => function($categorie) {
-                    return $categorie->getCategorieNom();
-                },
+                'choice_label' => 'categorie_nom',
                 'attr' => [
                     'class' => 'form-select mb-3'
                 ]

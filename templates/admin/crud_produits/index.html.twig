@@ -37,9 +37,16 @@
 				{% endif %}
 				{% for produit in liste_produits %}
 					<tr>
-						<th scope="row">
-							{{produit.id}}</th>
-						<td>mettre image</td>
+						<th scope="row">{{produit.id}}</th>
+						{% for image in produit.images%}
+							{% if loop.first %} {# si l'index est le 1er #}
+								<td style="width: 10%">
+									<div style="display: contents">
+										<img width="100%" src="{{ asset('/images/produits/'~image.imageChemin ) }}" alt="{{ image.imageNom }}">
+									</div>
+								</td>
+							{% endif %}
+						{% endfor %}
 						<td>{{produit.ProduitNom}}</td>
 						<td>{{produit.ProduitReference}}</td>
 						<td>{{produit.ProduitDesignation}}</td>
@@ -71,4 +78,7 @@
 
 {% endblock %}
 
-{% block admin_section_main_2_2 %}{% endblock %}
+{% block admin_section_main_2_2 %}
+
+
+{% endblock %}
