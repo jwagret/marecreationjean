@@ -67,9 +67,10 @@
 			</caption>
 			<thead>
 				<tr>
-					<th scope="col">id</th>
+					<th scope="col">Image</th>
 					<th scope="col">Référence</th>
 					<th scope="col">Nom</th>
+					<th scope="col">Vendu</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -80,9 +81,24 @@
 				{% endif %}
 				{% for produit in categorie.produits %}
 					<tr>
-						<th scope="row">{{ produit.id }}</th>
-						<td>{{ produit.ProduitReference }}</td>
+						{% for image in produit.images %}
+							{% if loop.first %} {# si l'index est le 1er #}
+								<th scope="row" style="width: 10%">
+									<div style="display: contents">
+										<img width="100%" src="{{ asset('/images/produits/'~image.imageChemin ) }}" alt="{{ image.imageNom }}">
+									</div>
+								</th>
+							{% endif %}
+						{% endfor %}
+						<td class="w-25"><a href="{{ path('app_admin_crud_produits_details', {'id': produit.id}) }}">{{ produit.ProduitReference }}</a></td>
 						<td>{{ produit.ProduitNom }}</td>
+						<td>
+							{% if produit.IsProduitVendu != true %}
+								<p style="color: red">Non</p>
+							{% else %}
+								<p style="color: green">Oui</p>
+							{% endif %}
+						</td>
 					</tr>
 				{% endfor %}
 			</tbody>

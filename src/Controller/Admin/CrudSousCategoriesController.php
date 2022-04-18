@@ -30,9 +30,11 @@ class CrudSousCategoriesController extends AbstractController
     public function index(): Response
     {
         $sousCategories = $this->sousCategoriesRepository->findAll();
+        $total = count($sousCategories);
 
         return $this->render('admin/crud_sous_categories/index.html.twig', [
-            'liste_sousCategories' => $sousCategories
+            'liste_sousCategories' => $sousCategories,
+            'total_sousCategories' => $total
         ]);
     }
 

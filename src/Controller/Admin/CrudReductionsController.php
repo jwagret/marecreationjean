@@ -29,9 +29,11 @@ class CrudReductionsController extends AbstractController
     public function index(): Response
     {
         $reductions = $this->reductionsRepository->findAll();
+        $total = count($reductions);
 
         return $this->render('admin/crud_reductions/index.html.twig', [
-            'liste_reductions' => $reductions
+            'liste_reductions' => $reductions,
+            'total_reductions' => $total
         ]);
     }
 

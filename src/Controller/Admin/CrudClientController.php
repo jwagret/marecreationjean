@@ -28,8 +28,11 @@ class CrudClientController extends AbstractController
     public function index(): Response
     {
         $clients = $this->doctrine->findAll();
+        $total = count($clients);
+
         return $this->render('admin/crud_client/clients.html.twig', [
-            'liste_clients' => $clients
+            'liste_clients' => $clients,
+            'total_clients' => $total
         ]);
     }
 

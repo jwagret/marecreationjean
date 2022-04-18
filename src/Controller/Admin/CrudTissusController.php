@@ -28,8 +28,11 @@ class CrudTissusController extends AbstractController
     public function index(): Response
     {
         $tissus = $this->tissusRepository->findAll();
+        $total = count($tissus);
+
         return $this->render('admin/crud_tissus/index.html.twig', [
-            'liste_tissus' => $tissus
+            'liste_tissus' => $tissus,
+            'total_tissus' => $total
         ]);
     }
 

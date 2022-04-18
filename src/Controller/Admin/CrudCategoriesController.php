@@ -31,9 +31,11 @@ class CrudCategoriesController extends AbstractController
     public function index(): Response
     {
         $categories = $this->categoriesRepository->findAll();
+        $total = count($categories);
 
         return $this->render('admin/crud_categories/index.html.twig', [
-            'liste_categories' => $categories
+            'liste_categories' => $categories,
+            'total_categories' => $total
         ]);
     }
 

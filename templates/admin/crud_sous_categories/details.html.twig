@@ -49,7 +49,7 @@
              {% endif %}
                  <tr>
                      <th scope="row">{{ sousCategorie.categorie.id }}</th>
-                     <td>{{ sousCategorie.categorie.categorieNom }}</td>
+                     <td><a href="{{ path('app_admin_crud_categories_details', {'id': sousCategorie.categorie.id}) }}">{{ sousCategorie.categorie.categorieNom }}</a></td>
                  </tr>
              </tbody>
          </table>

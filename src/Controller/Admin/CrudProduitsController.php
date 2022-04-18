@@ -29,9 +29,11 @@ class CrudProduitsController extends AbstractController
     public function index(): Response
     {
         $produits = $this->produitsRepository->findAll();
+        $total = count($produits);
 
         return $this->render('admin/crud_produits/index.html.twig', [
-            'liste_produits' => $produits
+            'liste_produits' => $produits,
+            'total_produits' => $total
         ]);
     }
 

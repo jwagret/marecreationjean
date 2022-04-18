@@ -13,10 +13,9 @@
 	</div>
 	<div class="table-responsive w-75 mt-2">
 		<table class="table">
-			<caption>Les Sous-Catégories</caption>
+			<caption>Nombre de Sous-Catégories : {{ total_sousCategories }}</caption>
 			<thead>
 				<tr>
-					<th scope="col">id</th>
 					<th scope="col">Nom</th>
 					<th scope="col">Catégorie</th>
 					<th scope="col">Créé le</th>
@@ -32,7 +31,6 @@
 				{% endif %}
 				{% for sousCategorie in liste_sousCategories %}
 					<tr>
-						<th scope="row">{{ sousCategorie.id }}</th>
 						<td>{{ sousCategorie.sousCategorieNom }}</td>
 						<td>{{ sousCategorie.categorie.categorieNom }}</td>
 						<td>{{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
@@ -40,7 +38,7 @@
 							<td>{{ sousCategorie.dateModification | date("d/m/Y") }}</td>
 						{% else %}
 							<td></td>
-							{% endif%}
+						{% endif%}
 							<td>
 								<a href="{{ path('app_admin_crud_sous_categories_details_sous_categorie', {'id' : sousCategorie.id}) }}">
 									<i class="fa-solid fa-eye"></i>
@@ -52,9 +50,8 @@
 									<i class="fa-solid fa-trash"></i>
 								</a>
 							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
+					</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 	</div>

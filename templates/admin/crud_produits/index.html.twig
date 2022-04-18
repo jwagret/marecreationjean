@@ -13,10 +13,9 @@
 	</div>
 	<div class="table-responsive w-75 mt-2">
 		<table class="table">
-			<caption>Produits</caption>
+			<caption>Nombre de Produits : {{ total_produits }}</caption>
 			<thead>
 				<tr>
-					<th scope="col">id</th>
 					<th scope="col">Image</th>
 					<th scope="col">Nom</th>
 					<th scope="col">Référence</th>
@@ -37,7 +36,6 @@
 				{% endif %}
 				{% for produit in liste_produits %}
 					<tr>
-						<th scope="row">{{produit.id}}</th>
 						{% for image in produit.images%}
 							{% if loop.first %} {# si l'index est le 1er #}
 								<td style="width: 10%">
