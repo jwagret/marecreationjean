@@ -45,6 +45,13 @@ class CategoriesRepository extends ServiceEntityRepository
         }
     }
 
+    //Retourne le nombre total de categories dans la bdd
+    public function totalCategories(): int {
+        $query = $this->createQueryBuilder('categories')
+                      ->select('count(categories)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Categories[] Returns an array of Categories objects
     //  */

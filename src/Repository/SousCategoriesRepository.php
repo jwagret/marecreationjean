@@ -45,6 +45,13 @@ class SousCategoriesRepository extends ServiceEntityRepository
         }
     }
 
+    //Retourne le nombre total de sous-categories dans la bdd
+    public function totalSousCategories(): int {
+        $query = $this->createQueryBuilder('sous_categories')
+                      ->select('count(sous_categories)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return SousCategories[] Returns an array of SousCategories objects
     //  */

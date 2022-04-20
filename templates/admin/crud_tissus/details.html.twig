@@ -59,7 +59,7 @@
 					<tr>
 						<th scope="row">{{produit.id}}</th>
 						<td>
-							<a href="#">{{ produit.ProduitReference}}</a>
+							<a href="{{ path('app_admin_crud_produits_details', {'id': produit.id}) }}">{{ produit.ProduitReference}}</a>
 						</td>
 						<td>{{ produit.ProduitNom}}</td>
 						<td>

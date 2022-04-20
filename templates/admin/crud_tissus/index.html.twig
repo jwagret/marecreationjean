@@ -1,8 +1,7 @@
 {% extends 'admin/admin/admin.html.twig' %}
 
 {% block messageLien %}
-	<a href="{{ path('app_admin_crud_tissus_liste') }}">
-		Raffraichir la page</a>
+	<a href="{{ path('app_admin_crud_tissus_liste') }}">Rafraichir la page</a>
 {% endblock %}
 
 {% block admin_section_main_2 %}
@@ -16,7 +15,6 @@
 			<caption>Nombre de Tissus : {{ total_tissus }}</caption>
 			<thead>
 				<tr>
-					<th scope="col">id</th>
 					<th scope="col">Nom</th>
 					<th scope="col">Désignation</th>
 					<th scope="col">Tarif</th>
@@ -33,7 +31,6 @@
 				{% endif %}
 				{% for tissus in liste_tissus %}
 					<tr>
-						<th scope="row">{{tissus.id}}</th>
 						<td>{{tissus.TissuNom}}</td>
 						<td>{{ tissus.TissusDesignation}}</td>
 						<td>{{tissus.TissuTarif | number_format(2, ',', '.')}}€</td>
@@ -56,7 +53,6 @@
 							</td>
 						</tr>
 					{% endfor %}
-				</tbody>
 			</tbody>
 		</table>
 	</div>

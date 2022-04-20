@@ -2,8 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\CategoriesRepository;
 use App\Repository\ClientsRepository;
 use App\Repository\ProduitsRepository;
+use App\Repository\SousCategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,11 +15,19 @@ class AdminController extends AbstractController
 {
     private ProduitsRepository $produitsRepository;
     private ClientsRepository $clientsRepository;
+    private CategoriesRepository $categoriesRepository;
+    private SousCategoriesRepository $sousCategoriesRepository;
 
-    public function __construct(ProduitsRepository $produitsRepository, ClientsRepository $clientsRepository)
+    public function __construct(ProduitsRepository $produitsRepository,
+                                ClientsRepository $clientsRepository,
+                                CategoriesRepository $categoriesRepository,
+                                SousCategoriesRepository $sousCategoriesRepository )
     {
         $this->produitsRepository = $produitsRepository;
         $this->clientsRepository = $clientsRepository;
+        $this->categoriesRepository = $categoriesRepository;
+        $this->sousCategoriesRepository = $sousCategoriesRepository;
+
     }
 
 
@@ -26,10 +36,14 @@ class AdminController extends AbstractController
     {
         $totalProduits = $this->produitsRepository->totalProduits();
         $totalClients = $this->clientsRepository->totalClients();
+        $totalCategories = $this->categoriesRepository->totalCategories();
+        $totalSousCategories = $this->sousCategoriesRepository->totalSousCategories();
 
         return $this->render('admin/admin/admin.html.twig', [
             'total_produits' => $totalProduits,
             'total_clients' => $totalClients,
+            'total_categories' => $totalCategories,
+            'total_sousCategories' => $totalSousCategories
         ]);
     }
 

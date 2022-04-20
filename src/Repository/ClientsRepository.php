@@ -57,7 +57,7 @@ class ClientsRepository extends ServiceEntityRepository
         return $query->getQuery()->getSingleResult();
     }
 
-    //Retourne le nombre total de produits dans la bdd
+    //Retourne le nombre total de clients dans la bdd
     public function totalClients(): int {
         $query = $this->createQueryBuilder('clients')
                       ->select('count(clients)');

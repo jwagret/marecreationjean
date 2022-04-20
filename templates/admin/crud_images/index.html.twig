@@ -1,0 +1,70 @@
+{% extends 'admin/admin/admin.html.twig' %}
+
+{% block messageLien %}
+	<a href="{{ path('app_admin_crud_images_liste') }}">
+		Raffraichir la page</a>
+{% endblock %}
+
+{% block admin_section_main_2 %}
+	<div class="crud_lien">
+		<a href="{{ path('app_admin_crud_images_ajout_images') }}">
+			<i class="fa-solid fa-plus-square fa-3x"></i>
+		</a>
+	</div>
+	<div class="table-responsive w-75 mt-2">
+		<table class="table">
+			<caption>Nombre d'images : {{ total_images }}</caption>
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Image</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Chemin</th>
+					<th scope="col">Créé le</th>
+					<th scope="col">Modifier le</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if liste_images == [] %}
+					<tr>
+						<td colspan="9" class="fw-bold text-danger">AUCUNE IMAGES</td>
+					</tr>
+				{% endif %}
+				{% for image in liste_images %}
+					<tr>
+						<th scope="row">
+							{{image.id}}</th>
+						<td class="w-25">
+							<div class="form-control mb-3 admin_photo">
+								<img  class="afficherImage" src="{{ asset('/images/produits/'~image.imageChemin ) }}" alt="{{ image.imageNom }}">
+							</div>
+						</td>
+						<td>{{image.ImageNom}}</td>
+						<td>{{image.ImageChemin}}</td>
+						<td>{{image.dateCreation | date("d/m/Y") }}</td>
+						{% if image.dateModification != null %}
+							<td>{{image.dateModification | date("d/m/Y") }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+						<td>
+							<a href="{{path('app_admin_crud_images_details', {'id' : image.id})}}">
+								<i class="fa-solid fa-eye"></i>
+							</a>
+							<a href="{{ path('app_admin_crud_images_modifier_images', {'id': image.id}) }}">
+								<i class="fa-solid fa-arrow-rotate-back"></i>
+							</a>
+							<a href="{{ path('app_admin_crud_images_supprimer_images', {'id': image.id}) }}">
+								<i class="fa-solid fa-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+
+{% block admin_section_main_2_2 %}{% endblock %}

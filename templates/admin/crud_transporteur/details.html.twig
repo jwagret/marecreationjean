@@ -1,0 +1,39 @@
+{% extends 'admin/admin/admin.html.twig' %}
+
+{% block admin_section_main_2 %}
+
+    <div class="table-responsive w-75 mt-5">
+        <table class="table">
+            <caption>Transporteur : {{ transporteur.transporteurNom }}</caption>
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Créé le</th>
+                <th scope="col">Modifier le</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{ transporteur.id }}</th>
+                <td>{{ transporteur.transporteurNom }}</td>
+                <td>{{ transporteur.transporteurPrix | number_format(2, ',', '.')}}€</td>
+                <td>{{ transporteur.dateCreation | date("d/m/Y") }}</td>
+                {% if transporteur.dateModification  != null %}
+                    <td>{{ transporteur.dateModification  | date("d/m/Y") }}</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
+
+{% block messageLien %}
+
+{% endblock %}
+
