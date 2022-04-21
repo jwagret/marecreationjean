@@ -13,6 +13,13 @@ import './javascript/script.js';
 import './bootstrap';
 
 
+// jQuery(document).ready(function() {
+//     $('.js-datepicker').datepicker({
+//         language:'de'
+//     });
+// });
+
+
 
 
 

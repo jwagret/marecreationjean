@@ -45,6 +45,15 @@ class TransporteursRepository extends ServiceEntityRepository
         }
     }
 
+    //Retourne le nombre total de transporteur dans la bdd
+    public function totalTransporteur(): int {
+        $query = $this->createQueryBuilder('transporteurs')
+                      ->select('count(transporteurs)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
+
+
     // /**
     //  * @return Transporteurs[] Returns an array of Transporteurs objects
     //  */

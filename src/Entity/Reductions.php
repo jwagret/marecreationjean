@@ -30,7 +30,7 @@ class Reductions
     #[ORM\Column(type: 'float')]
     private $reduction_montant;
 
-    #[ORM\Column(type: 'date')]
+    #[ORM\Column(type: 'string')]
     private $anneeReductions;
 
     #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'reductions')]
@@ -94,12 +94,12 @@ class Reductions
         return $this;
     }
 
-    public function getAnneeReductions(): ?\DateTimeInterface
+    public function getAnneeReductions(): ?string
     {
         return $this->anneeReductions;
     }
 
-    public function setAnneeReductions(\DateTimeInterface $anneeReductions): self
+    public function setAnneeReductions(string $anneeReductions): self
     {
         $this->anneeReductions = $anneeReductions;
 

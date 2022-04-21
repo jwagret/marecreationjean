@@ -1,0 +1,57 @@
+{% extends 'admin/admin/admin.html.twig' %}
+
+ {% block admin_section_main_2 %}
+
+     <div class="table-responsive w-75 mt-5">
+         <table class="table">
+             <caption>Sous-catégorie : {{ sousCategorie.sousCategorieNom }} </caption>
+             <thead>
+             <tr>
+                 <th scope="col">id</th>
+                 <th scope="col">Nom</th>
+                 <th scope="col">Créé le</th>
+                 <th scope="col">Modifier le</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                     <th scope="row">{{ sousCategorie.id}}</th>
+                     <td>{{ sousCategorie.sousCategorieNom }}</td>
+                     <td> {{ sousCategorie.dateCreation | date("d/m/Y") }}</td>
+                 {% if sousCategorie.dateModification != null %}
+                     <td> {{ sousCategorie.dateModification | date("d/m/Y") }}</td>
+                 {% else %}
+                     <td></td>
+                 {% endif %}
+             </tr>
+             </tbody>
+         </table>
+     </div>
+
+ {% endblock %}
+
+ {% block admin_section_main_2_2 %}
+
+     <div class="table-responsive w-75 mt-5">
+         <table class="table">
+             <caption>Les catégories rattachées </caption>
+             <thead>
+             <tr>
+                 <th scope="col">id</th>
+                 <th scope="col">Nom</th>
+             </tr>
+             </thead>
+             <tbody>
+             {% if  sousCategorie.categorie.categorieNom == '' %}
+                 <tr>
+                     <td colspan="2" class="fw-bold text-danger">AUCUNE CATEGORIES RATTACHEES</td>
+                 </tr>
+             {% endif %}
+                 <tr>
+                     <th scope="row">{{ sousCategorie.categorie.id }}</th>
+                     <td><a href="{{ path('app_admin_crud_categories_details', {'id': sousCategorie.categorie.id}) }}">{{ sousCategorie.categorie.categorieNom }}</a></td>
+                 </tr>
+             </tbody>
+         </table>
+     </div>
+ {% endblock %}

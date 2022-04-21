@@ -1,0 +1,76 @@
+{% extends 'admin/admin/admin.html.twig' %}
+
+{% block admin_section_main_2 %}
+
+	<div class="table-responsive w-75 mt-5">
+		<table class="table">
+			<caption>Tissus :
+				{{ tissus.tissuNom }}</caption>
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Désignation</th>
+					<th scope="col">Créé le</th>
+					<th scope="col">Modifier le</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">{{ tissus.id }}</th>
+					<td>{{ tissus.tissuNom }}</td>
+					<td>{{ tissus.tissusDesignation }}</td>
+					<td>
+						{{ tissus.dateCreation | date("d/m/Y") }}</td>
+					{% if tissus.dateModification  != null %}
+						<td>
+							{{ tissus.dateModification  | date("d/m/Y") }}</td>
+					{% else %}
+						<td></td>
+					{% endif %}
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+
+{% block admin_section_main_2_2 %}
+
+	<div class="table-responsive w-75 mt-5">
+		<table class="table">
+			<caption>Les produits rattachées
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Référence</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prix</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if tissus.produits.empty%}
+					<tr>
+						<td colspan="2" class="fw-bold text-danger">AUCUN PRODUITS RATTACHEES</td>
+					</tr>
+				{% endif %}
+				{% for produit in tissus.produits%}
+					<tr>
+						<th scope="row">{{produit.id}}</th>
+						<td>
+							<a href="{{ path('app_admin_crud_produits_details', {'id': produit.id}) }}">{{ produit.ProduitReference}}</a>
+						</td>
+						<td>{{ produit.ProduitNom}}</td>
+						<td>
+							{{ produit.ProduitPrix | number_format(2, ',', '.')}}
+							€
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
+{% block messageLien %}{% endblock %}

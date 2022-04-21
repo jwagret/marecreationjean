@@ -1,0 +1,107 @@
+{% extends 'admin/admin/admin.html.twig' %}
+
+{% block admin_section_main_2 %}
+
+	<div class="table-responsive w-75 mt-5">
+		<table class="table">
+			<caption>Catégorie :
+				{{ categorie.categorieNom }}
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Créé le</th>
+					<th scope="col">Modifier le</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">{{ categorie.id}}</th>
+					<td>{{ categorie.categorieNom }}</td>
+					<td>
+						{{ categorie.dateCreation | date("d/m/Y") }}</td>
+					{% if categorie.dateModification != null %}
+						<td>
+							{{ categorie.dateModification | date("d/m/Y") }}</td>
+					{% else %}
+						<td></td>
+					{% endif %}
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+
+{% block admin_section_main_2_2 %}
+
+	<div class="table-responsive w-75 mt-5">
+		<table class="table">
+			<caption>Les sous-catégorie
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Nom</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if categorie.sousCategories.empty %}
+					<tr>
+						<td colspan="2" class="fw-bold text-danger">AUCUNE SOUS-CATEGORIES</td>
+					</tr>
+				{% endif %}
+				{% for sousCategorie in categorie.sousCategories %}
+					<tr>
+						<th scope="row">{{ sousCategorie.id }}</th>
+						<td>{{ sousCategorie.SousCategorieNom }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="table-responsive w-75 mt-5">
+		<table class="table">
+			<caption>Les produits
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">Image</th>
+					<th scope="col">Référence</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Vendu</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if categorie.produits.empty %}
+					<tr>
+						<td colspan="2" class="fw-bold text-danger">AUCUN PRODUITS</td>
+					</tr>
+				{% endif %}
+				{% for produit in categorie.produits %}
+					<tr>
+						{% for image in produit.images %}
+							{% if loop.first %} {# si l'index est le 1er #}
+								<th scope="row" style="width: 10%">
+									<div style="display: contents">
+										<img width="100%" src="{{ asset('/images/produits/'~image.imageChemin ) }}" alt="{{ image.imageNom }}">
+									</div>
+								</th>
+							{% endif %}
+						{% endfor %}
+						<td class="w-25"><a href="{{ path('app_admin_crud_produits_details', {'id': produit.id}) }}">{{ produit.ProduitReference }}</a></td>
+						<td>{{ produit.ProduitNom }}</td>
+						<td>
+							{% if produit.IsProduitVendu != true %}
+								<p style="color: red">Non</p>
+							{% else %}
+								<p style="color: green">Oui</p>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

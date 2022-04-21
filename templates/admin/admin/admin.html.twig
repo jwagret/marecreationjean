@@ -1,0 +1,116 @@
+{% extends 'home/index.html.twig' %}
+
+{% block title %}
+	Ma-ré-création-Jeans | Administration
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block main_section_1 %}
+
+	{% block message %}
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="msg_flash msg_flash-{{ label }}">
+					{{ message }}
+					<br>
+					{% block messageLien %}
+						<a href="{{ path('app_admin_dashboard') }}">
+							Rafraichir la page
+						</a>
+					{% endblock %}
+				</div>
+			{% endfor %}
+		{% endfor %}
+	{% endblock %}
+
+	<main id="admin_main">
+
+		<section id="admin_section_main_1">
+			<nav class="mt-5">
+				<ul>
+					<li>
+						<i class="fa-solid fa-house"></i>
+						<a href="{{ path('app_admin_dashboard') }}">Home</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-user"></i>
+						<a href="{{ path('app_admin_crud_client_liste') }}">Clients</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-tags"></i>
+						<a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+							Catégories
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li>
+								<a class="dropdown-item" href="{{ path('app_admin_crud_categories_liste') }}">Catégories</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('app_admin_crud_sous_categories_liste') }}">sous-categories</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<i class="fa-solid fa-shop"></i>
+						<a href="{{ path('app_admin_crud_produits_liste') }}">Produits</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-image"></i>
+						<a href="{{ path('app_admin_crud_images_liste') }}">Images</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-truck"></i>
+						<a href="{{ path('app_admin_crud_transporteur_liste') }}">Transporteur</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-shirt"></i>
+						<a href="{{ path('app_admin_crud_tissus_liste') }}">Tissus</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-percent"></i>
+						<a href="{{ path('app_admin_crud_reductions_liste') }}">Réductions</a>
+					</li>
+
+				</ul>
+			</nav>
+		</section>
+
+		<section id="admin_section_main_2">
+
+			{% block admin_section_main_2 %}
+				<section class=" infoHome mt-5">
+					<article id="infoHome_art1" class="mt-5">
+						<p>Nombre de clients : {{ total_clients }}</p>
+						<p>Nombre de produits : {{ total_produits }}</p>
+						<p>Nombre de catégories : {{ total_categories }}</p>
+						<p>Nombre de sous-catégories : {{ total_sousCategories }}</p>
+						<p>Nombre de transporteur : {{ total_transporteur }}</p>
+					</article>
+
+					<article id="infoHome_art2" class="mt-5">
+						<p>Nombre de ventes du mois :</p>
+					</article>
+
+				</section>
+
+				<hr>
+
+			{% endblock %}
+
+			{% block admin_section_main_2_2 %}{% endblock %}
+		</section>
+
+	</main>
+
+{% endblock %}
+
+{% block main_section_2_1 %}{% endblock %}
+
+{% block main_section_2_2 %}{% endblock %}
+
+{% block main_section_3_1 %}{% endblock %}
+
+{% block main_section_3_2 %}{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -45,6 +45,13 @@ class ProduitsRepository extends ServiceEntityRepository
         }
     }
 
+    //Retourne le nombre total de produits dans la bdd
+    public function totalProduits(): int {
+        $query = $this->createQueryBuilder('produits')
+                      ->select('count(produits)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Produits[] Returns an array of Produits objects
     //  */

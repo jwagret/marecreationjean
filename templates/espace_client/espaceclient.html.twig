@@ -1,0 +1,125 @@
+{% extends 'baseVierge.html.twig' %}
+
+{% block title %}{{ parent() }} | ESPACE CLIENT {% endblock %}
+
+{% block main_section_1 %}
+
+   <p>Bienvenue {{ clientCourant.clientNom | upper }} {{ clientCourant.clientPrenom | upper }}  sur votre espace client.</p>
+   <p>Vous pouvez voir vos commandes et modifier vos informations sur cet espace.</p>
+
+    <hr>
+    <h4 class="h4 text-uppercase">mes informations</h4>
+    <hr>
+
+    {% if app.user.client.adresses.empty %}
+        <p>Vous n'avez aucune adresse d'enregistrer : <a href="{{ path('app_espace_adresses_ajout', {'id': clientCourant.utilisateur.id}) }}">créer une adresse</a></p>
+    {% endif %}
+
+    <div class="containerBouton">
+        <p>  {# Bouton qui affiche les informations clients  #}
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#mesInformations" role="button" aria-expanded="false" aria-controls="mesInformations">
+                mes informations
+            </a>
+        </p>
+        <p> {# Bouton qui affiche les adresses clients  #}
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#mesAdresses" role="button" aria-expanded="false" aria-controls="mesAdresses">
+                mes adresses
+            </a>
+        </p>
+        {% if not clientCourant.adresses.empty %}
+            <p> {# Bouton lien pour ajouter une adresse  #}
+                <a class="btn btn-primary"  href="{{ path('app_espace_adresses_ajout', {'id': clientCourant.utilisateur.id}) }}" role="button" >
+                    Ajouter une adresse
+                </a>
+            </p>
+        {% endif %}
+    </div>
+
+    {# Afficher les informations clients #}
+    <div class="collapse mb-xl-3"  id="mesInformations">
+        <div class="card card-body">
+            <div class="container">
+                <div class="card" style="width: 60%;">
+                    <div class="card-body card-hover px-4">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"><span class="text-uppercase fw-bold">Pseudo</span> : {{ clientCourant.pseudo}} </p>
+                        <p class="card-text"><span class="text-uppercase fw-bold">Nom</span> : {{ clientCourant.clientNom}} </p>
+                        <p class="card-text"><span class="text-uppercase fw-bold">Prenom</span> : {{ clientCourant.clientPrenom}}  </p>
+                        <p class="card-text"><span class="text-uppercase fw-bold">Email</span> : {{ clientCourant.utilisateur.email }}</p>
+                        <a href="{{ path('app_espace_client_modifier')}}" class="btn btn-primary">Modifier mes informations</a>
+                        <a href="#" class="btn btn-primary">Supprimer mon compte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Afficher les adresses #}
+    <div class="collapse" id="mesAdresses">
+        <div class="card card-body">
+            <div class="container">
+                {% if clientCourant.adresses.empty %}
+                    aucune adresse
+                {% else %}
+                    {% for adresse in clientCourant.adresses %}
+                        <div class="card m-lg-2 mb-lg-5" style="width: 40%;">
+                            <div class="card-body card-hover px-4">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text"> {{ adresse | raw }}</p>
+                                <a href="{{ path('app_espace_adresses_modifier', {'id' : adresse.id}) }}" class="btn btn-primary">Modifier</a>
+                                <a href="{{ path('app_espace_adresses_supprimer', {'id' : adresse.id}) }}" class="btn btn-primary">Supprimer</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block main_section_2_1 %}
+    <hr>
+    <h4 class="h4 text-uppercase">mes commandes</h4>
+    <hr>
+
+    <div class="containerBouton">
+        <p>  {# Bouton qui affiche les informations clients  #}
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#mesCommandes" role="button" aria-expanded="false" aria-controls="collapseExample">
+                mes commandes
+            </a>
+        </p>
+    </div>
+
+    {# Afficher les commandes clients #}
+    <div class="collapse mb-xl-3"  id="mesCommandes">
+        <div class="card card-body">
+            <div class="container">
+                <div class="card" style="width: 60%;">
+                    <div class="card-body card-hover px-4">
+                        <h5 class="card-title"></h5>
+{#                        <p class="card-text"><span class="text-uppercase fw-bold">Pseudo</span> : {{ clientCourant.pseudo }}</p>#}
+{#                        <p class="card-text"><span class="text-uppercase fw-bold">Nom</span> : {{ clientCourant.clientNom }}</p>#}
+{#                        <p class="card-text"><span class="text-uppercase fw-bold">Prenom</span> : {{  clientCourant.clientPrenom}} </p>#}
+{#                        <p class="card-text"><span class="text-uppercase fw-bold">Email</span> : {{  userCourant.email}} </p>#}
+
+{#                        <a href="{{ path('app_espace_client_client_modifier', {'id': clientCourant.id}) }}" class="btn btn-primary">Modifier mes informations</a>#}
+{#                        <a href="#" class="btn btn-primary">Supprimer mon compte</a>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main_section_2_2 %}
+{% endblock %}
+
+{% block main_section_3_1 %}
+
+{% endblock %}
+
+{% block main_section_3_2 %}
+
+{% endblock %}
+
