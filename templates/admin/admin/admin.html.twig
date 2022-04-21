@@ -28,15 +28,17 @@
 
 		<section id="admin_section_main_1">
 			<nav class="mt-5">
-				<ul>
+				<ul style="padding-right: 2rem">
 					<li>
 						<i class="fa-solid fa-house"></i>
 						<a href="{{ path('app_admin_dashboard') }}">Home</a>
 					</li>
+					<hr class="w-100">
 					<li>
 						<i class="fa-solid fa-user"></i>
 						<a href="{{ path('app_admin_crud_client_liste') }}">Clients</a>
 					</li>
+					<hr class="w-100">
 					<li>
 						<i class="fa-solid fa-tags"></i>
 						<a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,32 +48,48 @@
 							<li>
 								<a class="dropdown-item" href="{{ path('app_admin_crud_categories_liste') }}">Catégories</a>
 							</li>
+							<hr class="w-100">
 							<li>
 								<a class="dropdown-item" href="{{ path('app_admin_crud_sous_categories_liste') }}">sous-categories</a>
 							</li>
 						</ul>
 					</li>
+					<hr class="w-100">
 					<li>
 						<i class="fa-solid fa-shop"></i>
-						<a href="{{ path('app_admin_crud_produits_liste') }}">Produits</a>
+						<a class="dropdown-toggle" href="#" id="dropdownMenuProduits" data-bs-toggle="dropdown" aria-expanded="false">
+							Articles
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuProduits">
+							<li>
+								<a class="dropdown-item"  href="{{ path('app_admin_crud_produits_liste') }}">Produits</a>
+							</li>
+							<hr class="w-100">
+							<li>
+								<a class="dropdown-item"  href="{{ path('app_admin_crud_images_liste') }}">Images</a>
+							</li>
+							<hr class="w-100">
+							<li>
+								<a class="dropdown-item"  href="{{ path('app_admin_crud_tissus_liste') }}">Tissus</a>
+							</li>
+						</ul>
 					</li>
-					<li>
-						<i class="fa-solid fa-image"></i>
-						<a href="{{ path('app_admin_crud_images_liste') }}">Images</a>
-					</li>
+					<hr class="w-100">
 					<li>
 						<i class="fa-solid fa-truck"></i>
 						<a href="{{ path('app_admin_crud_transporteur_liste') }}">Transporteur</a>
 					</li>
-					<li>
-						<i class="fa-solid fa-shirt"></i>
-						<a href="{{ path('app_admin_crud_tissus_liste') }}">Tissus</a>
-					</li>
+					<hr class="w-100">
 					<li>
 						<i class="fa-solid fa-percent"></i>
 						<a href="{{ path('app_admin_crud_reductions_liste') }}">Réductions</a>
 					</li>
-
+					<hr class="w-100">
+					<li>
+						<i class="fa-solid fa-barcode"></i>
+						<a href="{{ path('app_admin_crud_stock_liste') }}">Stocks</a>
+					</li>
+					<hr class="w-100">
 				</ul>
 			</nav>
 		</section>

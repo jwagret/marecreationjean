@@ -152,6 +152,7 @@ class CrudImagesController extends AbstractController
             return $this->redirectToRoute('app_admin_dashboard');
         }
 
+
         if ($formImage->isSubmitted() && $formImage->isValid()) {
             if ($btnValider) {
                 $image->setImageNom($formImage->get('image_nom')->getData());

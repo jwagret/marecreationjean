@@ -108,7 +108,7 @@ class CrudTransporteurController extends AbstractController
 
         if ($formTransporteur->isSubmitted() && $formTransporteur->isValid()) {
             if ($btnValider) {
-                $transporteur->setDateCreation($date);
+                $transporteur->setDateModification($date);
                 $transporteur->setTransporteurNom($formTransporteur->get('transporteur_nom')->getData());
                 $transporteur->setTransporteurPrix($formTransporteur->get('transporteur_prix')->getData());
 

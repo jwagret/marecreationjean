@@ -23,6 +23,10 @@
 						<div class="form-control mb-3 admin_photo">
 							<img class="afficherImage" src="{{ asset('/images/produits/'~image) }}" alt="">
 						</div>
+					{% else %}
+						<div class="form-control mb-3 admin_photo">
+							<img class="afficherImage" src="{{ asset('/images/produits/im-0.png') }}" alt="">
+						</div>
 					{% endif %}
 						{{ form_row(formImage.image_chemin) }}
 						{{ form_row(formImage.produit) }}
