@@ -41,7 +41,7 @@
                          <td>
                              <a href="{{ path('app_admin_crud_transporteur_details', {'id': transporteur.id}) }}"><i class="fa-solid fa-eye"></i></a>
                              <a href="{{ path('app_admin_crud_transporteur_modifier', {'id': transporteur.id}) }}"><i class="fa-solid fa-arrow-rotate-back"></i></a>
-                             <a href="#"><i class="fa-solid fa-trash"></i></a>
+                             <a href="{{ path('app_admin_crud_transporteur_supprimer', {'id': transporteur.id}) }}"><i class="fa-solid fa-trash"></i></a>
                          </td>
                  </tr>
              {% endfor %}
