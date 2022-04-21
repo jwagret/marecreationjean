@@ -1,0 +1,73 @@
+{% extends 'admin/admin/admin.html.twig' %}
+
+{% block messageLien %}
+    <a href="{{ path('app_admin_crud_tissus_liste') }}">Rafraichir la page</a>
+{% endblock %}
+
+{% block admin_section_main_2 %}
+    <div class="crud_lien">
+        <a href="{{ path('app_admin_crud_stock_ajouter') }}">
+            <i class="fa-solid fa-plus-square fa-3x"></i>
+        </a>
+    </div>
+    <div class="table-responsive w-75 mt-2">
+        <table class="table">
+            <caption>Nombre de Stocks : {{ total_stocks }}</caption>
+            <thead>
+            <tr>
+                <th scope="col">Référence</th>
+                <th scope="col">Désignation</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Rupture</th>
+                <th scope="col">Créé le</th>
+                <th scope="col">Modifier le</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if liste_stocks == [] %}
+                <tr>
+                    <td colspan="9" class="fw-bold text-danger">AUCUN TISSUS</td>
+                </tr>
+            {% endif %}
+            {% for stock in liste_stocks %}
+                <tr>
+                    <td>{{stock.StockReference}}</td>
+                    <td>{{stock.StockDesignation}}</td>
+                    {% if stock.IsStockRupture != true%}
+                        {% if stock.StockQuantite >= 2 %}
+                            <td style="color: green"><bold>{{stock.StockQuantite}}</bold></td>
+                            <td style="color: green"><bold>NON</bold></td>
+                        {% else %}
+                            <td style="color: red"><bold>{{stock.StockQuantite}}</bold></td>
+                            <td style="color: red"><bold>OUI</bold></td>
+                        {% endif %}
+                    {% else %}
+                        <td>OUI</td>
+                    {% endif %}
+                    <td>{{stock.dateCreation | date("d/m/Y") }}</td>
+                    {% if stock.dateModification != null %}
+                        <td>{{stock.dateModification | date("d/m/Y")}}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif%}
+                    <td>
+                        <a href="#">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-solid fa-arrow-rotate-back"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block admin_section_main_2_2 %}{% endblock %}
