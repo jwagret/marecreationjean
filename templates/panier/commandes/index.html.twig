@@ -1,0 +1,108 @@
+{% extends 'baseVierge.html.twig' %}
+
+{% block title %}Ma-ré-création-Jeans | Commandes {% endblock %}
+
+{% block main_section_1 %}
+    {% block message %} {% endblock %}
+    <h1>Mon Panier</h1>
+    <p>Retrouvez l'ensemble des produits que vous avez ajouté à votre panier</p>
+
+    {% if liste_panier != [] %}
+        <div class="table-responsive w-75 mt-lg-3">
+            <table class="table">
+                <caption>Nombre de Produits : </caption>
+                <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Référence</th>
+                    <th scope="col">Désignation</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if liste_panier == [] %}
+                    <tr>
+                        <td colspan="9" class="fw-bold text-danger">AUCUN PRODUITS</td>
+                    </tr>
+                {% endif %}
+                {% for panier in liste_panier %}
+                    <tr>
+                        {% if panier.produit.images.empty %}
+                            <td style="width: 10%">
+                                <div style="display: contents">
+                                    <img width="100%" src="{{ asset('/images/produits/im-0.png' ) }}" alt="aucune image">
+                                </div>
+                            </td>
+                        {% endif %}
+                        {% for image in panier.produit.images%}
+                            {% if loop.first %} {# si l'index est le 1er #}
+                                <td style="width: 10%">
+                                    <div style="display: contents">
+                                        <img width="100%" src="{{ asset('/images/produits/'~image.imageChemin ) }}" alt="{{ image.imageNom }}">
+                                    </div>
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{panier.produit.ProduitNom}}</td>
+                        <td>{{panier.produit.ProduitReference}}</td>
+                        <td>{{panier.produit.ProduitDesignation}}</td>
+                        <td>{{panier.produit.ProduitPrix  | number_format(2, ',', '.')}}€</td>
+                        <td>***</td>
+                        <td>***</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <hr class="w-75" style="height: 5px; color: cornflowerblue;" >
+        <div class="w-75 d-flex flex-column">
+            <div class="w-25 align-self-end">
+                <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 7.7vw;">Montant TTC :</span>
+                <span class="w-25 align-self-end" style="color: cornflowerblue;">******</span>
+            </div>
+            <div class="w-25 align-self-end">
+                <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 7.5vw;">Transport TTC :</span>
+                <span class="w-25 align-self-end" style="color: cornflowerblue;">******</span>
+            </div>
+{#            <div class="w-25 align-self-end">#}
+{#                <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 9vw;">TVA 20% :</span>#}
+{#                <span class="w-25 align-self-end" style="color: cornflowerblue;">******</span>#}
+{#            </div>#}
+            <hr class="w-25 align-self-end" style="height: 5px; color: cornflowerblue;" >
+            <div class="w-25 align-self-end">
+                <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 9vw;">Total TTC :</span>
+                <span class="w-25 align-self-end" style="color: cornflowerblue;">******</span>
+            </div>
+            <div class="w-25 align-self-end">
+                <a href="#" class="btn btn-primary btn-lg mt-lg-3 w-100">Valider mon panier</a>
+            </div>
+        </div>
+
+    {% else%}
+        <p>PANIER VIDE</p>
+    {% endif %}
+
+{% endblock %}
+
+{% block main_section_2_1 %}
+
+{% endblock %}
+
+{% block main_section_2_2 %}
+
+{% endblock %}
+
+{% block main_section_3_1 %}
+
+{% endblock %}
+
+{% block main_section_3_2 %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

@@ -25,7 +25,7 @@ class Tissus
     #[ORM\Column(type: 'text')]
     private $tissus_designation;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'float', scale: '2')]
     private $tissu_tarif;
 
     #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'tissuses')]

@@ -28,7 +28,7 @@ class Produits
     #[ORM\Column(type: 'text')]
     private $produit_designation;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'float', scale: '2')]
     private $produit_prix;
 
     #[ORM\Column(type: 'boolean')]

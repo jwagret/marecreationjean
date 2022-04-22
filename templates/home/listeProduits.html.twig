@@ -7,7 +7,7 @@
     <div class="d-flex flex-wrap w-75 mt-5">
         {% for produit in liste_produits%}
             {% if produit.produitNom != 'Aucun' %}
-                <div class="card p-2 m-lg-2" style="width: 18rem;">
+                <div class="card p-2 m-lg-2 card-hover" style="width: 18rem;">
                     {% if produit.images != [] %}
                         {% for image in produit.images %}
                             {% if loop.first %}

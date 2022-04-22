@@ -45,7 +45,6 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('application_listeProduits');
         }
 
-
         return $this->render('home/detail.html.twig', [
             'produit' => $produit
         ]);

@@ -24,10 +24,10 @@ class Reductions
     #[ORM\Column(type: 'text')]
     private $reduction_designation;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'float', scale: '2')]
     private $reduction_pourcentage;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'float', scale: '2')]
     private $reduction_montant;
 
     #[ORM\Column(type: 'string')]

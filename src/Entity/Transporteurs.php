@@ -21,7 +21,7 @@ class Transporteurs
     #[ORM\Column(type: 'string', length: 255)]
     private $transporteur_nom;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'float', scale: '2')]
     private $transporteur_prix;
 
     #[ORM\OneToMany(mappedBy: 'transporteur', targetEntity: Commandes::class)]
