@@ -35,6 +35,9 @@ class Stocks
     #[ORM\ManyToOne(targetEntity: Produits::class, inversedBy: 'stocks')]
     private $produit;
 
+    #[ORM\Column(type: 'integer')]
+    private $limite_stock;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,6 +111,18 @@ class Stocks
     public function setProduit(?Produits $produit): self
     {
         $this->produit = $produit;
+
+        return $this;
+    }
+
+    public function getLimiteStock(): ?int
+    {
+        return $this->limite_stock;
+    }
+
+    public function setLimiteStock(int $limite_stock): self
+    {
+        $this->limite_stock = $limite_stock;
 
         return $this;
     }

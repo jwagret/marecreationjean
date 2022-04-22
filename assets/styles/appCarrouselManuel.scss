@@ -57,7 +57,8 @@
   position: absolute;
   width: 4vw;
   cursor: pointer;
-  top: calc(var(--hauteurCadreManuel) / 2);
+  //top: calc(var(--hauteurCadreManuel) / 2);
+  top: 8vh;
 }
 
 .btnGauche {

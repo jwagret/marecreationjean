@@ -1,0 +1,75 @@
+{% extends 'baseVierge.html.twig' %}
+
+{% block title %}Ma-ré-création-Jeans | détails{% endblock %}
+
+{% block main_section_1 %}
+    {% block message %} {% endblock %}
+    <div class="d-flex flex-wrap w-100 mt-5">
+        <div class="card p-2 m-lg-2" style="width: 10rem;">
+            {% if produit.images != [] %}
+                {% for image in produit.images %}
+                    <div class="card-hover detailImage">
+                        <img class="card-img-top mt-3 w-100" src="{{ asset('/images/produits/'~ image.ImageChemin) }}" alt="Card image cap">
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="card p-2 m-lg-2 w-50" style="width: 18rem;">
+            {% if produit.images != [] %}
+                {% for image in produit.images %}
+                    {% if loop.first %}
+                        <img class="card-img-top" src="{{ asset('/images/produits/'~ image.ImageChemin) }}" alt="Card image cap">
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="card-body ">
+            <div class="mt-3">
+                <h4>Etat : </h4>
+                {% if produit.isProduitVendu != true %}
+                    <span class="card-text" style="color: green"><bold>Disponible</bold></span><br>
+                {% else%}
+                    <span class="card-text" style="color: red"><bold>Non Disponible</bold></span>
+                {% endif %}
+            </div>
+            <div class="mt-3">
+                <h4>Nom du Produit : </h4>
+                <span class="card-text">{{ produit.produitNom}} </span>
+            </div>
+            <div class="mt-3">
+                <h4>Désignation : </h4>
+                <span class="card-text">{{ produit.produitDesignation}} </span>
+            </div>
+            <div class="mt-3">
+                <h4>Prix : </h4>
+                <span class="card-text">{{ produit.produitPrix  | number_format(2, ',', '.')}} € </span>
+            </div>
+            <a class="btn btn-primary mt-5" href="#" role="button" style="margin-left: 1vw">Ajouter Panier</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block main_section_2_1 %}
+    <br>
+        {% include 'includes/carrouselManuel.html.twig' %}
+
+
+{% endblock %}
+
+{% block main_section_2_2 %}
+
+{% endblock %}
+
+{% block main_section_3_1 %}
+
+{% endblock %}
+
+{% block main_section_3_2 %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+

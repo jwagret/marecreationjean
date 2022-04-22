@@ -9,3 +9,4 @@ import './script_carrousel_classe.js';
 import './script_carrousel_classe_auto.js';
 import './script_carrousel_client.js';
 import './script_carrousel_client_auto.js';
+import './script_details_produits.js';

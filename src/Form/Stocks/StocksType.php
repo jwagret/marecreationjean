@@ -55,6 +55,13 @@ class StocksType extends AbstractType
                     'class' => 'form-select mb-3',
                 ]
             ])
+            ->add('limiteStock', NumberType::class, [
+                'required' => true,
+                'label' => "stock limite",
+                'attr' => [
+                    'class' => 'form-control mb-3 w-25',
+                ]
+            ])
         ;
     }
 

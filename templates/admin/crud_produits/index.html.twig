@@ -36,6 +36,13 @@
 				{% endif %}
 				{% for produit in liste_produits %}
 					<tr>
+						{% if produit.images.empty %}
+							<td style="width: 10%">
+								<div style="display: contents">
+									<img width="100%" src="{{ asset('/images/produits/im-0.png' ) }}" alt="aucune image">
+								</div>
+							</td>
+						{% endif %}
 						{% for image in produit.images%}
 							{% if loop.first %} {# si l'index est le 1er #}
 								<td style="width: 10%">

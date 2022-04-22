@@ -41,6 +41,21 @@ class CrudStockController extends AbstractController
         ]);
     }
 
+    //Details d'un tissus
+    #[Route('/details/{id<\d+>}', name: 'details')]
+    public function details(int $id): Response
+    {
+        $stock = $this->stocksRepository->findOneBy(['id' => $id]);
+
+        if (!$stock) {
+            return $this->render('admin/crud_stock/index.html.twig');
+        }
+
+        return $this->render('admin/crud_stock/details.html.twig', [
+            'stock' => $stock
+        ]);
+    }
+
     //Ajouter un stock
     #[Route('/ajouter', name: 'ajouter')]
     public function ajouterStock(Request $request): Response {
@@ -66,6 +81,7 @@ class CrudStockController extends AbstractController
                 $stock->setStockQuantite($formStock->get('stock_quantite')->getData());
                 $stock->setTissu($formStock->get('tissu')->getData());
                 $stock->setProduit($formStock->get('produit')->getData());
+                $stock->setLimiteStock($formStock->get('limiteStock')->getData());
                 $stock->setIsStockRupture(false);
                 $this->doctrine->persist($stock);
                 $this->doctrine->flush();
@@ -80,4 +96,65 @@ class CrudStockController extends AbstractController
             'nomFormulaire' => 'ajouter'
         ]);
     }
+
+    //Modifier un stock
+    #[Route('/modifier/{id<\d+>}', name: 'modifier')]
+    public function modifier(Request $request, int $id): Response {
+        $date = Outils::creerDate('d/m/Y');
+        $stock = $this->stocksRepository->findOneBy(['id' => $id]);
+
+        $formStock = $this->createForm(StocksType::class, $stock);
+        $formStock->handleRequest($request);
+
+        $btnValider = $request->get('btn_valider');
+        $btnAnnuler = $request->get('btn_annuler');
+
+        if ($btnAnnuler) {
+            $this->addFlash('no-success', 'Action annulée');
+            return $this->redirectToRoute('app_admin_dashboard');
+        }
+
+        if ($formStock->isSubmitted() && $formStock->isValid()) {
+
+            if ($btnValider) {
+                $stock->setDateModification($date);
+                $stock->setStockReference($formStock->get('stock_reference')->getData());
+                $stock->setStockDesignation($formStock->get('stock_designation')->getData());
+                $stock->setStockQuantite($formStock->get('stock_quantite')->getData());
+                $stock->setTissu($formStock->get('tissu')->getData());
+                $stock->setProduit($formStock->get('produit')->getData());
+                $stock->setLimiteStock($formStock->get('limiteStock')->getData());
+                $stock->setIsStockRupture(false);
+
+                $this->doctrine->flush();
+
+                $this->addFlash('success', 'Le stock est bien modifié');
+                return $this->redirectToRoute('app_admin_dashboard');
+            }
+        }
+
+        return $this->render('admin/crud_stock/ajouter.html.twig', [
+            'formStock' => $formStock->createView(),
+            'nomFormulaire' => 'modifier'
+        ]);
+    }
+
+    //Supprimer un stock
+    #[Route('/supprimer/{id<\d+>}', name: 'supprimer')]
+    public function supprimer(int $id): Response
+    {
+        $stock = $this->stocksRepository->findOneBy(['id' => $id]);
+
+        if (!$stock) {
+            $this->addFlash('no-success', "le stock n'existe pas !!");
+            return $this->redirectToRoute('app_admin_crud_stock_liste');
+        }
+
+        $this->doctrine->remove($stock);
+        $this->doctrine->flush();
+        $this->addFlash('success', 'Le stock est bien supprimé');
+        return $this->redirectToRoute('app_admin_crud_stock_liste');
+    }
+
+
 }

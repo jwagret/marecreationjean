@@ -37,10 +37,11 @@ class AdminController extends AbstractController
     #[Route('', name: 'dashboard')]
     public function index(): Response
     {
-        $totalProduits = $this->produitsRepository->totalProduits();
+        //-1 pour le aucun (ex: aucun produit...)
+        $totalProduits = $this->produitsRepository->totalProduits()-1;
         $totalClients = $this->clientsRepository->totalClients();
-        $totalCategories = $this->categoriesRepository->totalCategories();
-        $totalSousCategories = $this->sousCategoriesRepository->totalSousCategories();
+        $totalCategories = $this->categoriesRepository->totalCategories()-1;
+        $totalSousCategories = $this->sousCategoriesRepository->totalSousCategories()-1;
         $totalTransporteur = $this->transporteursRepository->totalTransporteur();
 
         return $this->render('admin/admin/admin.html.twig', [

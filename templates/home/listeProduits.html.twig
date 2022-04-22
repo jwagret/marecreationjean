@@ -1,0 +1,46 @@
+{% extends 'baseVierge.html.twig' %}
+
+{% block title %}Ma-ré-création-Jeans | Produits{% endblock %}
+
+{% block main_section_1 %}
+    {% block message %} {% endblock %}
+    <div class="d-flex flex-wrap w-75 mt-5">
+        {% for produit in liste_produits%}
+            {% if produit.produitNom != 'Aucun' %}
+                <div class="card p-2 m-lg-2" style="width: 18rem;">
+                    {% if produit.images != [] %}
+                        {% for image in produit.images %}
+                            {% if loop.first %}
+                                <img class="card-img-top" src="{{ asset('/images/produits/'~ image.ImageChemin) }}" alt="Card image cap">
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <div class="card-body">
+                        <span class="card-text">{{ produit.produitNom}} </span><br>
+                        <span class="card-text">{{ produit.produitDesignation}} </span>
+                    </div>
+                    <a class="btn btn-primary mt-3" href="{{ path('application_details', {'id': produit.id}) }}" role="button" style="margin-left: 1vw">Voir</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block main_section_2_1 %}
+{% endblock %}
+
+{% block main_section_2_2 %}
+
+{% endblock %}
+
+{% block main_section_3_1 %}
+
+{% endblock %}
+
+{% block main_section_3_2 %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

@@ -31,8 +31,8 @@
                         {% if (is_granted('ROLE_ADMIN')) %}
                             <li class="navbar_link"><a href="{{ path('app_admin_dashboard') }}" class="navbar_link_item">Administration</a></li>
                         {% endif %}
-                        <li class="navbar_link"><a href="#" class="navbar_link_item">Accueil</a></li>
-                        <li class="navbar_link"><a href="#" class="navbar_link_item">Produits</a></li>
+                        <li class="navbar_link"><a href="{{ path('application_home') }}" class="navbar_link_item">Accueil</a></li>
+                        <li class="navbar_link"><a href="{{ path('application_listeProduits') }}" class="navbar_link_item">Produits</a></li>
                         <li class="navbar_link"><a href="#" class="navbar_link_item">Contact</a></li>
                     </ul>
                     <ul class="navbar_links">
