@@ -41,7 +41,7 @@
                             {% if (is_granted('ROLE_USER')) %}
                                 <li class="navbar_link"><a href="{{ path('app_espace_client') }}" class="navbar_link_item">Mon espace</a></li>
                             {% endif %}
-                                <li class="navbar_link"><a href="#" class="navbar_link_item">Panier</a></li>
+                                <li class="navbar_link"><a href="{{ path('app_panier_commandes') }}" class="navbar_link_item">Panier</a></li>
                         {% else %}
                             <li class="navbar_link"><a href="{{ path('app_login') }}" class="navbar_link_item">Se connecter</a></li>
                             <li class="navbar_link"><a href="{{ path('app_register') }}" class="navbar_link_item">Créer un compte</a></li>

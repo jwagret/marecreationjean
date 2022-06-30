@@ -32,6 +32,13 @@ class CommandesController extends AbstractController
         return $this->redirectToRoute('app_panier_commandes');
     }
 
+    //Ajouter un produit unique
+    #[Route('/ajouter/unique/{id<\d+>}', name: 'ajouterUnique')]
+    public function ajouterUnique(Panier $panier, int $id) {
+        $panier->ajouterPanierUnique($id);
+        return $this->redirectToRoute('app_panier_commandes');
+    }
+
     //Diminuer un produit
     #[Route('/retirer/{id<\d+>}', name: 'retirer')]
     public function retirer(Panier $panier, int $id): Response {

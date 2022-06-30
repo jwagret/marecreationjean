@@ -44,7 +44,7 @@
                 <h4>Prix : </h4>
                 <span class="card-text">{{ produit.produitPrix  | number_format(2, ',', '.')}} € </span>
             </div>
-            <a class="btn btn-primary mt-5" href="#" role="button" style="margin-left: 1vw">Ajouter Panier</a>
+            <a class="btn btn-primary mt-5" href="{{ path('app_panier_ajouterUnique', {'id': produit.id}) }}" role="button" style="margin-left: 1vw">Ajouter Panier</a>
         </div>
     </div>
 

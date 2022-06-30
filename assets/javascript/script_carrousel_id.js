@@ -53,7 +53,8 @@ if (activer) {
   };
 
   //Taille container d'image * nbr
-  container.style.width = tailleWidth * nbr + unite;
+    container.style.width = tailleWidth * nbr + unite;
+
   //Creer les images
   for (let i = 1; i <= nbr; i++) {
     let _div = document.createElement("div");

@@ -7,6 +7,8 @@
     <h1>Mon Panier</h1>
     <p>Retrouvez l'ensemble des produits que vous avez ajouté à votre panier</p>
 
+    {% set total = 0 %}
+
     {% if liste_panier != [] %}
         <div class="table-responsive w-75 mt-lg-3">
             <table class="table">
@@ -50,8 +52,10 @@
                         <td>{{panier.produit.ProduitReference}}</td>
                         <td>{{panier.produit.ProduitDesignation}}</td>
                         <td>{{panier.produit.ProduitPrix  | number_format(2, ',', '.')}}€</td>
-                        <td>***</td>
-                        <td>***</td>
+                        {% set qtt =  panier["total"] %}
+                        {% set total = qtt %}
+                        <td>{{panier["quantite"] }}</td>
+                        <td>{{ qtt | number_format(2, ',', '.')}}€</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -61,7 +65,7 @@
         <div class="w-75 d-flex flex-column">
             <div class="w-25 align-self-end">
                 <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 7.7vw;">Montant TTC :</span>
-                <span class="w-25 align-self-end" style="color: cornflowerblue;">******</span>
+                <span class="w-25 align-self-end" style="color: cornflowerblue;">{{ total  | number_format(2, ',', '.')}}€</span>
             </div>
             <div class="w-25 align-self-end">
                 <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 7.5vw;">Transport TTC :</span>
@@ -79,6 +83,7 @@
             <div class="w-25 align-self-end">
                 <a href="#" class="btn btn-primary btn-lg mt-lg-3 w-100">Valider mon panier</a>
             </div>
+
         </div>
 
     {% else%}

@@ -35,6 +35,22 @@ class Panier
         $this->session->set('panier', $panier);
     }
 
+    //Ajouter un produit unique dans le panier = session
+    public function ajouterPanierUnique(int $id) {
+        //créer la session
+        $panier = $this->session->get('panier', []);
+
+        //Si panier vide tu ajoutes un produit unique
+        if (empty($panier[$id])){
+            $panier[$id] = 1;
+        }
+
+        $this->session->set('panier', $panier);
+    }
+
+
+
+
     //Retirer un produit dans le panier = session
     public function retirerPanier(int $id) {
         //Créer la session
@@ -87,7 +103,8 @@ class Panier
                 }
                 $panierComplet[] = [
                     'produit' => $produit,
-                    'quantite' => $quantite
+                    'quantite' => $quantite,
+                    'total' => $produit->getProduitPrix() * $quantite
                 ];
             }
         }
