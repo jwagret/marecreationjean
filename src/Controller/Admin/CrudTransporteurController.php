@@ -142,6 +142,24 @@ class CrudTransporteurController extends AbstractController
         return $this->redirectToRoute('app_admin_crud_transporteur_liste');
     }
 
+    //Activer un transport
+    #[Route('/activer/{id<\d+>}', name: 'activerTransporteur')]
+    public function activerTransporteur(Transporteurs $transporteur) {
+
+       //Vérifier si le transporteur est actif ou non
+       if (!$transporteur->getIsActif()) {
+           $transporteur->setIsActif(true);
+       } else {
+           $transporteur->setIsActif(false);
+       }
+
+        //Modifier et sauvegarder
+        $this->doctrine->persist($transporteur);
+        $this->doctrine->flush();
+
+        return new Response("true");
+    }
+
 
 
 

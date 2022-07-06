@@ -27,6 +27,9 @@ class Transporteurs
     #[ORM\OneToMany(mappedBy: 'transporteur', targetEntity: Commandes::class)]
     private $commandes;
 
+    #[ORM\Column(type: 'boolean')]
+    private $isActif;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -87,6 +90,18 @@ class Transporteurs
                 $commande->setTransporteur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsActif(): ?bool
+    {
+        return $this->isActif;
+    }
+
+    public function setIsActif(bool $isActif): self
+    {
+        $this->isActif = $isActif;
 
         return $this;
     }

@@ -30,7 +30,7 @@ class Commandes
     #[ORM\ManyToOne(targetEntity: Transporteurs::class, inversedBy: 'commandes')]
     private $transporteur;
 
-    #[ORM\Column(type: 'date')]
+    #[ORM\Column(type: 'string')]
     private $anneeCommande;
 
     public function __construct()
@@ -103,12 +103,12 @@ class Commandes
         return $this;
     }
 
-    public function getAnneeCommande(): ?\DateTimeInterface
+    public function getAnneeCommande(): ?string
     {
         return $this->anneeCommande;
     }
 
-    public function setAnneeCommande(\DateTimeInterface $anneeCommande): self
+    public function setAnneeCommande(string $anneeCommande): self
     {
         $this->anneeCommande = $anneeCommande;
 

@@ -11,6 +11,7 @@
         {{ form_start(formModifClient, {'attr': {'class': 'containerForm'}}) }}
             <div class="form">
                 <div class="row">
+                    {{ form_row(formModifClient.refClient) }}
                     {{ form_row(formModifClient.pseudo) }}
                     {{ form_row(formModifClient.client_nom) }}
                     {{ form_row(formModifClient.client_prenom) }}

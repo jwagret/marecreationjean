@@ -49,8 +49,6 @@ class Panier
     }
 
 
-
-
     //Retirer un produit dans le panier = session
     public function retirerPanier(int $id) {
         //Créer la session
@@ -95,6 +93,7 @@ class Panier
         if ($this->afficherPanier()) {
             foreach ($this->afficherPanier() as $id => $quantite) {
                 $produit = $this->doctrine->getRepository(Produits::class)->findOneBy(['id' => $id]);
+                $produit->setQuantite($quantite);
                 //Si le produit n'existe pas
                 if (!$produit){
                     $this->supprimerProduit($id);
@@ -103,8 +102,7 @@ class Panier
                 }
                 $panierComplet[] = [
                     'produit' => $produit,
-                    'quantite' => $quantite,
-                    'total' => $produit->getProduitPrix() * $quantite
+                    'totalPrixQuantite' => $produit->getProduitPrix() * $produit->getQuantite()
                 ];
             }
         }

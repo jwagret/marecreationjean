@@ -17,6 +17,7 @@
              <tr>
                  <th scope="col">Nom</th>
                  <th scope="col">Prix</th>
+                 <th scope="col">Actif</th>
                  <th scope="col">Créé le</th>
                  <th scope="col">Modifier le</th>
                  <th scope="col">Actions</th>
@@ -32,6 +33,13 @@
                  <tr>
                          <td>{{ transporteur.transporteurNom }}</td>
                          <td>{{ transporteur.transporteurPrix | number_format(2, ',', '.')}}€</td>
+                         <td>
+                             <div class="form-check form-switch">
+                                 <label id="labelActif">
+                                     <input class="form-check-input" type="checkbox" {{ (transporteur.isActif) ? 'checked' : '' }} data-id="{{ transporteur.id }}">
+                                 </label>
+                             </div>
+                         </td>
                          <td>{{ transporteur.dateCreation | date("d/m/Y")  }}</td>
                      {% if transporteur.dateModification != null %}
                          <td>{{ transporteur.dateModification | date("d/m/Y")  }}</td>

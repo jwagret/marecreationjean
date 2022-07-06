@@ -4,6 +4,7 @@ namespace App\Form\Transporteur;
 
 use App\Entity\Transporteurs;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,6 +26,12 @@ class TransporteurType extends AbstractType
                 'label' => "prix du transporteur ",
                 'attr' => [
                     'class' => 'form-control mb-3',
+                ]
+            ])
+            ->add('isActif', CheckboxType::class, [
+                'label' => 'Activer le transporteur (transporteur par défaut)',
+                'attr' => [
+                    'class' => 'form-check-input mb-3',
                 ]
             ])
         ;

@@ -16,7 +16,6 @@ class Outils
         return $testUser;
     }
 
-
     /**
      * @param string|null $format
      * @return DateTime

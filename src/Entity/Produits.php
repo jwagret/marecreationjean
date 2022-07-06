@@ -52,6 +52,9 @@ class Produits
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Stocks::class)]
     private $stocks;
 
+    #[ORM\Column(type: 'integer')]
+    private $quantite;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -284,5 +287,17 @@ class Produits
     public function __toString(): string
     {
        return $this->getProduitNom();
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): self
+    {
+        $this->quantite = $quantite;
+
+        return $this;
     }
 }

@@ -18,6 +18,9 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('refClient', TextType::class, [
+                'disabled' => true
+            ])
             ->add('client_nom', TextType::class, [
                 'required' => true,
                 'attr' => [

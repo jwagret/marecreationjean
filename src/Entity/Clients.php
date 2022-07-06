@@ -40,6 +40,9 @@ class Clients
     #[ORM\JoinColumn(nullable: false)]
     private $utilisateur;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $refClient;
+
     public function __construct()
     {
         $this->adresses = new ArrayCollection();
@@ -191,6 +194,18 @@ class Clients
     public function setUtilisateur(User $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getRefClient(): ?string
+    {
+        return $this->refClient;
+    }
+
+    public function setRefClient(string $refClient): self
+    {
+        $this->refClient = $refClient;
 
         return $this;
     }

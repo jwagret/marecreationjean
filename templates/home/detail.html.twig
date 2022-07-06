@@ -44,7 +44,12 @@
                 <h4>Prix : </h4>
                 <span class="card-text">{{ produit.produitPrix  | number_format(2, ',', '.')}} € </span>
             </div>
-            <a class="btn btn-primary mt-5" href="{{ path('app_panier_ajouterUnique', {'id': produit.id}) }}" role="button" style="margin-left: 1vw">Ajouter Panier</a>
+            {% if (is_granted('ROLE_USER')) %}
+{#                <a class="btn btn-primary mt-5" href="{{ path('app_panier_ajouterUnique', {'id': produit.id}) }}" role="button" style="margin-left: 1vw">Ajouter Panier</a>#}
+                <a class="btn btn-primary mt-5" href="{{ path('app_panier_ajouterUnique', {'id': produit.id}) }}" role="button" style="margin-left: 1vw">Ajouter Panier</a>
+            {% else%}
+                <a class="btn btn-primary mt-5" href="{{ path('app_login') }}" role="button" style="margin-left: 1vw">Connectez-vous</a>
+            {% endif %}
         </div>
     </div>
 

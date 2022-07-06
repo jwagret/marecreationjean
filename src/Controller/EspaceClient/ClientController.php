@@ -6,6 +6,7 @@ use App\Form\Client\ChangerMotDePasseType;
 use App\Form\Client\ClientType;
 use App\Repository\ClientsRepository;
 use App\Utils\Outils\Outils;
+use App\Utils\References\Reference;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,6 +36,13 @@ class ClientController extends AbstractController
 
         //Récupérer l'utilisateur connecté
         $clientCourant = $this->clientsRepository->findOneBy(['utilisateur' => $user]);
+
+        if (!$clientCourant->getRefClient()) {
+            $refClient = new Reference();
+            $clientCourant->setRefClient($refClient->referenceClient($clientCourant->getClientPrenom(), $clientCourant->getClientNom()));
+        }else {
+            $clientCourant->setRefClient($clientCourant->getRefClient());
+        }
 
         //Création du formulaire
         $form = $this->createForm(ClientType::class, $clientCourant);

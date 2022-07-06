@@ -5,7 +5,7 @@ let position = 0; //position
 let tailleWidth = 100; //100% = taille container
 let unite = "%" //unite (px,%,em...)
 let deplacerImage = tailleWidth/nombre_images;
-let activer_carrousel = true;
+let activer_carrousel = false;
 
 //Afficher masquer les fleches
 let controlerBoutons = () => {

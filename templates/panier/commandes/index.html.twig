@@ -8,56 +8,61 @@
     <p>Retrouvez l'ensemble des produits que vous avez ajouté à votre panier</p>
 
     {% set total = 0 %}
+    {% set totalGeneral = 0 %}
 
     {% if liste_panier != [] %}
         <div class="table-responsive w-75 mt-lg-3">
             <table class="table">
-                <caption>Nombre de Produits : </caption>
+                <caption>Nombre de Produits : {{ liste_panier | length}} </caption>
                 <thead>
-                <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Référence</th>
-                    <th scope="col">Désignation</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">Total</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Référence</th>
+                        <th scope="col">Désignation</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Action</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {% if liste_panier == [] %}
-                    <tr>
-                        <td colspan="9" class="fw-bold text-danger">AUCUN PRODUITS</td>
-                    </tr>
-                {% endif %}
-                {% for panier in liste_panier %}
-                    <tr>
-                        {% if panier.produit.images.empty %}
-                            <td style="width: 10%">
-                                <div style="display: contents">
-                                    <img width="100%" src="{{ asset('/images/produits/im-0.png' ) }}" alt="aucune image">
-                                </div>
-                            </td>
-                        {% endif %}
-                        {% for image in panier.produit.images%}
-                            {% if loop.first %} {# si l'index est le 1er #}
+                    {% if liste_panier == [] %}
+                        <tr>
+                            <td colspan="9" class="fw-bold text-danger">AUCUN PRODUITS</td>
+                        </tr>
+                    {% endif %}
+                    {% for panier in liste_panier %}
+                        <tr>
+                            {% if panier.produit.images.empty %}
                                 <td style="width: 10%">
                                     <div style="display: contents">
-                                        <img width="100%" src="{{ asset('/images/produits/'~image.imageChemin ) }}" alt="{{ image.imageNom }}">
+                                        <img width="100%" src="{{ asset('/images/produits/im-0.png' ) }}" alt="aucune image">
                                     </div>
                                 </td>
                             {% endif %}
-                        {% endfor %}
-                        <td>{{panier.produit.ProduitNom}}</td>
-                        <td>{{panier.produit.ProduitReference}}</td>
-                        <td>{{panier.produit.ProduitDesignation}}</td>
-                        <td>{{panier.produit.ProduitPrix  | number_format(2, ',', '.')}}€</td>
-                        {% set qtt =  panier["total"] %}
-                        {% set total = qtt %}
-                        <td>{{panier["quantite"] }}</td>
-                        <td>{{ qtt | number_format(2, ',', '.')}}€</td>
-                    </tr>
-                {% endfor %}
+                            {% for image in panier.produit.images%}
+                                {% if loop.first %} {# si l'index est le 1er #}
+                                    <td style="width: 10%">
+                                        <div style="display: contents">
+                                            <img width="100%" src="{{ asset('/images/produits/'~image.imageChemin ) }}" alt="{{ image.imageNom }}">
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            {% endfor %}
+                            <td>
+                                <a href="{{ path('application_details', {'id': panier.produit.id}) }}">{{panier.produit.ProduitNom}}</a>
+                            </td>
+                            <td>{{panier.produit.ProduitReference}}</td>
+                            <td>{{panier.produit.ProduitDesignation}}</td>
+                            <td>{{panier.produit.ProduitPrix  | number_format(2, ',', '.')}}€</td>
+                            {% set qtt =  panier["totalPrixQuantite"] %}
+                            {% set total = total + qtt %}
+                            <td>{{ panier.produit.Quantite }}</td>
+                            <td>{{ qtt | number_format(2, ',', '.')}}€</td>
+                            <td><a href="{{ path('app_panier_supprimer', {'id': panier.produit.id}) }}" class="btn btn-primary btn-sm">supprimer</a></td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -69,7 +74,7 @@
             </div>
             <div class="w-25 align-self-end">
                 <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 7.5vw;">Transport TTC :</span>
-                <span class="w-25 align-self-end" style="color: cornflowerblue;">******</span>
+                <span class="w-25 align-self-end" style="color: cornflowerblue;">{% if transportActif %} {{ transportActif.transporteurPrix  | number_format(2, ',', '.')}}{% endif %}€</span>
             </div>
 {#            <div class="w-25 align-self-end">#}
 {#                <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 9vw;">TVA 20% :</span>#}
@@ -78,10 +83,11 @@
             <hr class="w-25 align-self-end" style="height: 5px; color: cornflowerblue;" >
             <div class="w-25 align-self-end">
                 <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 9vw;">Total TTC :</span>
-                <span class="w-25 align-self-end" style="color: cornflowerblue;">******</span>
+                {% set totalGeneral = (total + transportActif.transporteurPrix) %}
+                <span class="w-25 align-self-end" style="color: cornflowerblue;">{{  totalGeneral | number_format(2, ',', '.') }}€</span>
             </div>
             <div class="w-25 align-self-end">
-                <a href="#" class="btn btn-primary btn-lg mt-lg-3 w-100">Valider mon panier</a>
+                <a href="{{ path('app_panier_afficherCommande') }}" class="btn btn-primary btn-lg mt-lg-3 w-100">Valider panier :  {{ totalGeneral | number_format(2, ',', '.') }}€  </a>
             </div>
 
         </div>
