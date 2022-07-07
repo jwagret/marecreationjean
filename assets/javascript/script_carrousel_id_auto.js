@@ -4,7 +4,7 @@ let btn = document.getElementsByClassName("bouton");
 let nombre = 5; //5 images
 let tailleWidth = 20; //100% = taille container
 let unite = "%"; //unite (px,%,em...)
-let activerIdAuto = false;
+let activerIdAuto = true;
 
 let slideIndex = 0;
 

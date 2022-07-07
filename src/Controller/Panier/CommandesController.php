@@ -114,6 +114,7 @@ class CommandesController extends AbstractController
         $commande->setDateCreation($date);
         $commande->setAnneeCommande($annéeCommande->format('Y'));
         $produitCourant->addCommande($commande);
+        $clientCourant->addCommande($commande);
 
         //Parcourir le tableau des transports et récupérer le transport actif
         //Ajouter la commande au transporteur

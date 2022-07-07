@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Repository\CategoriesRepository;
 use App\Repository\ClientsRepository;
+use App\Repository\CommandesRepository;
 use App\Repository\ProduitsRepository;
 use App\Repository\SousCategoriesRepository;
 use App\Repository\TransporteursRepository;
@@ -19,18 +20,21 @@ class AdminController extends AbstractController
     private CategoriesRepository $categoriesRepository;
     private SousCategoriesRepository $sousCategoriesRepository;
     private TransporteursRepository $transporteursRepository;
+    private CommandesRepository $commandesRepository;
 
     public function __construct(ProduitsRepository $produitsRepository,
                                 ClientsRepository $clientsRepository,
                                 CategoriesRepository $categoriesRepository,
                                 SousCategoriesRepository $sousCategoriesRepository,
-                                TransporteursRepository $transporteursRepository)
+                                TransporteursRepository $transporteursRepository,
+                                CommandesRepository $commandesRepository)
     {
         $this->produitsRepository = $produitsRepository;
         $this->clientsRepository = $clientsRepository;
         $this->categoriesRepository = $categoriesRepository;
         $this->sousCategoriesRepository = $sousCategoriesRepository;
         $this->transporteursRepository = $transporteursRepository;
+        $this->commandesRepository = $commandesRepository;
     }
 
 
@@ -43,13 +47,15 @@ class AdminController extends AbstractController
         $totalCategories = $this->categoriesRepository->totalCategories()-1;
         $totalSousCategories = $this->sousCategoriesRepository->totalSousCategories()-1;
         $totalTransporteur = $this->transporteursRepository->totalTransporteur();
+        $totalCommandes = $this->commandesRepository->totalCommandes();
 
         return $this->render('admin/admin/admin.html.twig', [
             'total_produits' => $totalProduits,
             'total_clients' => $totalClients,
             'total_categories' => $totalCategories,
             'total_sousCategories' => $totalSousCategories,
-            'total_transporteur' => $totalTransporteur
+            'total_transporteur' => $totalTransporteur,
+            'total_commandes' => $totalCommandes
         ]);
     }
 

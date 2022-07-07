@@ -96,18 +96,16 @@
     <div class="collapse mb-xl-3"  id="mesCommandes">
         <div class="card card-body">
             <div class="container">
-                <div class="card" style="width: 60%;">
-                    <div class="card-body card-hover px-4">
+                {% if clientCourant.commandes != [] %}
+                {% for commande in clientCourant.commandes %}
+                <div class="card" style="width: 65%;">
+                    <div class="card-body card-hover px-4 align-self-sm-center">
                         <h5 class="card-title"></h5>
-{#                        <p class="card-text"><span class="text-uppercase fw-bold">Pseudo</span> : {{ clientCourant.pseudo }}</p>#}
-{#                        <p class="card-text"><span class="text-uppercase fw-bold">Nom</span> : {{ clientCourant.clientNom }}</p>#}
-{#                        <p class="card-text"><span class="text-uppercase fw-bold">Prenom</span> : {{  clientCourant.clientPrenom}} </p>#}
-{#                        <p class="card-text"><span class="text-uppercase fw-bold">Email</span> : {{  userCourant.email}} </p>#}
-
-{#                        <a href="{{ path('app_espace_client_client_modifier', {'id': clientCourant.id}) }}" class="btn btn-primary">Modifier mes informations</a>#}
-{#                        <a href="#" class="btn btn-primary">Supprimer mon compte</a>#}
+                            <a href="{{ path('app_espace_commandesClients', {'id': commande.Id}) }}" class="card-text btn btn-info"><span class="text-uppercase fw-bold"></span> {{ commande.CommandeReference }} </a>
                     </div>
                 </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

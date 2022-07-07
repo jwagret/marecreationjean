@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Clients;
 use App\Entity\Commandes;
+use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -44,6 +46,33 @@ class CommandesRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+
+
+    //Retourne le nombre total de transporteur dans la bdd
+    public function totalCommandes(): int {
+        $query = $this->createQueryBuilder('commandes')
+                      ->select('count(commandes)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
+    //Retourne les commandes d'un client
+    public function afficherCommandes(Clients $clients) {
+        $query = $this->createQueryBuilder('commandes')
+                      ->join('commandes.client', 'cc')
+                      ->where('cc.refClient = :key')
+                      ->setParameter('key', $clients->getRefClient());
+        return $query->getQuery()->getResult();
+    }
+
+
+
+
+
+
+
+
+
+
 
     // /**
     //  * @return Commandes[] Returns an array of Commandes objects

@@ -1,0 +1,92 @@
+{% extends 'baseVierge.html.twig' %}
+
+{% block title %}Ma-ré-création-Jeans | Commandes {% endblock %}
+
+{% block main_section_1 %}
+    {% block message %} {% endblock %}
+
+    <h1>Mes Commandes</h1>
+    <p>Retrouver ici votre {{ commande.commandeReference }}</p>
+
+    {% set total = 0 %}
+    {% set totalGeneral = 0 %}
+
+    <p>Statut de la commande : </p>
+
+    <div class="table-responsive w-75 mt-lg-3">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Référence</th>
+                <th scope="col">Désignation</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if commande == [] %}
+                <tr>
+                    <td colspan="9" class="fw-bold text-danger">AUCUN PRODUITS</td>
+                </tr>
+            {% endif %}
+            {% for produit in commande.produits %}
+                <tr>
+                    <td>{{ produit.produitNom }}</td>
+                    <td>{{ produit.produitReference }}</td>
+                    <td>{{ produit.produitDesignation }}</td>
+                    <td>{{ produit.produitPrix | number_format(2, ',', '.')}}€</td>
+                    <td>{{ produit.Quantite }}</td>
+                    <td>{{ (produit.produitPrix * produit.Quantite) | number_format(2, ',', '.')}}€</td>
+                    {% set total = total + (produit.produitPrix * produit.Quantite) %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <hr class="w-75" style="height: 5px; color: cornflowerblue;" >
+    <div class="w-75 d-flex flex-column">
+        <div class="w-25 align-self-end">
+            <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 7.7vw;">Montant TTC :</span>
+            <span class="w-25 align-self-end" style="color: cornflowerblue;">{{ total | number_format(2, ',', '.')}}€</span>
+        </div>
+        {% set transport = commande.transporteur.transporteurPrix %}
+        <div class="w-25 align-self-end">
+            <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 7.5vw;">Transport TTC :</span>
+            <span class="w-25 align-self-end" style="color: cornflowerblue;">{{transport | number_format(2, ',', '.') }}€</span>
+        </div>
+{#                    <div class="w-25 align-self-end">#}
+{#                        <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 9vw;">TVA 20% :</span>#}
+{#                        <span class="w-25 align-self-end" style="color: cornflowerblue;">******</span>#}
+{#                    </div>#}
+        <hr class="w-25 align-self-end" style="height: 5px; color: cornflowerblue;" >
+        {% set totalGeneral = total + transport %}
+        <div class="w-25 align-self-end">
+            <span class="w-25 align-self-end" style="color: cornflowerblue; margin-right: 9vw;">Total TTC :</span>
+            <span class="w-25 align-self-end" style="color: cornflowerblue;">{{  totalGeneral | number_format(2, ',', '.') }}€</span>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block main_section_2_1 %}
+
+{% endblock %}
+
+{% block main_section_2_2 %}
+
+{% endblock %}
+
+{% block main_section_3_1 %}
+
+{% endblock %}
+
+{% block main_section_3_2 %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+

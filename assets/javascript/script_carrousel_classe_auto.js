@@ -4,7 +4,7 @@ let btnClasse = document.getElementsByClassName("bouton_manuel");
 let totalImages = 5; //5 images
 let tailleWidth = 20; //100% = taille container
 let unite = "%"; //unite (px,%,em...)
-let activer_carrousel_auto = false;
+let activer_carrousel_auto = true;
 
 let slide_Index = 0;
 let automatique = () => {
